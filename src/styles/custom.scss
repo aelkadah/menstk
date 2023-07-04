@@ -30,5 +30,21 @@ $font-family-base: "'Cairo', sans-serif" !important;
 
 a {
   text-decoration: none;
-  color: black;
+  // color: #000000 !important;
+}
+
+.navbar-toggler {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 0;
+  border: none;
+}
+
+.nav-link {
+  // color: red !important;
+  color: #000000 !important;
+  &:hover {
+    color: #00000090 !important;
+  }
 }

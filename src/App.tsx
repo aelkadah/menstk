@@ -1,14 +1,16 @@
 import { Container, Row } from "react-bootstrap";
 import Header from "./components/utilities/Header";
+import bank_installment from "./assets/images/bank_installment.gif";
 
 function App() {
   return (
-    <Header />
-    // <Container>
-    //   <Row>
-    //     <h1>AAAAAAA</h1>
-    //   </Row>
-    // </Container>
+    <Container fluid>
+      <Header />
+
+      {/* <Row>
+        <img src={bank_installment} alt="Bank Installment" className="p-0" />
+      </Row> */}
+    </Container>
   );
 }
 
