@@ -1,8 +1,12 @@
+$mainShadow: 0px 4px 24px rgba(0, 0, 0, 0.06);
+
 @import "custom.scss";
+@import "components/components-dir";
 
 html {
   scroll-behavior: smooth;
   body {
+    background-color: #fafafa;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,5 +16,9 @@ html {
     // .btm-shadow{
     //   ::shadow
     // }
+  }
+
+  .mainShadow {
+    box-shadow: $mainShadow;
   }
 }

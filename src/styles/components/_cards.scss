@@ -1,0 +1,79 @@
+.productCard {
+  position: relative;
+  background-color: #fff;
+  box-shadow: $mainShadow;
+  padding: 15px;
+  cursor: pointer;
+
+  > .prodImg {
+    width: auto;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    > img {
+      height: inherit;
+      width: auto;
+
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+
+    &:hover > img {
+      -webkit-transform: scale(1.3);
+      transform: scale(1.3);
+    }
+  }
+
+  .prodDesc {
+    font-size: 14px;
+    line-height: 1.2;
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .favBtn {
+    position: absolute;
+    width: auto;
+    color: $primary;
+    left: 25px;
+    top: 0;
+    background-color: #e9e9e9;
+    z-index: 10;
+  }
+
+  .addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    bottom: -15px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 10;
+    cursor: pointer;
+    padding: 6px;
+    transition: ease-in 250ms;
+    &:hover {
+      bottom: -5px;
+    }
+  }
+}
+
+.hover01 figure img {
+}
+.hover01 figure:hover img {
+}

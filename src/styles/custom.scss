@@ -15,22 +15,32 @@
 }
 @font-face {
   font-family: "'Cairo', sans-serif";
-  src: url(../assets/fonts/Cairo-Bold.ttf) format("truetype");
-  font-weight: 700;
+  src: url(../assets/fonts/Cairo-SemiBold.ttf) format("truetype");
+  font-weight: 500;
 }
 @font-face {
   font-family: "'Cairo', sans-serif";
-  src: url(../assets/fonts/Cairo-Black.ttf) format("truetype");
-  font-weight: 900;
+  src: url(../assets/fonts/Cairo-Bold.ttf) format("truetype");
+  font-weight: 700;
 }
-
 $font-family-base: "'Cairo', sans-serif" !important;
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
 a {
   text-decoration: none;
-  // color: #000000 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.form-control {
+  caret-color: $primary;
+  &:hover,
+  &:focus {
+    box-shadow: $mainShadow;
+  }
 }
 
 .navbar-toggler {
@@ -42,8 +52,8 @@ a {
 }
 
 .nav-link {
-  // color: red !important;
   color: #000000 !important;
+  font-size: 14px;
   &:hover {
     color: #00000090 !important;
   }
