@@ -16,7 +16,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Container className="bg-white border-bottom border-light-subtle" fluid>
+    <Container
+      className="header bg-white border-bottom border-light-subtle mb-4"
+      fluid
+    >
       <Container>
         <Navbar key="md" expand="md">
           <Container fluid>

@@ -13,9 +13,14 @@ html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 
-    // .btm-shadow{
-    //   ::shadow
-    // }
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      .header + div {
+        flex: 1 !important;
+      }
+    }
   }
 
   .mainShadow {

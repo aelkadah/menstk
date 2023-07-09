@@ -3,10 +3,7 @@ import logo from "../../assets/images/logo.svg";
 
 const Footer = () => {
   return (
-    <Container
-      className="bg-white mt-5 border-top border-light-subtle position-absolute bottom-0"
-      fluid
-    >
+    <Container className="bg-white border-top border-light-subtle mt-4" fluid>
       <Container>
         <Row className="d-flex align-items-center justify-content-between py-4">
           <img src={logo} alt="logo..." height="40px" className="w-auto" />
