@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { ProductCard } from "..";
 
 import Carousel from "react-multi-carousel";
@@ -12,32 +12,27 @@ import watch5 from "../../assets/images/watch/5.jpg";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
+    breakpoint: { max: 4000, min: 1200 },
     items: 5,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 6,
+    breakpoint: { max: 1199.98, min: 992 },
+    items: 5,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    breakpoint: { max: 991.98, min: 768 },
+    items: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
+    breakpoint: { max: 767.98, min: 0 },
+    items: 2,
   },
 };
 
 const BestSellers = () => {
   return (
     <Container className="py-5" style={{ backgroundColor: "#f1f7fc" }} fluid>
-      <Col xs={4}>
-        <ProductCard image={iphone1} />
-      </Col>
-
-      <Container className="my-5">
+      <Container className="">
         <Carousel
           responsive={responsive}
           arrows={true}

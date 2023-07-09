@@ -35,7 +35,7 @@ const ProductCard = ({ image }) => {
       </div>
 
       <div className="addBtn ">
-        <ShoppingCartIcon width="25px" height="25px" />
+        <ShoppingCartIcon width="20px" height="20px" />
       </div>
     </div>
   );

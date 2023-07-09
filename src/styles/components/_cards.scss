@@ -1,10 +1,9 @@
 .productCard {
   position: relative;
   background-color: #fff;
-  box-shadow: $mainShadow;
   padding: 15px;
+  box-shadow: 2px 4px 15px 0px rgb(207 207 207 / 40%);
   cursor: pointer;
-
   > .prodImg {
     width: auto;
     height: 200px;
@@ -13,23 +12,19 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-
     > img {
       height: inherit;
       width: auto;
-
       -webkit-transform: scale(1);
       transform: scale(1);
       -webkit-transition: 0.3s ease-in-out;
       transition: 0.3s ease-in-out;
     }
-
     &:hover > img {
       -webkit-transform: scale(1.3);
       transform: scale(1.3);
     }
   }
-
   .prodDesc {
     font-size: 14px;
     line-height: 1.2;
@@ -39,7 +34,6 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-
   .favBtn {
     position: absolute;
     width: auto;
@@ -49,7 +43,6 @@
     background-color: #e9e9e9;
     z-index: 10;
   }
-
   .addBtn {
     display: flex;
     justify-content: center;
@@ -64,7 +57,6 @@
     transform: translateX(-50%);
     left: 50%;
     z-index: 10;
-    cursor: pointer;
     padding: 6px;
     transition: ease-in 250ms;
     &:hover {
@@ -73,7 +65,33 @@
   }
 }
 
-.hover01 figure img {
-}
-.hover01 figure:hover img {
+.categoryCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  .catImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: $mainShadow;
+    overflow: hidden;
+    > img {
+      max-height: 95%;
+      width: auto;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  &:hover > .catImage > img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
 }
