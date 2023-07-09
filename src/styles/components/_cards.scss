@@ -4,6 +4,10 @@
   padding: 15px;
   box-shadow: 2px 4px 15px 0px rgb(207 207 207 / 40%);
   cursor: pointer;
+  &:hover > .prodImg > img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
   > .prodImg {
     width: auto;
     height: 200px;
@@ -20,10 +24,10 @@
       -webkit-transition: 0.3s ease-in-out;
       transition: 0.3s ease-in-out;
     }
-    &:hover > img {
-      -webkit-transform: scale(1.3);
-      transform: scale(1.3);
-    }
+    // &:hover > img {
+    //   -webkit-transform: scale(1.3);
+    //   transform: scale(1.3);
+    // }
   }
   .prodDesc {
     font-size: 14px;
@@ -72,6 +76,37 @@
   align-items: center;
   cursor: pointer;
   .catImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: $mainShadow;
+    overflow: hidden;
+    > img {
+      max-height: 95%;
+      width: auto;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  &:hover > .catImage > img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+
+.brandCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  .brandImage {
     display: flex;
     align-items: center;
     justify-content: center;

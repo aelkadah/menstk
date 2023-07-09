@@ -1,7 +1,6 @@
 import { Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CategoryCard from "./CategoryCard";
 
 import iphone1 from "../../assets/images/iphone/1.jpg";
 import watch1 from "../../assets/images/watch/1.jpg";
@@ -9,8 +8,9 @@ import watch2 from "../../assets/images/watch/2.jpg";
 import watch3 from "../../assets/images/watch/3.jpg";
 import watch4 from "../../assets/images/watch/4.jpg";
 import watch5 from "../../assets/images/watch/5.jpg";
+import BrandCard from "./BrandCard";
 
-const FeaturedCategories = () => {
+const FeaturedBrands = () => {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1200 },
@@ -41,19 +41,19 @@ const FeaturedCategories = () => {
         showDots={true}
         containerClass="pb-3"
       >
-        <CategoryCard image={iphone1} title="إلكترونيات" />
-        <CategoryCard image={watch1} title="أدوات منزلية متقدمة" />
-        <CategoryCard image={watch2} title="ملابس" />
-        <CategoryCard image={watch3} title="إكسسوارات" />
-        <CategoryCard image={watch4} title="منتجات تنظيف" />
-        <CategoryCard image={watch4} title="منتجات تنظيف" />
-        <CategoryCard image={watch5} title="أدوات منزلية" />
-        <CategoryCard image={iphone1} title="إلكترونيات" />
-        <CategoryCard image={watch1} title="أدوات منزلية متقدمة" />
-        <CategoryCard image={watch2} title="ملابس" />
+        <BrandCard image={iphone1} title="إلكترونيات" />
+        <BrandCard image={watch1} title="أدوات منزلية متقدمة" />
+        <BrandCard image={watch2} title="ملابس" />
+        <BrandCard image={watch3} title="إكسسوارات" />
+        <BrandCard image={watch4} title="منتجات تنظيف" />
+        <BrandCard image={watch4} title="منتجات تنظيف" />
+        <BrandCard image={watch5} title="أدوات منزلية" />
+        <BrandCard image={iphone1} title="إلكترونيات" />
+        <BrandCard image={watch1} title="أدوات منزلية متقدمة" />
+        <BrandCard image={watch2} title="ملابس" />
       </Carousel>
     </Container>
   );
 };
 
-export default FeaturedCategories;
+export default FeaturedBrands;

@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
-import { ProductCard } from "..";
-
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { ProductCard } from "..";
+
 import iphone1 from "../../assets/images/iphone/1.jpg";
 import watch1 from "../../assets/images/watch/1.jpg";
 import watch2 from "../../assets/images/watch/2.jpg";
@@ -31,25 +31,23 @@ const responsive = {
 
 const BestSellers = () => {
   return (
-    <Container className="py-5" style={{ backgroundColor: "#f1f7fc" }} fluid>
-      <Container className="">
-        <Carousel
-          responsive={responsive}
-          arrows={true}
-          rtl
-          itemClass="mx-2"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          containerClass="py-5"
-        >
-          <ProductCard image={iphone1} />
-          <ProductCard image={watch1} />
-          <ProductCard image={watch2} />
-          <ProductCard image={watch3} />
-          <ProductCard image={watch4} />
-          <ProductCard image={watch5} />
-          <ProductCard image={iphone1} />
-        </Carousel>
-      </Container>
+    <Container>
+      <Carousel
+        responsive={responsive}
+        arrows={true}
+        rtl
+        itemClass="mx-2"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        containerClass="py-5"
+      >
+        <ProductCard image={iphone1} />
+        <ProductCard image={watch1} />
+        <ProductCard image={watch2} />
+        <ProductCard image={watch3} />
+        <ProductCard image={watch4} />
+        <ProductCard image={watch5} />
+        <ProductCard image={iphone1} />
+      </Carousel>
     </Container>
   );
 };
