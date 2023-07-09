@@ -7,7 +7,7 @@ import FeaturedBrands from "../components/brand/FeaturedBrands";
 function HomePage() {
   return (
     <Container fluid>
-      <Container className="mb-4">
+      <Container className="mb-5">
         <img className="w-100 rounded-4" src={slide1} alt="First slide" />
       </Container>
 
