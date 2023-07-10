@@ -10,16 +10,18 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "./styles/index.scss";
-import { HomePage, LoginPage } from "./layout";
+import { AdminPanel, HomePage, LoginPage } from "./layout";
 import Header from "./components/utilities/Header";
 import Footer from "./components/utilities/Footer";
+import AdminOrdersPage from "./layout/admin/AdminOrdersPage";
+import AdminProductsPage from "./layout/admin/AdminProductsPage";
 
 const Layout = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
@@ -29,6 +31,9 @@ const router = createBrowserRouter(
     <Route element={<Layout />} errorElement={<HomePage />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/admin" element={<AdminPanel />} />
+      <Route path="/admin/orders" element={<AdminOrdersPage />} />
+      <Route path="/admin/products" element={<AdminProductsPage />} />
     </Route>
   )
 );

@@ -1,0 +1,40 @@
+$theme-colors: (
+  "primary": #0046fe,
+);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.form-control {
+  caret-color: $primary;
+  &:hover,
+  &:focus {
+    box-shadow: $mainShadow;
+  }
+}
+
+.navbar-toggler {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 0;
+  border: none;
+}
+
+.nav-link {
+  color: #000000 !important;
+  font-size: 14px;
+  &:hover {
+    color: #00000090 !important;
+  }
+}

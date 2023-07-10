@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { ProductCard } from "..";
+import ProductCard from "./ProductCard";
 
 import iphone1 from "../../assets/images/iphone/1.jpg";
 import watch1 from "../../assets/images/watch/1.jpg";

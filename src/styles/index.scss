@@ -1,7 +1,7 @@
-$mainShadow: 0px 4px 24px rgba(0, 0, 0, 0.06);
-
-@import "custom.scss";
+@import "utils/utils-dir";
+@import "base/base-dir";
 @import "components/components-dir";
+@import "layout/layout-dir";
 
 html {
   scroll-behavior: smooth;
