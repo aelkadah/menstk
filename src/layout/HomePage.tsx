@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap";
-import slide1 from "../assets/images/slider/slide1.jpg";
 import FeaturedCategories from "../components/category/FeaturedCategories";
 import BestSellers from "../components/product/BestSellers";
 import FeaturedBrands from "../components/brand/FeaturedBrands";
+import slide1 from "../assets/images/slider/slide1.jpg";
 
 function HomePage() {
   return (

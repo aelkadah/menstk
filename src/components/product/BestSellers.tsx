@@ -9,6 +9,7 @@ import watch2 from "../../assets/images/watch/2.jpg";
 import watch3 from "../../assets/images/watch/3.jpg";
 import watch4 from "../../assets/images/watch/4.jpg";
 import watch5 from "../../assets/images/watch/5.jpg";
+import SecTitle from "../utilities/SecTitle";
 
 const responsive = {
   superLargeDesktop: {
@@ -32,13 +33,14 @@ const responsive = {
 const BestSellers = () => {
   return (
     <Container>
+      <SecTitle title="أفضل العروض" btnText="تسوق الآن" url="/products" />
       <Carousel
         responsive={responsive}
         arrows={true}
         rtl
         itemClass="mx-2"
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        containerClass="py-5"
+        containerClass="pb-5 pt-4"
       >
         <ProductCard image={iphone1} />
         <ProductCard image={watch1} />

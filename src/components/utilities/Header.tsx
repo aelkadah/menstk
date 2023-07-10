@@ -23,7 +23,7 @@ const Header = () => {
       <Container>
         <Navbar key="md" expand="md">
           <Container fluid>
-            <Navbar.Brand to="/" as={Link}>
+            <Navbar.Brand className="m-0" to="/" as={Link}>
               <img src={logo} alt="logo" height="50px" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />

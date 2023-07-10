@@ -9,9 +9,20 @@
       padding: 15px 20px;
       margin: 10px 0 0 10px;
       border-radius: 5px;
+
       &:hover {
         background-color: $primary;
         color: #fff;
+      }
+
+      & > span {
+        display: none;
+      }
+
+      @include respond-above(md) {
+        & > span {
+          display: inline-block !important;
+        }
       }
     }
     > .active > li {

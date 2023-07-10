@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.svg";
+import icon from "../../assets/images/icon.svg";
 import {
   ArrowRightOnRectangleIcon,
   ShoppingCartIcon,
@@ -10,13 +11,24 @@ import {
 const AdminSidebar = () => {
   return (
     <Col
-      xs={1}
+      xs={2}
       md={2}
       id="adminSidebar"
       className="border-start border-end-0 border-light-subtle"
     >
       <NavLink to="/">
-        <img src={logo} alt="logo..." height="50px" className="mb-3" />
+        <img
+          src={logo}
+          alt="logo..."
+          height="50px"
+          className="mb-3 d-none d-md-inline-block"
+        />
+        <img
+          src={icon}
+          alt="logo..."
+          height="50px"
+          className="mb-3 d-md-none"
+        />
       </NavLink>
 
       <Row>
