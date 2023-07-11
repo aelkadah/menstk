@@ -9,7 +9,7 @@ const Pagination = ({ pageCount, onPress }) => {
   if (pageCount)
     if (pageCount > 1)
       return (
-        <Row className="pt-5">
+        <Row className="pt-4">
           <ReactPaginate
             breakLabel="..."
             nextLabel="التالى"

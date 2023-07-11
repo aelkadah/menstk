@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { LoadingSpinner, Pagination } from "..";
-import CategoryCard from "./CategoryCard";
 
 import iphone1 from "../../assets/images/iphone/1.jpg";
 import watch1 from "../../assets/images/watch/1.jpg";
@@ -9,8 +8,9 @@ import watch2 from "../../assets/images/watch/2.jpg";
 import watch3 from "../../assets/images/watch/3.jpg";
 import watch4 from "../../assets/images/watch/4.jpg";
 import watch5 from "../../assets/images/watch/5.jpg";
+import BrandCard from "./BrandCard";
 
-const CategoriesContainer = () => {
+const BrandsContainer = () => {
   const [loading, setloading] = useState(false);
 
   const data = [
@@ -31,11 +31,11 @@ const CategoriesContainer = () => {
       title: "أدوات منزلية",
     },
     {
-      image: iphone1,
+      image: watch4,
       title: "إلكترونيات",
     },
     {
-      image: watch1,
+      image: watch5,
       title: "أدوات منزلية متقدمة",
     },
     {
@@ -122,7 +122,7 @@ const CategoriesContainer = () => {
         data.map((item, index) => {
           return (
             <Col xs={6} md={3} lg={2} key={index}>
-              <CategoryCard category={item} />
+              <BrandCard brand={item} />
             </Col>
           );
         })
@@ -135,4 +135,4 @@ const CategoriesContainer = () => {
   );
 };
 
-export default CategoriesContainer;
+export default BrandsContainer;

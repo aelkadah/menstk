@@ -30,6 +30,49 @@ const FeaturedBrands = () => {
     },
   };
 
+  const data = [
+    {
+      image: iphone1,
+      title: "إلكترونيات",
+    },
+    {
+      image: watch1,
+      title: "أدوات منزلية متقدمة",
+    },
+    {
+      image: watch2,
+      title: "منتجات تنظيف",
+    },
+    {
+      image: watch3,
+      title: "أدوات منزلية",
+    },
+    {
+      image: iphone1,
+      title: "إلكترونيات",
+    },
+    {
+      image: watch4,
+      title: "أدوات منزلية متقدمة",
+    },
+    {
+      image: watch5,
+      title: "منتجات تنظيف",
+    },
+    {
+      image: watch3,
+      title: "أدوات منزلية",
+    },
+    {
+      image: watch2,
+      title: "منتجات تنظيف",
+    },
+    {
+      image: watch3,
+      title: "أدوات منزلية",
+    },
+  ];
+
   return (
     <Container>
       <Carousel
@@ -41,16 +84,11 @@ const FeaturedBrands = () => {
         showDots={true}
         containerClass="pb-3"
       >
-        <BrandCard image={iphone1} title="إلكترونيات" />
-        <BrandCard image={watch1} title="أدوات منزلية متقدمة" />
-        <BrandCard image={watch2} title="ملابس" />
-        <BrandCard image={watch3} title="إكسسوارات" />
-        <BrandCard image={watch4} title="منتجات تنظيف" />
-        <BrandCard image={watch4} title="منتجات تنظيف" />
-        <BrandCard image={watch5} title="أدوات منزلية" />
-        <BrandCard image={iphone1} title="إلكترونيات" />
-        <BrandCard image={watch1} title="أدوات منزلية متقدمة" />
-        <BrandCard image={watch2} title="ملابس" />
+        {data
+          ? data?.map((item, index) => {
+              return <BrandCard brand={item} key={index} />;
+            })
+          : null}
       </Carousel>
     </Container>
   );

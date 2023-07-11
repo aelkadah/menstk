@@ -1,15 +1,14 @@
 import { Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import SecTitle from "../utilities/SecTitle";
 import ProductCard from "./ProductCard";
 
-import iphone1 from "../../assets/images/iphone/1.jpg";
 import watch1 from "../../assets/images/watch/1.jpg";
 import watch2 from "../../assets/images/watch/2.jpg";
 import watch3 from "../../assets/images/watch/3.jpg";
 import watch4 from "../../assets/images/watch/4.jpg";
 import watch5 from "../../assets/images/watch/5.jpg";
-import SecTitle from "../utilities/SecTitle";
 
 const responsive = {
   superLargeDesktop: {
@@ -30,6 +29,99 @@ const responsive = {
   },
 };
 
+const data = [
+  {
+    _id: 1,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch1,
+    images: [watch2, watch3, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 2,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch2,
+    images: [watch1, watch3, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 3,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch3,
+    images: [watch2, watch1, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 4,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch4,
+    images: [watch1, watch3, watch2, watch5],
+    price: 8350,
+  },
+  {
+    _id: 5,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch5,
+    images: [watch2, watch1, watch4, watch3],
+    price: 8350,
+  },
+  {
+    _id: 6,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch1,
+    images: [watch2, watch3, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 7,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch2,
+    images: [watch1, watch3, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 8,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch3,
+    images: [watch2, watch1, watch4, watch5],
+    price: 8350,
+  },
+  {
+    _id: 9,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch4,
+    images: [watch1, watch3, watch2, watch5],
+    price: 8350,
+  },
+  {
+    _id: 10,
+    title: "ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود",
+    description:
+      "تكتشف وتحلل خاصية تتبع النوم مراحل نومك بشكل شامل أثناء الراحة. تتيح لك خيارات القياس المحسّنة فحص مستويات الأكسجين في الدم وأنماط الشخير (لا أقصد إنك تشخر حقاً)",
+    imageCover: watch5,
+    images: [watch2, watch1, watch4, watch3],
+    price: 8350,
+  },
+];
+
 const BestSellers = () => {
   return (
     <Container>
@@ -42,13 +134,11 @@ const BestSellers = () => {
         removeArrowOnDeviceType={["tablet", "mobile"]}
         containerClass="pb-5 pt-4"
       >
-        <ProductCard image={iphone1} />
-        <ProductCard image={watch1} />
-        <ProductCard image={watch2} />
-        <ProductCard image={watch3} />
-        <ProductCard image={watch4} />
-        <ProductCard image={watch5} />
-        <ProductCard image={iphone1} />
+        {data
+          ? data?.map((item, index) => {
+              return <ProductCard product={item} key={index} />;
+            })
+          : null}
       </Carousel>
     </Container>
   );
