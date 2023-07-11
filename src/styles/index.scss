@@ -3,6 +3,17 @@
 @import "components/components-dir";
 @import "layout/layout-dir";
 
+@import "../../node_modules//react-image-gallery//styles//scss//image-gallery.scss";
+
+.image-gallery-thumbnail {
+  margin: 0px 2px;
+  &.active,
+  &:hover,
+  &:focus {
+    border: 2px solid $primary;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   body {

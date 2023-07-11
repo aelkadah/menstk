@@ -15,6 +15,7 @@ import {
   CategoriesPage,
   HomePage,
   LoginPage,
+  OneProductPage,
   ProductsPage,
 } from "./layout";
 import Header from "./components/utilities/Header";
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
       <Route path="/brands" element={<BrandsPage />} />
 
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/products/:id" element={<OneProductPage />} />
 
       <Route path="/login" element={<LoginPage />} />
 
