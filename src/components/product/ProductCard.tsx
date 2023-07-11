@@ -1,4 +1,4 @@
-import { HeartIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { HeartIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const ProductCard = ({ product }) => {
   return (
@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="addBtn ">
-        <ShoppingCartIcon width="20px" height="20px" />
+        <PlusIcon width="20px" height="20px" />
       </div>
     </div>
   );
