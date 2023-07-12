@@ -1,13 +1,21 @@
 import { Row, Col, Badge, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ShoppingCartIcon, SparklesIcon } from "@heroicons/react/24/outline";
-import { StarIcon } from "@heroicons/react/24/solid";
+import {
+  CubeIcon,
+  ShoppingCartIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
+import {
+  ArrowTrendingUpIcon,
+  ArrowUturnDownIcon,
+  StarIcon,
+} from "@heroicons/react/24/solid";
 
 const ProductDetails = ({ product }) => {
   return (
     <Col xs={12} md={6} lg={8}>
       <Row>
-        <Col xs={12} lg={8} className="mb-5 mb-md-0">
+        <Col xs={12} lg={8}>
           <Row className="px-2 mb-1">
             <Badge
               bg="dark"
@@ -40,11 +48,6 @@ const ProductDetails = ({ product }) => {
             </span>
           </Row>
 
-          {/* <Row className="border-bottom mb-3">
-            <h6 className="fw-bold mb-1">الوصف:</h6>
-            <p className="text-secondary">{product?.description}</p>
-          </Row> */}
-
           <Row>
             <h6 className="text-black-50 mb-0">
               قبل:{" "}
@@ -74,16 +77,7 @@ const ProductDetails = ({ product }) => {
             </h6>
           </Row>
 
-          {/* <Row className="bg-body-secondary mt-4">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-              quae deleniti minus. Omnis alias illo sunt. Dolor consectetur,
-              distinctio consequatur id cum in ullam quo quos, vero, impedit
-              exercitationem quas?
-            </p>
-          </Row> */}
-
-          <Row className="mt-3 mb-5">
+          <Row className="mt-3 mb-4">
             <Row className="d-flex justify-content-between mx-0 p-0">
               <div className="w-auto">
                 <h6 className="fw-bold mb-2 px-1">الكمية:</h6>
@@ -107,13 +101,57 @@ const ProductDetails = ({ product }) => {
             </Row>
           </Row>
 
-          <Row className="mb-3 border-top py-4">
+          <Row className=" border-top py-4">
             <h6 className="fw-bold mb-1">الوصف:</h6>
             <p className="text-secondary m-0">{product?.description}</p>
             <p className="text-secondary">{product?.description}</p>
           </Row>
         </Col>
-        <Col xs={12} lg={4} className="px-4"></Col>
+
+        <Col xs={12} lg={4} className="px-4">
+          <div className="d-flex justify-content-start align-items-start gap-2 mb-4 border-bottom pb-4">
+            <div
+              className="bg-white shadow-sm rounded-circle d-flex align-items-center justify-content-center"
+              style={{ width: "40px", height: "40px" }}
+            >
+              <ArrowTrendingUpIcon width={"20px"} />
+            </div>
+            <div>
+              <div style={{ fontSize: "14px" }}>الأكثر مبيعاً</div>
+              <div style={{ fontSize: "12px" }}>
+                هذا المنتج يحصل على تقييمات ممتازة
+              </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-start align-items-start gap-2 mb-4 border-bottom pb-4">
+            <div
+              className="bg-white shadow-sm rounded-circle d-flex align-items-center justify-content-center"
+              style={{ width: "40px", height: "40px" }}
+            >
+              <CubeIcon width={"20px"} />
+            </div>
+            <div>
+              <div style={{ fontSize: "14px" }}>شحن مجاني</div>
+              <div style={{ fontSize: "12px" }}>
+                هذا المنتج يتم شحنه مجاناً لبعض المحافظات
+              </div>
+            </div>
+          </div>
+          <div className="d-flex justify-content-start align-items-start gap-2 mb-4 border-bottom pb-4">
+            <div
+              className="bg-white shadow-sm rounded-circle d-flex align-items-center justify-content-center"
+              style={{ width: "40px", height: "40px" }}
+            >
+              <ArrowUturnDownIcon width={"20px"} />
+            </div>
+            <div>
+              <div style={{ fontSize: "14px" }}>إرجاع مجاني</div>
+              <div style={{ fontSize: "12px" }}>
+                خدمة الإرجاع المجاني لبعض المنتجات في فترة الضمان
+              </div>
+            </div>
+          </div>
+        </Col>
       </Row>
     </Col>
   );
