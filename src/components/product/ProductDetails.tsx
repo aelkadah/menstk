@@ -1,6 +1,6 @@
 import { Row, Col, Badge, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { SparklesIcon } from "@heroicons/react/24/outline";
+import { ShoppingCartIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/24/solid";
 
 const ProductDetails = ({ product }) => {
@@ -83,32 +83,37 @@ const ProductDetails = ({ product }) => {
             </p>
           </Row> */}
 
-          <Row className="mt-3 mb-4">
-            <h6 className="fw-bold mb-2 px-1">الكمية:</h6>
-            <Row className="d-flex justify-content-between gap-3">
-              <Form.Select
-                aria-label="Default select example"
-                className="w-auto"
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </Form.Select>
-              <Button className="fw-bold w-auto flex-grow-1">
-                أضِف إلى عربة التسوق
-              </Button>
+          <Row className="mt-3 mb-5">
+            <Row className="d-flex justify-content-between mx-0 p-0">
+              <div className="w-auto">
+                <h6 className="fw-bold mb-2 px-1">الكمية:</h6>
+                <Form.Select
+                  aria-label="Product Quantity"
+                  className="w-auto"
+                  size="lg"
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </Form.Select>
+              </div>
+              <div className="w-auto flex-grow-1">
+                <h6 className="text-danger mb-2 px-1">الكمية المتبقية ( 3 )</h6>
+                <Button className="d-flex justify-content-center align-items-center w-100 fw-bold">
+                  <ShoppingCartIcon width="20px" className="ms-1 me-0" />
+                  أضِف إلى عربة التسوق
+                </Button>
+              </div>
             </Row>
           </Row>
 
-          <Row className="mb-3">
+          <Row className="mb-3 border-top py-4">
             <h6 className="fw-bold mb-1">الوصف:</h6>
             <p className="text-secondary m-0">{product?.description}</p>
             <p className="text-secondary">{product?.description}</p>
           </Row>
         </Col>
-        <Col xs={12} lg={4} className="px-4">
-          <Row>sadasd</Row>
-        </Col>
+        <Col xs={12} lg={4} className="px-4"></Col>
       </Row>
     </Col>
   );

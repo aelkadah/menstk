@@ -6,12 +6,7 @@ const SecTitle = ({ title, btnText, url }) => {
     <Row className="d-flex justify-content-between align-items-center">
       <h3 className="fw-bold m-0 w-auto">{title}</h3>
       {btnText ? (
-        <Button
-          className="w-auto border-black"
-          variant="dark"
-          to={url}
-          as={Link}
-        >
+        <Button className="w-auto" variant="outline-primary" to={url} as={Link}>
           تسوق الآن
         </Button>
       ) : null}

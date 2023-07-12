@@ -8,6 +8,7 @@ import watch2 from "../../assets/images/watch/2.jpg";
 import watch3 from "../../assets/images/watch/3.jpg";
 import watch4 from "../../assets/images/watch/4.jpg";
 import watch5 from "../../assets/images/watch/5.jpg";
+import ProductReviews from "../../components/product/ProductReviews";
 
 const OneProductPage = () => {
   const product = {
@@ -66,6 +67,8 @@ const OneProductPage = () => {
         <ProductImagesGallery images={images} />
         <ProductDetails product={product} />
       </Row>
+
+      <ProductReviews product={product} />
     </Container>
   );
 };
