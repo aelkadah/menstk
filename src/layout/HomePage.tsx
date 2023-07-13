@@ -7,7 +7,7 @@ import slide1 from "../assets/images/slider/slide1.jpg";
 function HomePage() {
   return (
     <Container fluid>
-      <Container className="mb-5">
+      <Container className="mb-5 mt-4">
         <img className="w-100 rounded-4" src={slide1} alt="First slide" />
       </Container>
 

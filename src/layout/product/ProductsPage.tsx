@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { PageTitle } from "../../components";
 import ProductsContainer from "../../components/product/ProductsContainer";
 
@@ -10,7 +10,14 @@ const ProductsPage = () => {
         desc="لدينا الكثير من المنتجات المتاحة على متجرنا الآن ..."
       />
 
-      <ProductsContainer />
+      <Row>
+        <Col xs={0} md={2} className="bg-danger d-none d-md-inline-block">
+          <h1>aas</h1>
+        </Col>
+        <Col xs={12} md={10} className="bg-warning">
+          <ProductsContainer />
+        </Col>
+      </Row>
     </Container>
   );
 };

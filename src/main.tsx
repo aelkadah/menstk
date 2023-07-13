@@ -10,18 +10,17 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "./styles/index.scss";
+
+import { Footer, Header } from "./components";
 import {
-  BrandsPage,
-  CategoriesPage,
+  ErrorPage,
   HomePage,
-  LoginPage,
-  OneProductPage,
+  CategoriesPage,
+  BrandsPage,
   ProductsPage,
+  OneProductPage,
+  LoginPage,
 } from "./layout";
-import Header from "./components/utilities/Header";
-import Footer from "./components/utilities/Footer";
-import AdminOrdersPage from "./layout/admin/AdminOrdersPage";
-import AdminProductsPage from "./layout/admin/AdminProductsPage";
 
 const Layout = () => {
   return (
@@ -35,7 +34,7 @@ const Layout = () => {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Layout />} errorElement={<HomePage />}>
+    <Route element={<Layout />} errorElement={<ErrorPage />}>
       <Route path="/" element={<HomePage />} />
       <Route path="/categories" element={<CategoriesPage />} />
       <Route path="/brands" element={<BrandsPage />} />
@@ -44,9 +43,6 @@ const router = createBrowserRouter(
       <Route path="/products/:id" element={<OneProductPage />} />
 
       <Route path="/login" element={<LoginPage />} />
-
-      <Route path="/admin/orders" element={<AdminOrdersPage />} />
-      <Route path="/admin/products" element={<AdminProductsPage />} />
     </Route>
   )
 );
