@@ -13,6 +13,10 @@ ul {
   list-style: none;
 }
 
+ol {
+  padding: 0 5px;
+}
+
 .btn {
   padding: 10px 20px;
   border-radius: 5px;
@@ -28,6 +32,27 @@ ul {
   &:focus {
     box-shadow: $mainShadow;
   }
+}
+
+.accordion-button {
+  &:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &:not(.collapsed) {
+    color: black;
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+.rct-node-icon {
+  display: none;
+}
+.rct-title {
+  padding: 0 !important;
 }
 
 .navbar-toggler {
