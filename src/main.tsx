@@ -20,6 +20,7 @@ import {
   ProductsPage,
   OneProductPage,
   LoginPage,
+  RegisterPage,
 } from "./layout";
 
 const Layout = () => {
@@ -43,6 +44,7 @@ const router = createBrowserRouter(
       <Route path="/products/:id" element={<OneProductPage />} />
 
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
     </Route>
   )
 );

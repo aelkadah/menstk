@@ -17,22 +17,46 @@ ol {
   padding: 0 5px;
 }
 
+// .btn {
+//   padding: 10px 20px;
+//   border-radius: 5px;
+// }
+
 .btn {
+  border-radius: 0;
   padding: 10px 20px;
-  border-radius: 5px;
 }
 
 .cursor-pointer {
   cursor: pointer !important;
 }
 
+.form-label {
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}
 .form-control {
-  caret-color: $primary;
-  &:hover,
+  border: 1px solid $secondary;
+  border-radius: 0;
+  padding: 0.6rem 0.75rem;
+  &:hover {
+    border: 1px solid #000;
+  }
   &:focus {
-    box-shadow: $mainShadow;
+    border: 1px solid $primary;
+    box-shadow: none;
+  }
+  &:disabled {
+    border: 0;
   }
 }
+// .form-control {
+//   caret-color: $primary;
+//   &:hover,
+//   &:focus {
+//     box-shadow: $mainShadow;
+//   }
+// }
 
 .accordion-button {
   &:focus {
