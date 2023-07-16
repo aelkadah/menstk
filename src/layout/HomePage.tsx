@@ -15,11 +15,11 @@ function HomePage() {
         <FeaturedCategories />
       </Container>
 
-      <Container className="py-5" fluid>
+      <Container className="pt-5" fluid>
         <BestSellers />
       </Container>
 
-      <Container className="py-5 bg-white">
+      <Container className="p-5 mb-3 bg-white">
         <FeaturedBrands />
       </Container>
     </Container>

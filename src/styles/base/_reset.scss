@@ -54,6 +54,12 @@ ol {
 .rct-title {
   padding: 0 !important;
 }
+li.rct-node.rct-node-leaf {
+  padding: 3px 10px 0 0;
+}
+.react-checkbox-tree label:hover {
+  background: none;
+}
 
 .navbar-toggler {
   display: flex;
