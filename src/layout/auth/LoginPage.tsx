@@ -8,7 +8,7 @@ const LoginPage = () => {
         <h1 className="fw-bold text-center">تسجيل الدخول</h1>
         <Form.Label className="w-100 text-center">
           ليس لديك حساب؟
-          <Link to={`/register`}>
+          <Link to="/register">
             <span className="text-danger mx-1">إنشاء حساب</span>
           </Link>
         </Form.Label>
@@ -34,17 +34,17 @@ const LoginPage = () => {
                 className="mb-1"
                 required
               />
-              <Form.Text className="fs-6">
-                هل نسيت كلمة المرور؟
-                <Link to="/forget-password" className="text-danger me-1 ms-0">
-                  إعادة تعيين
-                </Link>
-              </Form.Text>
             </Form.Group>
 
             <Button variant="primary" type="submit" className="w-100 fw-bold">
               تسجيل الدخول
             </Button>
+            <Form.Label className="w-100 text-center my-3">
+              نسيت كلمة المرور؟
+              <Link to="/forget-password" className="text-danger mx-1">
+                إعادة تعيين
+              </Link>
+            </Form.Label>
           </Form>
         </Col>
       </Row>

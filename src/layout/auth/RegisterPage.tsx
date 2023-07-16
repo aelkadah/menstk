@@ -5,10 +5,10 @@ const RegisterPage = () => {
   return (
     <Container>
       <Row className="pt-3 pb-4">
-        <h1 className="fw-bold text-center">إنشاء حساب</h1>
+        <h1 className="fw-bold text-center">تسجيل حساب جديد</h1>
         <Form.Label className="w-100 text-center">
           لديك حساب بالفعل؟
-          <Link to={`/login`}>
+          <Link to="/login">
             <span className="text-danger mx-1">تسجيل الدخول</span>
           </Link>
         </Form.Label>
@@ -52,7 +52,7 @@ const RegisterPage = () => {
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100 fw-bold">
-              إنشاء الحساب
+              تسجيل الحساب
             </Button>
           </Form>
         </Col>
