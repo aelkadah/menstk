@@ -11,7 +11,7 @@ import {
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "./styles/index.scss";
 
-import { Footer, Header } from "./components";
+import { Header, Footer } from "./components";
 import {
   ErrorPage,
   HomePage,
@@ -21,14 +21,15 @@ import {
   OneProductPage,
   LoginPage,
   RegisterPage,
+  DashboardPage,
 } from "./layout";
 
 const Layout = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
@@ -45,6 +46,8 @@ const router = createBrowserRouter(
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+
+      <Route path="/admin/dashboard" element={<DashboardPage />} />
     </Route>
   )
 );
