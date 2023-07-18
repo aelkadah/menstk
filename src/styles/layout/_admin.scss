@@ -1,16 +1,33 @@
 .dashboardHeader {
+  position: relative;
   background-color: #fff;
   height: 80px;
   box-shadow: -10px -6px 10px 0px rgb(0 0 0 / 20%);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
   padding: 0 20px;
-  > .input-group {
+  z-index: 10;
+
+  .collapseBtn {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: #0046fe20;
+      color: $primary;
+    }
+  }
+
+  .input-group {
     width: auto;
     flex-grow: 1;
     border: 1px solid #00000010;
+    padding: 0 15px;
     transition: ease-in 500ms;
     &:has(.form-control:focus),
     &:has(.form-control:hover) {
@@ -37,3 +54,89 @@
     border-radius: 50%;
   }
 }
+.sidebar {
+  background-color: #fff;
+  min-height: calc(100vh - 80px) !important;
+  min-width: 60px;
+  box-shadow: 6px 10px 10px 0px rgb(0 0 0 / 20%);
+  padding: 0px;
+  z-index: 1;
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 20px 10px;
+    > .collapseBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      padding: 10px;
+      cursor: pointer;
+      &:hover {
+        background-color: #0046fe20;
+        color: $primary;
+      }
+    }
+  }
+}
+
+.offcanvasMenu,
+.sidebar {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    flex-grow: 1;
+    > a {
+      width: 100%;
+      padding: 10px 5px;
+      border-radius: 7px;
+      color: #000;
+      font-weight: 500;
+
+      &:hover,
+      &.active {
+        background-color: #0046fe20;
+        color: $primary;
+      }
+    }
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      > span {
+        flex-grow: 1;
+        margin: 0px;
+      }
+    }
+  }
+  > .footer {
+    // padding: 10px;
+    > .nav {
+      margin: 0px;
+      > li {
+        width: 100%;
+        color: #000;
+        font-weight: 500;
+        border-radius: 7px;
+        padding: 10px;
+        cursor: pointer;
+        &:hover,
+        &.active {
+          background-color: #0046fe20;
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+// .menuBtn {
+//   padding: 10px;
+//   background-color: red;
+// }
