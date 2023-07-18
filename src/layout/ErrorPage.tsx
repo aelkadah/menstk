@@ -1,8 +1,11 @@
 import { Container, Row, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useRouteError, Link } from "react-router-dom";
 import errorImg from "../assets/images/404.png";
 
 const ErrorPage = () => {
+  // const error = useRouteError();
+  // console.error(error);
+
   return (
     <Container className="bg-light" style={{ minHeight: "100vh" }}>
       <Row>

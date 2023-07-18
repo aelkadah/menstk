@@ -4,7 +4,7 @@ import messi from "../../assets/images/Messi.jpg";
 
 const AdminHeader = () => {
   return (
-    <Row className="dashboardHeader">
+    <div className="dashboardHeader">
       <InputGroup className="rounded rounded-4">
         <InputGroup.Text>
           <MagnifyingGlassIcon width={"20px"} />
@@ -20,7 +20,7 @@ const AdminHeader = () => {
           <img src={messi} alt="user avatar..." className="avatar" />
         </span>
       </div>
-    </Row>
+    </div>
   );
 };
 

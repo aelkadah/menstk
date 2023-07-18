@@ -1,18 +1,12 @@
-import { Container, Row, Col } from "react-bootstrap";
-import AdminSidebar from "../../components/utilities/AdminSidebar";
+import { Row } from "react-bootstrap";
+import AdminProductsContainer from "../../components/admin/product/AdminProductsContainer";
 
 const AdminProductsPage = () => {
   return (
-    <Container className="adminPanel bg-white" fluid>
-      <Container>
-        <Row style={{ minHeight: "100vh" }}>
-          <AdminSidebar />
-          <Col xs={11} md={10} className="bg-white">
-            Admin Products
-          </Col>
-        </Row>
-      </Container>
-    </Container>
+    <Row className="m-0 p-0 justify-content-center">
+      <AdminProductsContainer />
+      <Row></Row>
+    </Row>
   );
 };
 

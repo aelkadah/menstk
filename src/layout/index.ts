@@ -9,4 +9,7 @@ export { default as OneProductPage } from "./product/OneProductPage";
 export { default as LoginPage } from "./auth/LoginPage";
 export { default as RegisterPage } from "./auth/RegisterPage";
 
+export { default as AdminLayout } from "./admin/AdminLayout";
 export { default as DashboardPage } from "./admin/DashboardPage";
+export { default as AdminOrdersPage } from "./admin/AdminOrdersPage";
+export { default as AdminProductsPage } from "./admin/AdminProductsPage";

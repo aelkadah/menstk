@@ -5,6 +5,10 @@ $theme-colors: (
 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
+.row {
+  padding: 0px !important;
+}
+
 a {
   text-decoration: none;
 }

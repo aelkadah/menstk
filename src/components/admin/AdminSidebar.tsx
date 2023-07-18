@@ -13,20 +13,23 @@ import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
 const AdminSidebar = () => {
   const [collapsed, setCollapsed] = useState(true);
   const [display, setDisplay] = useState("none");
+  const [position, setPosition] = useState("relative");
 
   useEffect(() => {
-    if (collapsed == true) setDisplay("none");
-    else if (collapsed == false) setDisplay("inline");
+    if (collapsed == true) {
+      setDisplay("none");
+      setPosition("relative");
+    } else if (collapsed == false) {
+      setDisplay("inline");
+      setPosition("absolute");
+    }
   }, [collapsed]);
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
   return (
-    <div className="sidebar d-flex flex-column w-auto">
-      <div
-        className="header border-bottom"
-        onClick={() => console.log("collapse clicked")}
-      >
+    <div className={`sidebar d-flex flex-column w-auto position-${position}`}>
+      <div className="header border-bottom">
         {!collapsed ? <img src={logo} alt="logo..." height={"35px"} /> : null}
 
         <span className="collapseBtn" onClick={handleCollapse}>

@@ -24,7 +24,7 @@ const FeaturedCategories = () => {
     },
     mobile: {
       breakpoint: { max: 767.98, min: 0 },
-      items: 3,
+      items: 2,
     },
   };
 

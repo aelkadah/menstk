@@ -1,17 +1,106 @@
-import { Container, Row, Col } from "react-bootstrap";
-import { AdminSidebar, AdminHeader } from "../../components";
+import { Row } from "react-bootstrap";
 
 const DashboardPage = () => {
   return (
-    <Container fluid>
-      <Row>
-        <AdminSidebar />
-        <Col>
-          <AdminHeader />
-          <Row>Page Content</Row>
-        </Col>
-      </Row>
-    </Container>
+    <Row>
+      Dashboard Page new
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat et
+        voluptatem, eligendi fugit adipisci, cupiditate ducimus ipsum, totam sed
+        cum officia iure? Iusto fugit voluptas exercitationem odio! Suscipit,
+        optio iure.
+      </p>
+    </Row>
   );
 };
 
