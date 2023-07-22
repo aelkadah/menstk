@@ -1,15 +1,31 @@
 $theme-colors: (
   "primary": #0046fe,
+  "secondary": #6c757d,
+  "success": #28a745,
+  "danger": #dc3545,
+  "warning": #ffc107,
   "light": #f9f9f9,
+  "dark": #343a40,
 );
 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  &:hover {
+    background: $primary;
+  }
+}
+
 .row {
   padding: 0px;
   margin: 0px;
-  // padding: 0px !important;
-  // margin: 0px !important;
 }
 
 a {
@@ -24,14 +40,11 @@ ol {
   padding: 0 5px;
 }
 
-// .btn {
-//   padding: 10px 20px;
-//   border-radius: 5px;
-// }
-
 .btn {
   border-radius: 0;
   padding: 10px 20px;
+  width: auto;
+  background-color: var(--bs-btn-color !important);
 }
 
 .cursor-pointer {
@@ -57,13 +70,21 @@ ol {
     border: 0;
   }
 }
-// .form-control {
-//   caret-color: $primary;
-//   &:hover,
-//   &:focus {
-//     box-shadow: $mainShadow;
-//   }
-// }
+.form-select {
+  border: 1px solid $secondary;
+  border-radius: 0;
+  padding: 0.6rem 2rem;
+  &:hover {
+    border: 1px solid #000;
+  }
+  &:focus {
+    border: 1px solid $primary;
+    box-shadow: none;
+  }
+  &:disabled {
+    border: 0;
+  }
+}
 
 .accordion-button {
   &:focus {

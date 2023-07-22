@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import ProductCard from "../../product/ProductCard";
 
 import watch1 from "../../../assets/images/watch/1.jpg";
 import watch2 from "../../../assets/images/watch/2.jpg";
@@ -8,6 +7,7 @@ import watch3 from "../../../assets/images/watch/3.jpg";
 import watch4 from "../../../assets/images/watch/4.jpg";
 import watch5 from "../../../assets/images/watch/5.jpg";
 import { LoadingSpinner, Pagination } from "../..";
+import AdminProductCard from "./AdminProductCard";
 
 const AdminProductsContainer = () => {
   const [loading, setLoading] = useState(false);
@@ -110,12 +110,12 @@ const AdminProductsContainer = () => {
   };
 
   return (
-    <Row className="justify-content-center my-3 p-2">
+    <Row className="justify-content-center">
       {!loading ? (
         data.map((item, index) => {
           return (
-            <Col xs={12} sm={6} md={4} xl={3} key={index}>
-              <ProductCard product={item} />
+            <Col xs={12} sm={6} md={6} xl={3} key={index}>
+              <AdminProductCard product={item} />
             </Col>
           );
         })

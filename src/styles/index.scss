@@ -38,4 +38,24 @@ html {
   .mainShadow {
     box-shadow: $mainShadow;
   }
+
+  .backBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    padding: 0px;
+    margin: 0px;
+    border-radius: 100%;
+    border: 1px solid $dark;
+    cursor: pointer;
+    color: #000;
+    transition: ease-in 150ms;
+    &:hover {
+      background-color: $dark;
+      color: #fff;
+    }
+  }
 }

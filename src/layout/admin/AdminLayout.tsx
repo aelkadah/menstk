@@ -18,6 +18,11 @@ import {
   RectangleGroupIcon,
   ShoppingCartIcon,
   AdjustmentsHorizontalIcon,
+  ReceiptPercentIcon,
+  TagIcon,
+  SwatchIcon,
+  SparklesIcon,
+  CubeIcon,
 } from "@heroicons/react/24/outline";
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
 import logo from "../../assets/images/logo.svg";
@@ -116,19 +121,43 @@ const AdminLayout = () => {
                 <NavLink to="/admin/dashboard">
                   <li>
                     <AdjustmentsVerticalIcon width={"20px"} />
-                    <span>لوحة التحكم</span>
-                  </li>
-                </NavLink>
-                <NavLink to="/admin/products">
-                  <li>
-                    <RectangleGroupIcon width={"20px"} />
-                    <span>المنتجات</span>
+                    <span className={`d-${display}`}>لوحة التحكم</span>
                   </li>
                 </NavLink>
                 <NavLink to="/admin/orders">
                   <li>
                     <ShoppingCartIcon width={"20px"} />
-                    <span>الطلبيات</span>
+                    <span className={`d-${display}`}>الطلبيات</span>
+                  </li>
+                </NavLink>
+                <NavLink to="/admin/products">
+                  <li>
+                    <CubeIcon width={"20px"} />
+                    <span className={`d-${display}`}>المنتجات</span>
+                  </li>
+                </NavLink>
+                <NavLink to="/admin/categories">
+                  <li>
+                    <TagIcon width={"20px"} />
+                    <span className={`d-${display}`}>التصنيفات</span>
+                  </li>
+                </NavLink>
+                <NavLink to="/admin/subcategories">
+                  <li>
+                    <SwatchIcon width={"20px"} />
+                    <span className={`d-${display}`}>التصنيفات الفرعية</span>
+                  </li>
+                </NavLink>
+                <NavLink to="/admin/brands">
+                  <li>
+                    <SparklesIcon width={"20px"} />
+                    <span className={`d-${display}`}>الماركات</span>
+                  </li>
+                </NavLink>
+                <NavLink to="/admin/coupons">
+                  <li>
+                    <ReceiptPercentIcon width={"20px"} />
+                    <span className={`d-${display}`}>الخصومات</span>
                   </li>
                 </NavLink>
               </ul>
@@ -155,16 +184,40 @@ const AdminLayout = () => {
                 <span className={`d-${display}`}>لوحة التحكم</span>
               </li>
             </NavLink>
-            <NavLink to="/admin/products">
-              <li>
-                <RectangleGroupIcon width={"20px"} />
-                <span className={`d-${display}`}>المنتجات</span>
-              </li>
-            </NavLink>
             <NavLink to="/admin/orders">
               <li>
                 <ShoppingCartIcon width={"20px"} />
                 <span className={`d-${display}`}>الطلبيات</span>
+              </li>
+            </NavLink>
+            <NavLink to="/admin/products">
+              <li>
+                <CubeIcon width={"20px"} />
+                <span className={`d-${display}`}>المنتجات</span>
+              </li>
+            </NavLink>
+            <NavLink to="/admin/categories">
+              <li>
+                <TagIcon width={"20px"} />
+                <span className={`d-${display}`}>التصنيفات</span>
+              </li>
+            </NavLink>
+            <NavLink to="/admin/subcategories">
+              <li>
+                <SwatchIcon width={"20px"} />
+                <span className={`d-${display}`}>التصنيفات الفرعية</span>
+              </li>
+            </NavLink>
+            <NavLink to="/admin/brands">
+              <li>
+                <SparklesIcon width={"20px"} />
+                <span className={`d-${display}`}>الماركات</span>
+              </li>
+            </NavLink>
+            <NavLink to="/admin/coupons">
+              <li>
+                <ReceiptPercentIcon width={"20px"} />
+                <span className={`d-${display}`}>الخصومات</span>
               </li>
             </NavLink>
           </ul>
