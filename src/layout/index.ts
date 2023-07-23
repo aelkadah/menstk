@@ -12,6 +12,7 @@ export { default as RegisterPage } from "./auth/RegisterPage";
 export { default as AdminLayout } from "./admin/AdminLayout";
 export { default as DashboardPage } from "./admin/DashboardPage";
 export { default as AdminOrdersPage } from "./admin/AdminOrdersPage";
+export { default as AdminOrderDetailsPage } from "./admin/AdminOrderDetailsPage";
 export { default as AdminProductsPage } from "./admin/AdminProductsPage";
 export { default as AddProductPage } from "./admin/AddProductPage";
 export { default as AdminCategoriesPage } from "./admin/AdminCategoriesPage";

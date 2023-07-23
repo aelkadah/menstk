@@ -8,7 +8,7 @@ const AdminSubCategoryCard = ({ item }) => {
 
       {item?.subcategories?.map((sub, index) => {
         return (
-          <Col xs={6} key={index}>
+          <Col xs={12} sm={6} key={index}>
             <AdminSubCatCol sub={sub} />
           </Col>
         );
