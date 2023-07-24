@@ -130,3 +130,22 @@
     transform: scale(1.3);
   }
 }
+
+.orderSettings {
+  background-color: $secondary;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0;
+  color: black;
+  border-radius: 7px;
+  cursor: pointer;
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+    transition: ease-in 150ms;
+  }
+}
