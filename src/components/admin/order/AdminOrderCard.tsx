@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import watch1 from "../../../assets/images/watch/1.jpg";
+import { Link } from "react-router-dom";
 
 const AdminOrderCard = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +19,6 @@ const AdminOrderCard = () => {
   return (
     <>
       <TableRow>
-        {/* <TableRow sx={{ "& > *": { borderBottom: "unset" } }}> */}
         <TableCell className="mainFont border-0 text-end">1000919#</TableCell>
         <TableCell className="mainFont border-0 text-end">
           محمد أبوتريكة
@@ -54,7 +54,11 @@ const AdminOrderCard = () => {
         </TableCell>
         <TableCell className="mainFont border-0 text-end">
           <span className="d-flex gap-2">
-            <Button className="p-2 rounded-3 d-flex align-items-center">
+            <Button
+              className="p-2 rounded-3 d-flex align-items-center"
+              to={`/admin/orders/:id`}
+              as={Link}
+            >
               <Cog6ToothIcon width={"22px"} />
             </Button>
             <Button
@@ -75,29 +79,99 @@ const AdminOrderCard = () => {
       <TableRow>
         <TableCell align="right" className="py-0" colSpan={8}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Row>
+            <Row className="mainFont">
               <Col
-                className="d-flex justify-content-start align-items-center mainFont"
+                xs={12}
+                md={6}
+                className="d-flex justify-content-start align-items-center p-0"
                 // key={index}
               >
-                <Col xs={3} sm={2} lg={1}>
-                  <img src={watch1} alt="" width={"100%"} />
-                </Col>
-                <Col xs={9} sm={10} lg={11}>
-                  <h6 className="fw-bold">
-                    ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود
-                  </h6>
-                  <div className="d-flex gap-4">
-                    <h6>
+                <div>
+                  <img src={watch1} alt="" height={"150px"} />
+                </div>
+                <div>
+                  <h5 className="fw-bold truncate-two">
+                    ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4
+                    كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم
+                    أسود
+                  </h5>
+                  <div className="d-flex gap-3 text-black-50">
+                    {/* <h6> */}
+                    <h6 className="text-nowrap">
                       الكمية:
-                      <span className="fw-bold"> 20</span>
+                      <span className="fw-bold text-black"> 20</span>
                     </h6>
-                    <h6>
-                      اللون:
-                      <span className="fw-bold"> احمر</span>
+                    <h6 className="text-nowrap">
+                      الإجمالي:
+                      <span className="fw-bold text-black">
+                        {" "}
+                        2500.00 * 3 = 7500.00 ج.م
+                      </span>
                     </h6>
                   </div>
-                </Col>
+                </div>
+              </Col>
+              <Col
+                xs={12}
+                md={6}
+                className="d-flex justify-content-start align-items-center p-0"
+                // key={index}
+              >
+                <div>
+                  <img src={watch1} alt="" height={"150px"} />
+                </div>
+                <div>
+                  <h5 className="fw-bold truncate-two">
+                    ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4
+                    كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم
+                    أسود
+                  </h5>
+                  <div className="d-flex gap-3 text-black-50">
+                    {/* <h6> */}
+                    <h6 className="text-nowrap">
+                      الكمية:
+                      <span className="fw-bold text-black"> 20</span>
+                    </h6>
+                    <h6 className="text-nowrap">
+                      الإجمالي:
+                      <span className="fw-bold text-black">
+                        {" "}
+                        2500.00 * 3 = 7500.00 ج.م
+                      </span>
+                    </h6>
+                  </div>
+                </div>
+              </Col>
+              <Col
+                xs={12}
+                md={6}
+                className="d-flex justify-content-start align-items-center p-0"
+                // key={index}
+              >
+                <div>
+                  <img src={watch1} alt="" height={"150px"} />
+                </div>
+                <div>
+                  <h5 className="fw-bold truncate-two">
+                    ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4
+                    كلاسيك مقاس 46 مم أسود ساعة يد جالاكسي 4 كلاسيك مقاس 46 مم
+                    أسود
+                  </h5>
+                  <div className="d-flex gap-3 text-black-50">
+                    {/* <h6> */}
+                    <h6 className="text-nowrap">
+                      الكمية:
+                      <span className="fw-bold text-black"> 20</span>
+                    </h6>
+                    <h6 className="text-nowrap">
+                      الإجمالي:
+                      <span className="fw-bold text-black">
+                        {" "}
+                        2500.00 * 3 = 7500.00 ج.م
+                      </span>
+                    </h6>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Collapse>
