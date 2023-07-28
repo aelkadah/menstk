@@ -64,6 +64,13 @@ html {
   font-family: $font-family-base;
 }
 
+.truncate-one {
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .truncate-two {
   -webkit-line-clamp: 2;
   display: -webkit-box;
