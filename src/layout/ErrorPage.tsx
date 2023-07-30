@@ -1,7 +1,7 @@
 import { Container, Row, Button } from "react-bootstrap";
 import { useRouteError, Link } from "react-router-dom";
 import errorImg from "../assets/images/404.png";
-import { Footer, Header } from "../components";
+import { Header } from "../components";
 
 const ErrorPage = () => {
   // const error = useRouteError();
@@ -23,7 +23,6 @@ const ErrorPage = () => {
           </div>
         </Row>
       </Container>
-      <Footer />
     </>
   );
 };
