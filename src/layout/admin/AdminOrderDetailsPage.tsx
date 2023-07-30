@@ -68,19 +68,37 @@ const AdminOrderDetailsPage = () => {
           </Modal.Header>
           <Modal.Body className="py-3">
             <Form>
-              <Form.Group
-                className="mb-3"
-                controlId="exampleForm.ControlInput1"
-              >
-                <Form.Label>طريقة الدفع</Form.Label>
-                <Form.Check // prettier-ignore
+              <Form.Group className="mb-3">
+                <Form.Label>طريقة الدفع:</Form.Label>
+                <Form.Check
                   type="checkbox"
-                  label={`ssss`}
+                  label="كاش"
+                  inline
+                  reverse
+                  checked
+                  disabled
                 />
-                <Form.Control
-                  type="text"
-                  placeholder="أدخل عنوان التصنيف هنا..."
+                <Form.Check
+                  type="checkbox"
+                  label="بطاقة إلكترونية"
+                  inline
+                  reverse
+                  disabled
                 />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>حالة الدفع:</Form.Label>
+                <Form.Select>
+                  <option value="0">لم يتم</option>
+                  <option value="1">تم الدفع</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>حالة الإستلام:</Form.Label>
+                <Form.Select>
+                  <option value="0">لم يصل</option>
+                  <option value="1">تم الإستلام</option>
+                </Form.Select>
               </Form.Group>
             </Form>
           </Modal.Body>
