@@ -1,20 +1,96 @@
-import { Row, Col } from "react-bootstrap";
-import watch1 from "../../assets/images/iphone/2.jpg";
+import { useState } from "react";
+import { Row, Col, Badge, Button, Modal, Form } from "react-bootstrap";
 import {
   ArrowLeftIcon,
+  ArrowPathIcon,
+  CalendarDaysIcon,
   EnvelopeIcon,
   PhoneIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
+import watch1 from "../../assets/images/iphone/2.jpg";
 
 const AdminOrderDetailsPage = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <Row className="py-3 px-3">
       <Row className="d-flex justify-content-between align-items-center pb-3">
-        <h3 className="w-auto fw-bold m-0 p-0">
-          الطلبية
-          <span className="me-2 ms-0">(11931)</span>
-        </h3>
+        <div className="w-auto d-flex justify-content-start align-items-center gap-2">
+          <h3 className="w-auto fw-bold m-0 p-0">
+            الطلبية
+            <span className="me-2 ms-0">(11931)</span>
+          </h3>
+          <div className="w-auto d-flex justify-content-between gap-2">
+            {/* <Badge bg="danger" className="p-2">
+              غير مدفوع
+            </Badge> */}
+            <Badge bg="success" className="p-2">
+              مدفوع
+            </Badge>
+
+            <Badge bg="warning" className="p-2">
+              قيد الإنتظار
+            </Badge>
+            {/* <Badge bg="success" className="p-2">
+              تم الإستلام
+            </Badge> */}
+
+            <span className="d-flex align-items-center gap-1 border-end border-start-0 me-2 ms-0 px-2">
+              <CalendarDaysIcon width={"22px"} />
+              <span>30/07/2023 10:15م</span>
+            </span>
+          </div>
+        </div>
+        <div className="w-auto">
+          <Button
+            className="d-flex align-items-center gap-1"
+            onClick={handleShow}
+          >
+            <ArrowPathIcon width={"25px"} />
+            تحديث الحالة
+          </Button>
+        </div>
+
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header
+            className="d-flex justify-content-between w-100 "
+            closeButton
+          >
+            <Modal.Title className="flex-grow-1">تحديث حالة الطلب</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-3">
+            <Form>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>طريقة الدفع</Form.Label>
+                <Form.Check // prettier-ignore
+                  type="checkbox"
+                  label={`ssss`}
+                />
+                <Form.Control
+                  type="text"
+                  placeholder="أدخل عنوان التصنيف هنا..."
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleClose}>
+              إلغاء
+            </Button>
+            <Button variant="primary">تحديث الحالة</Button>
+          </Modal.Footer>
+        </Modal>
       </Row>
 
       <Row className="mb-3">

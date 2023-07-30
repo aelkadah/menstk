@@ -24,6 +24,8 @@ import {
   AdminSubCategoriesPage,
   AdminBrandsPage,
   AdminCouponsPage,
+  LoginPage,
+  RegisterPage,
 } from "./layout";
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
@@ -50,6 +52,9 @@ const router = createBrowserRouter([
       { path: "/brands", element: <BrandsPage /> },
       { path: "/products", element: <ProductsPage /> },
       { path: "/products/:id", element: <OneProductPage /> },
+
+      { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
     ],
   },
   {
