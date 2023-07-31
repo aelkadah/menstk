@@ -22,7 +22,7 @@ export { default as AdminCouponsPage } from "./admin/AdminCouponsPage";
 
 export { default as UserLayout } from "./user/UserLayout";
 export { default as ProfilePage } from "./user/ProfilePage";
-// export { default as AddressesPage } from "./user/AddressesPage";
+export { default as AddressesPage } from "./user/AddressesPage";
 // export { default as WishlistPage } from "./user/WishlistPage";
 // export { default as OrdersPage } from "./user/OrdersPage";
 // export { default as CreditCardsPage } from "./user/CreditCardsPage";
