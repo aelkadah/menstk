@@ -29,6 +29,7 @@ import {
   AdminBrandsPage,
   AdminCouponsPage,
   AddressesPage,
+  WishlistPage,
 } from "./layout";
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
       { path: "", element: <Navigate to="profile" replace /> },
       { path: "profile", element: <ProfilePage /> },
       { path: "addresses", element: <AddressesPage /> },
-      // { path: "profile", element: <ProfilePage /> },
+      { path: "wishlist", element: <WishlistPage /> },
     ],
   },
 ]);

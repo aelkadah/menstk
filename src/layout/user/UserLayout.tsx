@@ -127,7 +127,7 @@ const UserLayout = () => {
                     <span>العناوين</span>
                   </li>
                 </NavLink>
-                <NavLink to="/user/favourite">
+                <NavLink to="/user/wishlist">
                   <li>
                     <BookmarkIcon width={"20px"} />
                     <span>المفضلة</span>
@@ -175,7 +175,7 @@ const UserLayout = () => {
                 <span className={`d-${display}`}>العناوين</span>
               </li>
             </NavLink>
-            <NavLink to="/user/favourite">
+            <NavLink to="/user/wishlist">
               <li>
                 <BookmarkIcon width={"20px"} />
                 <span className={`d-${display}`}>المفضلة</span>
