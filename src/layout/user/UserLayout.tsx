@@ -20,7 +20,6 @@ import {
   MapPinIcon,
   BookmarkIcon,
   QueueListIcon,
-  CreditCardIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
 
@@ -139,12 +138,6 @@ const UserLayout = () => {
                     <span>الطلبيات</span>
                   </li>
                 </NavLink>
-                <NavLink to="/user/creditcards">
-                  <li>
-                    <CreditCardIcon width={"20px"} />
-                    <span>بطاقات الإئتمان</span>
-                  </li>
-                </NavLink>
               </ul>
 
               <div className="footer border-top">
@@ -185,12 +178,6 @@ const UserLayout = () => {
               <li>
                 <QueueListIcon width={"20px"} />
                 <span className={`d-${display}`}>الطلبيات</span>
-              </li>
-            </NavLink>
-            <NavLink to="/user/creditcards">
-              <li>
-                <CreditCardIcon width={"20px"} />
-                <span className={`d-${display}`}>بطاقات الإئتمان</span>
               </li>
             </NavLink>
           </ul>

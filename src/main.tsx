@@ -30,6 +30,8 @@ import {
   AdminCouponsPage,
   AddressesPage,
   WishlistPage,
+  UserOrdersPage,
+  UserOrderDetailsPage,
 } from "./layout";
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
@@ -87,6 +89,8 @@ const router = createBrowserRouter([
       { path: "profile", element: <ProfilePage /> },
       { path: "addresses", element: <AddressesPage /> },
       { path: "wishlist", element: <WishlistPage /> },
+      { path: "orders", element: <UserOrdersPage /> },
+      { path: "orders/:id", element: <UserOrderDetailsPage /> },
     ],
   },
 ]);
