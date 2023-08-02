@@ -14,10 +14,15 @@ import {
   BrandsPage,
   ProductsPage,
   OneProductPage,
+  CartPage,
   LoginPage,
   RegisterPage,
   UserLayout,
   ProfilePage,
+  AddressesPage,
+  WishlistPage,
+  UserOrdersPage,
+  UserOrderDetailsPage,
   AdminLayout,
   DashboardPage,
   AdminOrdersPage,
@@ -28,10 +33,6 @@ import {
   AdminSubCategoriesPage,
   AdminBrandsPage,
   AdminCouponsPage,
-  AddressesPage,
-  WishlistPage,
-  UserOrdersPage,
-  UserOrderDetailsPage,
 } from "./layout";
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
       { path: "/brands", element: <BrandsPage /> },
       { path: "/products", element: <ProductsPage /> },
       { path: "/products/:id", element: <OneProductPage /> },
+      { path: "/cart", element: <CartPage /> },
 
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
