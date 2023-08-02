@@ -40,7 +40,7 @@ const CartContainer = () => {
 
       <Row className="justify-content-center mt-4">
         <Button variant="danger" className="fw-bold px-5">
-          تفريغ العرية
+          تفريغ العربة
         </Button>
       </Row>
     </Col>

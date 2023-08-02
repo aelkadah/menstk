@@ -6,6 +6,7 @@ export { default as BrandsPage } from "./BrandsPage";
 export { default as ProductsPage } from "./product/ProductsPage";
 export { default as OneProductPage } from "./product/OneProductPage";
 export { default as CartPage } from "./CartPage";
+export { default as CheckoutPage } from "./CheckoutPage";
 
 export { default as LoginPage } from "./auth/LoginPage";
 export { default as RegisterPage } from "./auth/RegisterPage";

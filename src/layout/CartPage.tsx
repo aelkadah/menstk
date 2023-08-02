@@ -1,7 +1,7 @@
 import { Container, Row } from "react-bootstrap";
 import PageTitle from "./../components/utilities/PageTitle";
 import CartContainer from "../components/cart/CartContainer";
-import CartCheckout from "../components/cart/CartCheckout";
+import CartBill from "../components/cart/CartBill";
 
 const CartPage = () => {
   return (
@@ -15,7 +15,7 @@ const CartPage = () => {
         </Row>
         <Row>
           <CartContainer />
-          <CartCheckout />
+          <CartBill />
         </Row>
       </Container>
     </Container>

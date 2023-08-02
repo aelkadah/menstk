@@ -15,6 +15,7 @@ import {
   ProductsPage,
   OneProductPage,
   CartPage,
+  CheckoutPage,
   LoginPage,
   RegisterPage,
   UserLayout,
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       { path: "/products", element: <ProductsPage /> },
       { path: "/products/:id", element: <OneProductPage /> },
       { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <CheckoutPage /> },
 
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },

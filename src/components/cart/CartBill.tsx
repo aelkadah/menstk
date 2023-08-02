@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { Row, Form, InputGroup, Button, Col } from "react-bootstrap";
 
-const CartCheckout = () => {
+const CartBill = () => {
   return (
     <Col xs={12} lg={4}>
       <Row className="bg-white p-3">
@@ -42,10 +43,14 @@ const CartCheckout = () => {
             150999.00 <span className="fs-6 fw-normal">ج.م</span>
           </h5>
         </Row>
-        <Button className="w-100">إتمام الشراء</Button>
+      </Row>
+      <Row className="mt-3">
+        <Button className="w-100" to="/checkout" as={Link}>
+          إتمام الشراء
+        </Button>
       </Row>
     </Col>
   );
 };
 
-export default CartCheckout;
+export default CartBill;
