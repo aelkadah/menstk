@@ -4,9 +4,9 @@ import { Row, Form, InputGroup, Button, Col } from "react-bootstrap";
 const CartBill = () => {
   return (
     <Col xs={12} lg={4}>
+      <h5 className="fw-bold mb-3">الفاتورة</h5>
       <Row className="bg-white p-3">
         <Row className="py-2">
-          <h5 className="fw-bold mb-3">الفاتورة</h5>
           <InputGroup className="mt-2 mb-4">
             <Form.Control
               type="text"
@@ -30,14 +30,15 @@ const CartBill = () => {
             </span>
           </h6>
           <h6 className="d-flex justify-content-between text-secondary">
-            <span>الشحن</span>
+            <span>رسوم الشحن</span>
             <span className="text-primary">مجاني</span>
           </h6>
         </Row>
 
         <Row className="d-flex justify-content-between border-top py-3 mt-3">
-          <h5 className="w-auto fw-bold">
-            الإجمالي <span className="fw-normal fs-6"> (شامل الضريبة)</span>
+          <h5 className="w-auto fw-bold d-flex align-items-end gap-1">
+            الإجمالي
+            <span className="fw-normal fs-6 text-black-50">(شامل الضريبة)</span>
           </h5>
           <h5 className="w-auto fw-bold">
             150999.00 <span className="fs-6 fw-normal">ج.م</span>
@@ -45,7 +46,7 @@ const CartBill = () => {
         </Row>
       </Row>
       <Row className="mt-3">
-        <Button className="w-100" to="/checkout" as={Link}>
+        <Button className="w-100 fw-bold py-3" to="/checkout" as={Link}>
           إتمام الشراء
         </Button>
       </Row>

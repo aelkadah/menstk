@@ -92,7 +92,7 @@ const UserOrderDetailsPage = () => {
             </div>
 
             <div className="d-flex justify-content-between">
-              <h6 className="w-auto">الشحن</h6>
+              <h6 className="w-auto">رسوم الشحن</h6>
               <h6 className="w-auto">50.00 ج.م</h6>
             </div>
 
@@ -129,7 +129,7 @@ const UserOrderDetailsPage = () => {
           </Row>
 
           <Row className="bg-white px-2 py-4 mt-4">
-            <h5 className="fw-bold mb-4">عنوان الشحن</h5>
+            <h5 className="fw-bold mb-4">عنوان رسوم الشحن</h5>
             <p className="mb-1">مصر</p>
             <p className="m-0">
               الدقهلية - المنصورة - مدينة السلام - شارع الجامع

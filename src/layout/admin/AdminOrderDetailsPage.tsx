@@ -192,7 +192,7 @@ const AdminOrderDetailsPage = () => {
               </Row>
 
               <Row className="pt-4">
-                <h6 className="fw-bold mb-4">عنوان الشحن</h6>
+                <h6 className="fw-bold mb-4">عنوان رسوم الشحن</h6>
                 <p className="mb-1">مصر</p>
                 <p className="m-0">
                   الدقهلية - المنصورة - مدينة السلام - شارع الجامع
