@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Container,
   Nav,
@@ -6,13 +7,12 @@ import {
   Form,
   InputGroup,
 } from "react-bootstrap";
-import logo from "../../assets/images/logo.svg";
 import {
   ArrowLeftOnRectangleIcon,
   MagnifyingGlassIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import logo from "../../assets/images/logo.svg";
 
 const Header = () => {
   return (
@@ -39,11 +39,12 @@ const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-between align-items-md-center gap-2 flex-grow-1">
-                  <Form.Control
-                    className="w-auto flex-grow-1 mx-3 rounded-3"
-                    placeholder="شوف بتدور على إيه..."
-                    aria-label="search"
-                  />
+                  <InputGroup className="headerSearch rounded rounded-4 mx-4">
+                    <InputGroup.Text>
+                      <MagnifyingGlassIcon width={"20px"} />
+                    </InputGroup.Text>
+                    <Form.Control placeholder="بتدور على ايه..." />
+                  </InputGroup>
 
                   <Nav.Link className="d-none d-md-inline-block" disabled>
                     English
