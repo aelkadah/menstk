@@ -64,7 +64,8 @@ td {
   border-radius: 0;
   padding: 0.6rem 0.75rem;
   &:hover {
-    border: 1px solid #000;
+    // border: 1px solid #000;
+    border: 1px solid $primary;
   }
   &:focus {
     border: 1px solid $primary;

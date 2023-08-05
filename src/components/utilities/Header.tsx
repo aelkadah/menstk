@@ -38,22 +38,16 @@ const Header = () => {
                 </Navbar.Brand>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-between align-items-md-center  flex-grow-1">
-                  <InputGroup className="w-auto d-flex flex-grow-1 mx-3">
-                    <Form.Control
-                      className="rounded-start-0 rounded-3"
-                      placeholder="شوف بتدور على إيه..."
-                      aria-label="search"
-                    />
-                    <InputGroup.Text
-                      id="basic-addon1"
-                      className="bg-primary text-white rounded-end-0 rounded-3"
-                    >
-                      <MagnifyingGlassIcon width="18px" />
-                    </InputGroup.Text>
-                  </InputGroup>
+                <Nav className="justify-content-between align-items-md-center gap-2 flex-grow-1">
+                  <Form.Control
+                    className="w-auto flex-grow-1 mx-3 rounded-3"
+                    placeholder="شوف بتدور على إيه..."
+                    aria-label="search"
+                  />
 
-                  <Nav.Link disabled>English</Nav.Link>
+                  <Nav.Link className="d-none d-md-inline-block" disabled>
+                    English
+                  </Nav.Link>
                   <Nav.Link
                     className="d-flex align-items-center fw-medium"
                     to="/login"
