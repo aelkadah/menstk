@@ -9,6 +9,7 @@ import {
 import { Header, Footer } from "./components";
 import {
   ErrorPage,
+  Layout,
   HomePage,
   CategoriesPage,
   BrandsPage,
@@ -38,16 +39,6 @@ import {
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "./styles/index.scss";
-
-const Layout = () => {
-  return (
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
-  );
-};
 
 const router = createBrowserRouter([
   {
