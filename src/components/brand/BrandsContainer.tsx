@@ -1,115 +1,29 @@
 import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { LoadingSpinner, Pagination } from "..";
-
-import iphone1 from "../../assets/images/iphone/1.jpg";
-import watch1 from "../../assets/images/watch/1.jpg";
-import watch2 from "../../assets/images/watch/2.jpg";
-import watch3 from "../../assets/images/watch/3.jpg";
-import watch4 from "../../assets/images/watch/4.jpg";
-import watch5 from "../../assets/images/watch/5.jpg";
 import BrandCard from "./BrandCard";
+
+import samsung from "../../assets/images/brands/samsung.png";
+import apple from "../../assets/images/brands/apple.png";
+import oppo from "../../assets/images/brands/oppo.png";
+import dell from "../../assets/images/brands/dell.png";
+import adidas from "../../assets/images/brands/adidas.png";
+import nike from "../../assets/images/brands/nike.png";
+import tommy from "../../assets/images/brands/tommy.png";
+import lcwaikiki from "../../assets/images/brands/lcwaikiki.png";
 
 const BrandsContainer = () => {
   const [loading, setloading] = useState(false);
 
   const data = [
-    {
-      image: iphone1,
-      title: "إلكترونيات",
-    },
-    {
-      image: watch1,
-      title: "أدوات منزلية متقدمة",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: watch4,
-      title: "إلكترونيات",
-    },
-    {
-      image: watch5,
-      title: "أدوات منزلية متقدمة",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: iphone1,
-      title: "إلكترونيات",
-    },
-    {
-      image: watch1,
-      title: "أدوات منزلية متقدمة",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: iphone1,
-      title: "إلكترونيات",
-    },
-    {
-      image: watch1,
-      title: "أدوات منزلية متقدمة",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
-    {
-      image: watch2,
-      title: "منتجات تنظيف",
-    },
-    {
-      image: watch3,
-      title: "أدوات منزلية",
-    },
+    { image: samsung, title: "سامسونج" },
+    { image: apple, title: "أبل" },
+    { image: oppo, title: "أوبو" },
+    { image: dell, title: "ديل" },
+    { image: adidas, title: "أديداس" },
+    { image: nike, title: "نايكي" },
+    { image: tommy, title: "تومي" },
+    { image: lcwaikiki, title: "LC Waikiki" },
   ];
 
   const getPage = () => {
