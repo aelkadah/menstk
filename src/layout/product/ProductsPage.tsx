@@ -22,13 +22,28 @@ import {
 const ProductsPage = () => {
   const nodes = [
     {
-      value: "الفئة الرئيسية 1",
-      label: "الفئة الرئيسية 1",
-      children: [
-        { value: "phobos", label: "Phobos" },
-        { value: "deimos", label: "Deimos" },
-      ],
+      value: "موبايلات",
+      label: "موبايلات",
+      // children: [{ value: "phobos", label: "Phobos" }],
     },
+    { value: "لابتوبات", label: "لابتوبات" },
+    { value: "تلفزيونات", label: "تلفزيونات" },
+    { value: "ألعاب إلكترونية", label: "ألعاب إلكترونية" },
+    { value: "أدوات مطبخ", label: "أدوات مطبخ" },
+    { value: "ملابس", label: "ملابس" },
+    { value: "أدوات رياضية", label: "أدوات رياضية" },
+    { value: "أحذية رياضية", label: "أحذية رياضية" },
+  ];
+
+  const brands = [
+    { id: 1, title: "سامسونج" },
+    { id: 2, title: "أبل" },
+    { id: 3, title: "أوبو" },
+    { id: 4, title: "ديل" },
+    { id: 5, title: "أديداس" },
+    { id: 6, title: "نايكي" },
+    { id: 7, title: "تومي" },
+    { id: 8, title: "LC Waikiki" },
   ];
 
   const [checked, setChecked] = useState([]);
@@ -76,22 +91,23 @@ const ProductsPage = () => {
                 </h6>
               </Accordion.Header>
               <Accordion.Body className="d-flex flex-column gap-1 pt-0">
-                <div className="d-flex justify-content-between align-items-center">
-                  <Form.Check type="checkbox" label="سامسونج" reverse />
-                  <span style={{ fontSize: "14px" }}>(251)</span>
-                </div>
-                <div className="d-flex justify-content-between align-items-center">
-                  <Form.Check type="checkbox" label="سامسونج" reverse />
-                  <span style={{ fontSize: "14px" }}>(251)</span>
-                </div>
-                <div className="d-flex justify-content-between align-items-center">
-                  <Form.Check type="checkbox" label="سامسونج" reverse />
-                  <span style={{ fontSize: "14px" }}>(251)</span>
-                </div>
-                <div className="d-flex justify-content-between align-items-center">
-                  <Form.Check type="checkbox" label="سامسونج" reverse />
-                  <span style={{ fontSize: "14px" }}>(251)</span>
-                </div>
+                {brands?.length >= 1
+                  ? brands.map((item, index) => {
+                      return (
+                        <div
+                          className="d-flex justify-content-between align-items-center"
+                          key={index}
+                        >
+                          <Form.Check
+                            type="checkbox"
+                            label={item.title}
+                            reverse
+                          />
+                          <span style={{ fontSize: "14px" }}>(5)</span>
+                        </div>
+                      );
+                    })
+                  : null}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
