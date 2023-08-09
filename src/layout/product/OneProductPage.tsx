@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import ProductImagesGallery from "../../components/product/ProductImagesGallery";
 import ProductDetails from "../../components/product/ProductDetails";
 
-import watch1 from "../../assets/images/watch/1.jpg";
-import watch2 from "../../assets/images/watch/2.jpg";
-import watch3 from "../../assets/images/watch/3.jpg";
-import watch4 from "../../assets/images/watch/4.jpg";
-import watch5 from "../../assets/images/watch/5.jpg";
+import watch1 from "../../assets/images/products/watch/1.jpg";
+import watch2 from "../../assets/images/products/watch/2.jpg";
+import watch3 from "../../assets/images/products/watch/3.jpg";
+import watch4 from "../../assets/images/products/watch/4.jpg";
+import watch5 from "../../assets/images/products/watch/5.jpg";
 import ProductReviews from "../../components/product/ProductReviews";
 
 const OneProductPage = () => {

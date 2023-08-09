@@ -1,6 +1,6 @@
 import { Row, Col, Badge } from "react-bootstrap";
 import { CalendarDaysIcon } from "@heroicons/react/24/outline";
-import watch1 from "../../assets/images/iphone/2.jpg";
+import watch1 from "../../assets/images/products/iphone/2.jpg";
 
 const UserOrderDetailsPage = () => {
   return (

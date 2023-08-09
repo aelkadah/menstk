@@ -10,7 +10,7 @@ import {
   CreditCardIcon,
 } from "@heroicons/react/24/outline";
 
-import watch1 from "../../../assets/images/watch/1.jpg";
+import watch1 from "../../../assets/images/products/watch/1.jpg";
 import { Link } from "react-router-dom";
 
 const AdminOrderCard = () => {
