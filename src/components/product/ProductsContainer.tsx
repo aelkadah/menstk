@@ -137,6 +137,7 @@ const ProductsContainer = () => {
       {!loading ? (
         data.map((item, index) => {
           return (
+            // <Col xs={10} sm={6} md={4} key={index}>
             <Col xs={10} sm={6} md={4} lg={3} key={index}>
               <ProductCard product={item} />
             </Col>

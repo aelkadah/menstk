@@ -18,6 +18,7 @@
     position: relative;
     overflow: hidden;
     padding: 20px;
+    margin-bottom: 10px;
     > img {
       height: auto;
       width: -webkit-fill-available;
@@ -121,5 +122,28 @@
     background-color: $primary;
     color: #fff;
     transition: ease-in 150ms;
+  }
+}
+
+.dashCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: $mainShadow;
+  transition-duration: 250ms;
+  .dashIcon {
+    background-color: $primary;
+    color: #fff;
+    transition-duration: 350ms;
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+    .dashIcon {
+      background-color: #fff;
+      color: #000;
+    }
   }
 }
