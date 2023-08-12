@@ -132,6 +132,9 @@
   background-color: #fff;
   box-shadow: $mainShadow;
   transition-duration: 250ms;
+  .dashTitle {
+    color: #00000050;
+  }
   .dashIcon {
     background-color: $primary;
     color: #fff;
@@ -144,6 +147,9 @@
     .dashIcon {
       background-color: #fff;
       color: #000;
+    }
+    .dashTitle {
+      color: #ffffff90;
     }
   }
 }

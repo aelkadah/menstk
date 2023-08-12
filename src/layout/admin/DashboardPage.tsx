@@ -27,7 +27,7 @@ const DashboardPage = () => {
             <Link to={item?.link}>
               <div className="dashCard rounded-2 mb-4 p-4 gap-3">
                 <div>
-                  <h5 className="m-0 text-black-50">{item?.title}</h5>
+                  <h5 className="m-0 dashTitle">{item?.title}</h5>
                   <h3 className="m-0 fw-bold">{item?.count}</h3>
                 </div>
 

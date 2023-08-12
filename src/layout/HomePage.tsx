@@ -19,7 +19,7 @@ function HomePage() {
         <BestSellers />
       </Container>
 
-      <Container className="p-5 mb-3 bg-white">
+      <Container className="p-5  bg-white">
         <FeaturedBrands />
       </Container>
     </Container>
