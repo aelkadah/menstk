@@ -10,7 +10,7 @@ const AdminSubCategoriesPage = () => {
 
   return (
     <Row className="py-3">
-      <Row className="d-flex justify-content-between align-items-center px-3 pb-3">
+      <Row className="d-flex justify-content-between align-items-center gap-3 px-3 pb-3">
         <h3 className="w-auto fw-bold m-0 p-0">التصنيفات الفرعية</h3>
         <Button
           className="d-flex align-items-center gap-1"
