@@ -2,13 +2,14 @@ import { Container } from "react-bootstrap";
 import FeaturedCategories from "../components/category/FeaturedCategories";
 import BestSellers from "../components/product/BestSellers";
 import FeaturedBrands from "../components/brand/FeaturedBrands";
-import slide1 from "../assets/images/slider/slide1.jpg";
+
+import slide1 from "../assets/images/slider/slide4.jpg";
 
 function HomePage() {
   return (
     <Container fluid>
-      <Container className="mb-5 mt-4">
-        <img className="w-100 rounded-4" src={slide1} alt="First slide" />
+      <Container className="my-4">
+        <img className="w-100" src={slide1} alt="First slide" />
       </Container>
 
       <Container className="py-5 bg-white">
