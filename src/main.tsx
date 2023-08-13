@@ -1,10 +1,99 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import { Header, Footer } from "./components";
+import {
+  ErrorPage,
+  Layout,
+  HomePage,
+  CategoriesPage,
+  BrandsPage,
+  ProductsPage,
+  OneProductPage,
+  CartPage,
+  CheckoutPage,
+  LoginPage,
+  RegisterPage,
+  UserLayout,
+  ProfilePage,
+  AddressesPage,
+  WishlistPage,
+  UserOrdersPage,
+  UserOrderDetailsPage,
+  AdminLayout,
+  DashboardPage,
+  AdminOrdersPage,
+  AdminOrderDetailsPage,
+  AdminProductsPage,
+  AddProductPage,
+  AdminCategoriesPage,
+  AdminSubCategoriesPage,
+  AdminBrandsPage,
+  AdminCouponsPage,
+} from "./layout";
+import { ThemeProvider } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.rtl.min.css";
+import "./styles/index.scss";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <HomePage /> },
+      { path: "/categories", element: <CategoriesPage /> },
+      { path: "/brands", element: <BrandsPage /> },
+      { path: "/products", element: <ProductsPage /> },
+      { path: "/products/:id", element: <OneProductPage /> },
+      { path: "/cart", element: <CartPage /> },
+      { path: "/checkout", element: <CheckoutPage /> },
+
+      { path: "/login", element: <LoginPage /> },
+      { path: "/register", element: <RegisterPage /> },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "", element: <Navigate to="dashboard" replace /> },
+      { path: "dashboard", element: <DashboardPage /> },
+      { path: "orders", element: <AdminOrdersPage /> },
+      { path: "orders/:id", element: <AdminOrderDetailsPage /> },
+      { path: "products", element: <AdminProductsPage /> },
+      { path: "products/add", element: <AddProductPage /> },
+      { path: "categories", element: <AdminCategoriesPage /> },
+      { path: "subcategories", element: <AdminSubCategoriesPage /> },
+      { path: "brands", element: <AdminBrandsPage /> },
+      { path: "coupons", element: <AdminCouponsPage /> },
+    ],
+  },
+  {
+    path: "/user",
+    element: <UserLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "", element: <Navigate to="profile" replace /> },
+      { path: "profile", element: <ProfilePage /> },
+      { path: "addresses", element: <AddressesPage /> },
+      { path: "wishlist", element: <WishlistPage /> },
+      { path: "orders", element: <UserOrdersPage /> },
+      { path: "orders/:id", element: <UserOrderDetailsPage /> },
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <ThemeProvider dir="rtl">
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  </React.StrictMode>
+);

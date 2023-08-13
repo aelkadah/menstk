@@ -1,0 +1,155 @@
+.productCard {
+  position: relative;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 2px 4px 15px 0px rgb(207 207 207 / 40%);
+  cursor: pointer;
+  // &:hover > .prodImg > img {
+  //   -webkit-transform: scale(1.2);
+  //   transform: scale(1.2);
+  // }
+  > .prodImg {
+    width: auto;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 10px;
+    > img {
+      height: auto;
+      width: -webkit-fill-available;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+    &:hover > img {
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+  .prodDesc {
+    font-size: 14px;
+    line-height: 1.2;
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .favBtn {
+    position: absolute;
+    width: auto;
+    color: $primary;
+    left: 25px;
+    top: 0;
+    background-color: #e9e9e9;
+    z-index: 5;
+  }
+  .addBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    border-radius: 100%;
+    width: 35px;
+    height: 35px;
+    bottom: -15px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    z-index: 5;
+    padding: 6px;
+    transition: ease-in 250ms;
+    &:hover {
+      bottom: -10px;
+    }
+  }
+}
+
+.categoryCard,
+.brandCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  .catImage,
+  .brandImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    padding: 25px;
+    box-shadow: $mainShadow;
+    overflow: hidden;
+    > img {
+      height: auto;
+      width: -webkit-fill-available;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+    }
+  }
+  &:hover > .catImage > img,
+  &:hover > .brandImage > img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+  }
+}
+
+.orderSettings {
+  background-color: #ececec;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0;
+  color: black;
+  border-radius: 7px;
+  cursor: pointer;
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+    transition: ease-in 150ms;
+  }
+}
+
+.dashCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: $mainShadow;
+  transition-duration: 250ms;
+  .dashTitle {
+    color: #00000050;
+  }
+  .dashIcon {
+    background-color: $primary;
+    color: #fff;
+    transition-duration: 350ms;
+  }
+
+  &:hover {
+    background-color: $primary;
+    color: #fff;
+    .dashIcon {
+      background-color: #fff;
+      color: #000;
+    }
+    .dashTitle {
+      color: #ffffff90;
+    }
+  }
+}
