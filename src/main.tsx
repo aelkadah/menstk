@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Outlet,
   Navigate,
 } from "react-router-dom";
-import { Header, Footer } from "./components";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import {
   ErrorPage,
   Layout,
@@ -39,6 +39,7 @@ import {
 import { ThemeProvider } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.rtl.min.css";
 import "./styles/index.scss";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {
@@ -93,7 +94,21 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider dir="rtl">
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        rtl
+      />
     </ThemeProvider>
   </React.StrictMode>
 );

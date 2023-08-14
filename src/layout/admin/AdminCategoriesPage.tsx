@@ -1,12 +1,18 @@
-import { useState } from "react";
 import { Row, Form, Button, Modal } from "react-bootstrap";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import AdminCategoriesContainer from "../../components/admin/category/AdminCategoriesContainer";
+import AddCategoryHook from "../../hooks/category/AddCategoryHook";
 
 const AdminCategoriesPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    name,
+    onNameChange,
+    onImgChange,
+    handleSubmit,
+  ] = AddCategoryHook();
 
   return (
     <Row className="py-3">
@@ -42,6 +48,8 @@ const AdminCategoriesPage = () => {
                 <Form.Control
                   type="text"
                   placeholder="أدخل عنوان التصنيف هنا..."
+                  value={name}
+                  onChange={onNameChange}
                 />
               </Form.Group>
               <Form.Group
@@ -49,7 +57,7 @@ const AdminCategoriesPage = () => {
                 controlId="exampleForm.ControlInput1"
               >
                 <Form.Label>صورة التصنيف</Form.Label>
-                <Form.Control type="file" />
+                <Form.Control type="file" onChange={onImgChange} />
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -57,7 +65,9 @@ const AdminCategoriesPage = () => {
             <Button variant="danger" onClick={handleClose}>
               إلغاء
             </Button>
-            <Button variant="primary">إضافة التصنيف</Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              إضافة التصنيف
+            </Button>
           </Modal.Footer>
         </Modal>
       </Row>

@@ -1,50 +1,33 @@
-import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { LoadingSpinner, Pagination } from "../..";
 import AdminCategoryCard from "./AdminCategoryCard";
-
-import mobiles from "../../../assets/images/categories/mobiles.png";
-import laptops from "../../../assets/images/categories/laptops.png";
-import tvs from "../../../assets/images/categories/tvs.png";
-import kitchen from "../../../assets/images/categories/kitchen.png";
-import clothes from "../../../assets/images/categories/clothes.png";
-import dumbbell from "../../../assets/images/categories/dumbbell.png";
-import sportsshoes from "../../../assets/images/categories/sportsshoes.png";
-import playstation from "../../../assets/images/categories/playstation.png";
+import AllCategoriesHook from "../../../hooks/category/AllCategoriesHook";
 
 const AdminCategoriesContainer = () => {
-  const [loading, setloading] = useState(false);
-
-  const data = [
-    { image: mobiles, title: "موبايلات" },
-    { image: laptops, title: "لابتوبات" },
-    { image: tvs, title: "تلفزيونات" },
-    { image: playstation, title: "ألعاب إلكترونية" },
-    { image: kitchen, title: "أدوات مطبخ" },
-    { image: clothes, title: "ملابس" },
-    { image: dumbbell, title: "أدوات رياضية" },
-    { image: sportsshoes, title: "أحذية رياضية" },
-  ];
-
-  const getPage = () => {
-    return;
-  };
+  const [loading, results, categories, pageCount, getPage] =
+    AllCategoriesHook();
 
   return (
     <Row className="py-4">
       {!loading ? (
-        data.map((item, index) => {
-          return (
-            <Col xs={6} md={3} lg={2} key={index}>
-              <AdminCategoryCard category={item} />
-            </Col>
-          );
-        })
+        categories?.length >= 1 ? (
+          categories?.map((item, index) => {
+            return (
+              <Col xs={6} md={3} xl={2} key={index}>
+                <AdminCategoryCard category={item} />
+              </Col>
+            );
+          })
+        ) : (
+          <h3 className="text-center py-5">لا يوجد تصنيفات الآن</h3>
+        )
       ) : (
         <LoadingSpinner />
       )}
 
-      <Pagination pageCount={12} onPress={getPage} />
+      {!loading && pageCount && getPage && (
+        <Pagination pageCount={pageCount} onPress={getPage} />
+      )}
     </Row>
   );
 };
