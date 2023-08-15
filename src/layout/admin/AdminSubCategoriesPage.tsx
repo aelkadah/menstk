@@ -1,12 +1,20 @@
-import { useState } from "react";
 import { Row, Form, Button, Modal } from "react-bootstrap";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import AdminSubCategoriesContainer from "../../components/admin/subcategory/AdminSubCategoriesContainer";
+import AddSubCategoryHook from "../../hooks/subcategory/AddSubCategoryHook";
 
 const AdminSubCategoriesPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    name,
+    onChangeName,
+    category,
+    onChangeCategory,
+    categories,
+    handleSubmit,
+  ] = AddSubCategoryHook();
 
   return (
     <Row className="py-3">
@@ -39,15 +47,22 @@ const AdminSubCategoriesPage = () => {
                 <Form.Control
                   type="text"
                   placeholder="أدخل عنوان التصنيف الفرعي هنا..."
+                  value={name}
+                  onChange={onChangeName}
+                  autoFocus
                 />
               </Form.Group>
               <Form.Group>
                 <Form.Label>التصنيف الرئيسي</Form.Label>
-                <Form.Select aria-label="Default select example">
-                  <option>اختر التصنيف الرئيسي</option>
-                  <option value="1">التصنيف الرئيسي 1</option>
-                  <option value="2">التصنيف الرئيسي 2</option>
-                  <option value="3">التصنيف الرئيسي 3</option>
+                <Form.Select onChange={onChangeCategory}>
+                  <option value={0}>اختر التصنيف الرئيسي</option>
+                  {categories?.map((item, index) => {
+                    return (
+                      <option value={item?._id} key={index}>
+                        {item?.name}
+                      </option>
+                    );
+                  })}
                 </Form.Select>
               </Form.Group>
             </Form>
@@ -56,7 +71,9 @@ const AdminSubCategoriesPage = () => {
             <Button variant="danger" onClick={handleClose}>
               إلغاء
             </Button>
-            <Button variant="primary">إضافة التصنيف</Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              إضافة التصنيف الفرعي
+            </Button>
           </Modal.Footer>
         </Modal>
       </Row>

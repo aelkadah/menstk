@@ -14,13 +14,12 @@ const AllCategoriesHook = () => {
   );
 
   useEffect(() => {
-    dispatch(getAllCategories());
+    dispatch(getAllCategories([2]));
   }, []);
 
   let pageCount = 0;
-
   if (paginationResult) pageCount = paginationResult.numberOfPages;
-  const getPage = (page) => dispatch(getAllCategories(page));
+  const getPage = (page) => dispatch(getAllCategories([2, page]));
 
   return [loading, results, categories, pageCount, getPage];
 };

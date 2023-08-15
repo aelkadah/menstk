@@ -13,10 +13,12 @@ const initialState = {
 
 export const getAllCategories = createAsyncThunk(
   "category/all",
-  async (page, thunkAPI) => {
+  async ([limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await getData(`/api/v1/categories?limit=2&page=${page}`);
+      const res = await getData(
+        `/api/v1/categories?limit=${limit}&page=${page}`
+      );
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);

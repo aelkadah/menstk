@@ -45,7 +45,7 @@ const UpdateCategoryHook = (category) => {
     await dispatch(updateCategory([category?._id, formData]));
     setPending(false);
 
-    dispatch(getAllCategories());
+    dispatch(getAllCategories([2]));
   };
 
   return [
