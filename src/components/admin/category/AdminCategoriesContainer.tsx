@@ -25,9 +25,9 @@ const AdminCategoriesContainer = () => {
         <LoadingSpinner />
       )}
 
-      {!loading && pageCount && getPage && (
+      {pageCount && getPage ? (
         <Pagination pageCount={pageCount} onPress={getPage} />
-      )}
+      ) : null}
     </Row>
   );
 };

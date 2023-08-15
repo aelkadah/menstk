@@ -22,7 +22,7 @@ const AdminCategoryCard = ({ category }) => {
       <div className="catImage">
         <img src={category?.image} alt="..." />
       </div>
-      <h5 className="text-center w-75 pt-3">{category?.name}</h5>
+      <h5 className="text-center w-75 py-1">{category?.name}</h5>
       <div className="d-flex justify-content-between gap-2">
         <Button
           variant="secondary"

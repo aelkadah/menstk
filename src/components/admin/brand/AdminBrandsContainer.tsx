@@ -1,50 +1,33 @@
-import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { LoadingSpinner, Pagination } from "../..";
 import AdminBrandCard from "./AdminBrandCard";
 
-import samsung from "../../../assets/images/brands/samsung.png";
-import apple from "../../../assets/images/brands/apple.png";
-import oppo from "../../../assets/images/brands/oppo.png";
-import dell from "../../../assets/images/brands/dell.png";
-import adidas from "../../../assets/images/brands/adidas.png";
-import nike from "../../../assets/images/brands/nike.png";
-import tommy from "../../../assets/images/brands/tommy.png";
-import lcwaikiki from "../../../assets/images/brands/lcwaikiki.png";
+import AllBrandsHook from "../../../hooks/brands/AllBrandsHook";
 
 const AdminBrandsContainer = () => {
-  const [loading, setloading] = useState(false);
-
-  const data = [
-    { image: samsung, title: "سامسونج" },
-    { image: apple, title: "أبل" },
-    { image: oppo, title: "أوبو" },
-    { image: dell, title: "ديل" },
-    { image: adidas, title: "أديداس" },
-    { image: nike, title: "نايكي" },
-    { image: tommy, title: "تومي" },
-    { image: lcwaikiki, title: "LC Waikiki" },
-  ];
-
-  const getPage = () => {
-    return;
-  };
+  const [loading, results, brands, pageCount, getPage] = AllBrandsHook();
 
   return (
     <Row className="py-4">
       {!loading ? (
-        data.map((item, index) => {
-          return (
-            <Col xs={6} md={3} lg={2} key={index}>
-              <AdminBrandCard brand={item} />
-            </Col>
-          );
-        })
+        brands?.length >= 1 ? (
+          brands?.map((item, index) => {
+            return (
+              <Col xs={6} md={3} xl={2} key={index}>
+                <AdminBrandCard brand={item} />
+              </Col>
+            );
+          })
+        ) : (
+          <h3 className="text-center py-5">لا يوجد ماركات الآن</h3>
+        )
       ) : (
         <LoadingSpinner />
       )}
 
-      <Pagination pageCount={12} onPress={getPage} />
+      {pageCount && getPage ? (
+        <Pagination pageCount={pageCount} onPress={getPage} />
+      ) : null}
     </Row>
   );
 };

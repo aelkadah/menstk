@@ -12,7 +12,7 @@ const Pagination = ({ pageCount, onPress }) => {
         <Row className="pt-4">
           <ReactPaginate
             breakLabel="..."
-            nextLabel="التالى"
+            nextLabel="التالي"
             onPageChange={handlePageClick}
             marginPagesDisplayed={2}
             pageRangeDisplayed={2}
@@ -23,8 +23,8 @@ const Pagination = ({ pageCount, onPress }) => {
             pageLinkClassName={"page-link"}
             previousClassName={"page-item"}
             nextClassName={"page-item"}
-            previousLinkClassName={"page-link"}
-            nextLinkClassName={"page-link"}
+            previousLinkClassName={"page-link rounded-0"}
+            nextLinkClassName={"page-link rounded-0"}
             breakClassName={"page-item"}
             breakLinkClassName={"page-link"}
             activeClassName={"active"}

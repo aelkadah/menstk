@@ -1,12 +1,18 @@
-import { useState } from "react";
 import { Row, Form, Button, Modal } from "react-bootstrap";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import AdminBrandsContainer from "../../components/admin/brand/AdminBrandsContainer";
+import AddBrandHook from "../../hooks/brands/AddBrandHook";
 
 const AdminBrandsPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    name,
+    onNameChange,
+    onImgChange,
+    handleSubmit,
+  ] = AddBrandHook();
 
   return (
     <Row className="py-3">
@@ -39,11 +45,13 @@ const AdminBrandsPage = () => {
                 <Form.Control
                   type="text"
                   placeholder="أدخل اسم الماركة هنا..."
+                  value={name}
+                  onChange={onNameChange}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>صورة الماركة</Form.Label>
-                <Form.Control type="file" />
+                <Form.Control type="file" onChange={onImgChange} />
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -51,7 +59,9 @@ const AdminBrandsPage = () => {
             <Button variant="danger" onClick={handleClose}>
               إلغاء
             </Button>
-            <Button variant="primary">إضافة الماركة</Button>
+            <Button variant="primary" onClick={handleSubmit}>
+              إضافة الماركة
+            </Button>
           </Modal.Footer>
         </Modal>
       </Row>

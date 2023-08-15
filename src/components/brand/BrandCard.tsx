@@ -4,7 +4,7 @@ const BrandCard = ({ brand }) => {
       <div className="brandImage">
         <img src={brand?.image} alt="..." />
       </div>
-      <h5 className="text-center w-75 py-3">{brand?.title}</h5>
+      <h5 className="text-center w-75 py-3">{brand?.name}</h5>
     </div>
   );
 };

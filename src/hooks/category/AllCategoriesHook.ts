@@ -18,6 +18,7 @@ const AllCategoriesHook = () => {
   }, []);
 
   let pageCount = 0;
+
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllCategories(page));
 
