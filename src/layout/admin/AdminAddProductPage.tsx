@@ -1,7 +1,7 @@
 import { Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Multiselect from "multiselect-react-dropdown";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
+import Multiselect from "multiselect-react-dropdown";
 
 const AddProductPage = () => {
   return (
@@ -15,6 +15,10 @@ const AddProductPage = () => {
       <Row className="justify-content-center my-3">
         <Col xs={12} md={10}>
           <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>صور المنتج</Form.Label>
+              <Form.Control type="file" accept="image/*" multiple />
+            </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>اسم المنتج</Form.Label>
               <Form.Control type="text" placeholder="أدخل اسم المنتج هنا..." />
