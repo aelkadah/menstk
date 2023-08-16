@@ -12,7 +12,7 @@ const DeleteBrandHook = (brand) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteBrand(brand?._id));
-    dispatch(getAllBrands());
+    dispatch(getAllBrands([50]));
   };
 
   return [deleteShow, handleDeleteShow, handleDeleteClose, handleDelete];

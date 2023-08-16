@@ -13,10 +13,10 @@ const initialState = {
 
 export const getAllBrands = createAsyncThunk(
   "brand/all",
-  async (page, thunkAPI) => {
+  async ([limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await getData(`/api/v1/brands?limit=12&page=${page}`);
+      const res = await getData(`/api/v1/brands?limit=${limit}&page=${page}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);

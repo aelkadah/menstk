@@ -14,13 +14,13 @@ const AllBrandsHook = () => {
   );
 
   useEffect(() => {
-    dispatch(getAllBrands());
+    dispatch(getAllBrands([50]));
   }, []);
 
   let pageCount = 0;
 
   if (paginationResult) pageCount = paginationResult.numberOfPages;
-  const getPage = (page) => dispatch(getAllBrands(page));
+  const getPage = (page) => dispatch(getAllBrands([50, page]));
 
   return [loading, results, brands, pageCount, getPage];
 };

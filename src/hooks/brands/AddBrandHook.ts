@@ -50,7 +50,7 @@ const AddBrandHook = () => {
   useEffect(() => {
     if (!pending) {
       handleClose();
-      if (!loading && !error) dispatch(getAllBrands());
+      if (!loading && !error) dispatch(getAllBrands([50]));
     }
   }, [pending]);
 

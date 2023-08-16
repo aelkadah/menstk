@@ -45,7 +45,7 @@ const UpdateBrandHook = (brand) => {
     await dispatch(updateBrand([brand?._id, formData]));
     setPending(false);
 
-    dispatch(getAllBrands());
+    dispatch(getAllBrands([50]));
   };
 
   return [
