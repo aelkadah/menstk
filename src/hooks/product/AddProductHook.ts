@@ -95,10 +95,8 @@ const AddProductHook = () => {
     setPending(false);
   };
 
-  const error = useSelector((state) => state.product.error);
-
   useEffect(() => {
-    if (!pending && !error) setTimeout(() => navigate("/admin/products"), 1500);
+    if (!pending) setTimeout(() => navigate("/admin/products"), 1000);
   }, [pending]);
 
   return [

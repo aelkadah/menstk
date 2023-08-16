@@ -2,12 +2,9 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import Multiselect from "multiselect-react-dropdown";
-<<<<<<< HEAD
 import { CompactPicker } from "react-color";
 import AddProductHook from "../../hooks/product/AddProductHook";
 import add from "../../assets/images/add.png";
-=======
->>>>>>> df16059b974182509b0fa6abd1af0b1cd291517a
 
 const AddProductPage = () => {
   const [
@@ -52,16 +49,12 @@ const AddProductPage = () => {
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>صور المنتج</Form.Label>
-<<<<<<< HEAD
               <Form.Control
                 type="file"
                 accept="image/*"
                 multiple
                 onChange={(e) => setImages([...e.target.files])}
               />
-=======
-              <Form.Control type="file" accept="image/*" multiple />
->>>>>>> df16059b974182509b0fa6abd1af0b1cd291517a
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>اسم المنتج</Form.Label>
