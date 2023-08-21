@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   error: null,
   subs: [],
+  oneSub: [],
 };
 
 export const getSubsOfCat = createAsyncThunk(
@@ -16,6 +17,19 @@ export const getSubsOfCat = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(`/api/v1/categories/${id}/subcategories`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getOneSubCategory = createAsyncThunk(
+  "subcategory/one",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/subcategories/${id}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -84,6 +98,21 @@ export const subcategorySlice = createSlice({
       state.error = null;
     });
     builder.addCase(getSubsOfCat.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      console.log(action);
+    });
+
+    builder.addCase(getOneSubCategory.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getOneSubCategory.fulfilled, (state, action) => {
+      state.oneSub = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getOneSubCategory.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.error?.message;
       console.log(action);

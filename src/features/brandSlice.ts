@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   error: null,
   allBrands: [],
+  oneBrand: [],
 };
 
 export const getAllBrands = createAsyncThunk(
@@ -17,6 +18,19 @@ export const getAllBrands = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(`/api/v1/brands?limit=${limit}&page=${page}`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getOneBrand = createAsyncThunk(
+  "brand/one",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/brands/${id}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -84,6 +98,20 @@ export const brandSlice = createSlice({
       state.error = null;
     });
     builder.addCase(getAllBrands.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+    });
+
+    builder.addCase(getOneBrand.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getOneBrand.fulfilled, (state, action) => {
+      state.oneBrand = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getOneBrand.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.error?.message;
     });

@@ -8,6 +8,7 @@ const initialState = {
   loading: false,
   error: null,
   allProducts: [],
+  oneProduct: [],
 };
 
 export const getAllProducts = createAsyncThunk(
@@ -16,6 +17,19 @@ export const getAllProducts = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(`/api/v1/products?limit=${limit}&page=${page}`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getOneProduct = createAsyncThunk(
+  "product/one",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/products/${id}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -72,6 +86,22 @@ export const productSlice = createSlice({
       state.error = action?.error?.message;
       console.log(action);
       return notify("حدث خطأ أثناء تحميل المنتجات", "error");
+    });
+
+    builder.addCase(getOneProduct.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getOneProduct.fulfilled, (state, action) => {
+      state.oneProduct = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getOneProduct.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحميل المنتج", "error");
     });
 
     builder.addCase(createProduct.pending, (state, action) => {

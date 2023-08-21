@@ -9,6 +9,7 @@ const initialState = {
   loading: false,
   error: null,
   allCategories: [],
+  oneCategory: [],
 };
 
 export const getAllCategories = createAsyncThunk(
@@ -19,6 +20,19 @@ export const getAllCategories = createAsyncThunk(
       const res = await getData(
         `/api/v1/categories?limit=${limit}&page=${page}`
       );
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getOneCategory = createAsyncThunk(
+  "category/one",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/categories/${id}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);
@@ -87,6 +101,20 @@ export const categorySlice = createSlice({
       state.error = null;
     });
     builder.addCase(getAllCategories.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+    });
+
+    builder.addCase(getOneCategory.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getOneCategory.fulfilled, (state, action) => {
+      state.oneCategory = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getOneCategory.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.error?.message;
     });

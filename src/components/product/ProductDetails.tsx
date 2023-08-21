@@ -1,5 +1,5 @@
-import { Row, Col, Badge, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Row, Col, Badge, Button, Form } from "react-bootstrap";
 import {
   CubeIcon,
   ShoppingCartIcon,
@@ -10,8 +10,11 @@ import {
   ArrowUturnDownIcon,
   StarIcon,
 } from "@heroicons/react/24/solid";
+import OneBrandHook from "../../hooks/brands/OneBrandHook";
 
 const ProductDetails = ({ product }) => {
+  const [brandLoading, brand] = OneBrandHook(product?.brand);
+
   return (
     <Col xs={12} md={6} lg={8}>
       <Row>
@@ -31,8 +34,8 @@ const ProductDetails = ({ product }) => {
           <Row className="d-flex align-items-center gap-1 mb-3">
             <h6 className="text-black-50 mb-0 w-auto">
               الماركة:{" "}
-              <Link to="/brands" className="text-black">
-                سامسونج
+              <Link to={`/brands/${brand?._id}`} className="text-black">
+                {brand?.name}
               </Link>
             </h6>
 
@@ -44,7 +47,9 @@ const ProductDetails = ({ product }) => {
                 <StarIcon height="15px" />
                 4.6
               </Badge>
-              <span style={{ fontSize: "14px" }}>( 27 تقييم )</span>
+              <span style={{ fontSize: "14px" }}>
+                ( {product?.ratingsQuantity} تقييم )
+              </span>
             </span>
           </Row>
 
@@ -69,7 +74,7 @@ const ProductDetails = ({ product }) => {
             <h6 className="text-black-50 mb-0 pt-2">
               وفّرت:{" "}
               <span className="fw-bold text-black" style={{ fontSize: "14px" }}>
-                1200.00 جنيه
+                {product?.price}.00 جنيه
               </span>
               <Badge bg="success" className="ms-0 me-2 px-2">
                 خصم 22%
@@ -81,18 +86,18 @@ const ProductDetails = ({ product }) => {
             <Row className="d-flex justify-content-between mx-0 p-0">
               <div className="w-auto">
                 <h6 className="fw-bold mb-2 px-1">الكمية:</h6>
-                <Form.Select
-                  aria-label="Product Quantity"
-                  className="w-auto"
-                  size="lg"
-                >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                <Form.Select aria-label="Product Quantity" className="w-auto">
+                  {[...Array(product?.quantity)].map((x, i) => (
+                    <option value={i + 1} key={i}>
+                      {i + 1}
+                    </option>
+                  ))}
                 </Form.Select>
               </div>
               <div className="w-auto flex-grow-1">
-                <h6 className="text-danger mb-2 px-1">الكمية المتبقية ( 3 )</h6>
+                <h6 className="text-danger mb-2 px-1">
+                  الكمية المتبقية ( {product?.quantity} )
+                </h6>
                 <Button className="d-flex justify-content-center align-items-center w-100 fw-bold">
                   <ShoppingCartIcon width="20px" className="ms-1 me-0" />
                   أضِف إلى عربة التسوق
