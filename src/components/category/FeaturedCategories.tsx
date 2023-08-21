@@ -2,17 +2,14 @@ import { Container } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CategoryCard from "./CategoryCard";
-
-import mobiles from "../../assets/images/categories/mobiles.png";
-import laptops from "../../assets/images/categories/laptops.png";
-import tvs from "../../assets/images/categories/tvs.png";
-import kitchen from "../../assets/images/categories/kitchen.png";
-import clothes from "../../assets/images/categories/clothes.png";
-import dumbbell from "../../assets/images/categories/dumbbell.png";
-import sportsshoes from "../../assets/images/categories/sportsshoes.png";
-import playstation from "../../assets/images/categories/playstation.png";
+import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
+import { LoadingSpinner } from "..";
 
 const FeaturedCategories = () => {
+  let limit = 10;
+  const [loading, results, categories, pageCount, getPage] =
+    AllCategoriesHook(limit);
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1200 },
@@ -32,17 +29,6 @@ const FeaturedCategories = () => {
     },
   };
 
-  const data = [
-    { image: mobiles, title: "موبايلات" },
-    { image: laptops, title: "لابتوبات" },
-    { image: tvs, title: "تلفزيونات" },
-    { image: playstation, title: "ألعاب إلكترونية" },
-    { image: kitchen, title: "أدوات مطبخ" },
-    { image: clothes, title: "ملابس" },
-    { image: dumbbell, title: "أدوات رياضية" },
-    { image: sportsshoes, title: "أحذية رياضية" },
-  ];
-
   return (
     <Container>
       <Carousel
@@ -54,11 +40,17 @@ const FeaturedCategories = () => {
         showDots={true}
         containerClass="pb-3"
       >
-        {data
-          ? data?.map((item, index) => {
+        {!loading ? (
+          categories?.length >= 1 ? (
+            categories?.map((item, index) => {
               return <CategoryCard category={item} key={index} />;
             })
-          : null}
+          ) : (
+            <LoadingSpinner />
+          )
+        ) : (
+          <LoadingSpinner />
+        )}
       </Carousel>
     </Container>
   );

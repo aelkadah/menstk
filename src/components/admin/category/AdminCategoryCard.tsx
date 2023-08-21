@@ -18,7 +18,7 @@ const AdminCategoryCard = ({ category }) => {
     DeleteCategoryHook(category);
 
   return (
-    <div className="categoryCard m-0 p-0">
+    <div className="categoryCard m-0 p-0 mb-4">
       <div className="catImage">
         <img src={category?.image} alt="..." />
       </div>

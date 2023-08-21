@@ -18,7 +18,7 @@ const AdminBrandCard = ({ brand }) => {
   ] = UpdateBrandHook(brand);
 
   return (
-    <div className="brandCard m-0 p-0">
+    <div className="brandCard m-0 p-0 mb-4">
       <div className="brandImage">
         <img src={brand?.image} alt="..." />
       </div>
