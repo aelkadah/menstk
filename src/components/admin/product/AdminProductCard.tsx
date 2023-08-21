@@ -1,12 +1,11 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import DeleteProductHook from "../../../hooks/product/DeleteProductHook";
 
 const AdminProductCard = ({ product }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, handleShow, handleClose, handleDelete] =
+    DeleteProductHook(product);
 
   return (
     <div className="productCard rounded-2 mb-4">
@@ -31,7 +30,7 @@ const AdminProductCard = ({ product }) => {
             </div>
           </div>
           <h6 className="text-decoration-line-through text-black-50 ms-1 me-0 mb-0">
-            5200.00 ج.م
+            {product?.price}.00 ج.م
           </h6>
         </div>
         <div className="d-flex justify-content-center gap-2 my-2">
@@ -75,7 +74,9 @@ const AdminProductCard = ({ product }) => {
           <Button variant="secondary" onClick={handleClose}>
             إلغاء
           </Button>
-          <Button variant="danger">تأكيد الحذف</Button>
+          <Button variant="danger" onClick={handleDelete}>
+            تأكيد الحذف
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>
