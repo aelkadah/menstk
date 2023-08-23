@@ -34,7 +34,10 @@ const LoginHook = () => {
       setPending(true);
       setEmail("");
       setPassword("");
-      setTimeout(() => navigate("/"), 1000);
+
+      if (userData?.role && userData?.role == "admin")
+        setTimeout(() => navigate("/admin/dashboard"), 1000);
+      else setTimeout(() => navigate("/"), 1000);
     }
   }, [pending]);
 
