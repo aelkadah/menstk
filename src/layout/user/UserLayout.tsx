@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet, NavLink, Link } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Navbar,
-  Nav,
-  Form,
-  InputGroup,
-  Offcanvas,
-} from "react-bootstrap";
+import { Container, Row, Col, Navbar, Nav, Offcanvas } from "react-bootstrap";
 import {
   ArrowLeftOnRectangleIcon,
   MagnifyingGlassIcon,
@@ -20,9 +11,11 @@ import {
   MapPinIcon,
   BookmarkIcon,
   QueueListIcon,
+  AdjustmentsVerticalIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";
+import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 
 const UserLayout = () => {
   const [show, setShow] = useState(false);
@@ -39,6 +32,7 @@ const UserLayout = () => {
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
+  const [loading, userData] = LoggedUserHook();
   const [handleLogout] = LogoutHook();
 
   return (
@@ -71,22 +65,10 @@ const UserLayout = () => {
                 </Navbar.Brand>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-between align-items-md-center  flex-grow-1">
-                  <InputGroup className="rounded rounded-4 mx-4">
-                    <InputGroup.Text>
-                      <MagnifyingGlassIcon width={"20px"} />
-                    </InputGroup.Text>
-                    <Form.Control placeholder="بتدور على ايه..." />
-                  </InputGroup>
-
+                <Nav className="justify-content-end align-items-md-center  flex-grow-1">
                   <Nav.Link disabled>English</Nav.Link>
-                  <Nav.Link
-                    className="d-flex align-items-center fw-medium"
-                    to="/login"
-                    as={Link}
-                  >
-                    <ArrowLeftOnRectangleIcon width="25px" />
-                    <span className="w-100">تسجيل الدخول</span>
+                  <Nav.Link className="fw-medium" disabled>
+                    أهلاً {userData?.name?.split(" ")[0]}
                   </Nav.Link>
                   <Nav.Link
                     className="d-flex align-items-center fw-medium"

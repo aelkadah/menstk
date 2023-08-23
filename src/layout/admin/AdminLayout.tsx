@@ -78,13 +78,13 @@ const AdminLayout = () => {
                 </Navbar.Brand>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-between align-items-md-center  flex-grow-1">
-                  <InputGroup className="rounded rounded-4 mx-4">
+                <Nav className="justify-content-end align-items-md-center  flex-grow-1">
+                  {/* <InputGroup className="rounded rounded-4 mx-4">
                     <InputGroup.Text>
                       <MagnifyingGlassIcon width={"20px"} />
                     </InputGroup.Text>
                     <Form.Control placeholder="بتدور على ايه..." />
-                  </InputGroup>
+                  </InputGroup> */}
 
                   <Nav.Link disabled>English</Nav.Link>
                   {!loading && userData ? (
