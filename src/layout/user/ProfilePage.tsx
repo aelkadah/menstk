@@ -1,6 +1,10 @@
 import { Row, Col, Form, Button } from "react-bootstrap";
+import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
+import { LoadingSpinner } from "../../components";
 
 const ProfilePage = () => {
+  const [loading, userData] = LoggedUserHook();
+
   return (
     <Row className="p-3">
       <Row className="d-flex justify-content-between align-items-center mb-4">
@@ -11,30 +15,36 @@ const ProfilePage = () => {
         <Row>
           <h4 className="fw-bold pb-2">معلومات عامة</h4>
         </Row>
-        <Col xs={12} md={6} lg={4}>
-          <Form.Group className="mb-3">
-            <Form.Label>الاسم</Form.Label>
-            <Form.Control placeholder={`Ahmed ElKadah`} disabled />
-          </Form.Group>
-        </Col>
-        <Col xs={12} md={6} lg={4}>
-          <Form.Group className="mb-3">
-            <Form.Label>البريد الإلكتروني</Form.Label>
-            <Form.Control
-              placeholder={`ahmedaymanelkadah@gmail.com`}
-              disabled
-            />
-          </Form.Group>
-        </Col>
-        <Col xs={12} md={6} lg={4}>
-          <Form.Group className="mb-3">
-            <Form.Label>رقم الهاتف</Form.Label>
-            <Form.Control placeholder={`01021603376`} disabled />
-          </Form.Group>
-        </Col>
-        <Row className="d-flex justify-content-end px-2">
-          <Button>تعديل البيانات</Button>
-        </Row>
+        {!loading ? (
+          <Row>
+            <Col xs={12} md={6} lg={4}>
+              <Form.Group className="mb-3">
+                <Form.Label>الاسم</Form.Label>
+                <Form.Control value={userData?.name} disabled />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={6} lg={4}>
+              <Form.Group className="mb-3">
+                <Form.Label>البريد الإلكتروني</Form.Label>
+                <Form.Control value={userData?.email} disabled />
+              </Form.Group>
+            </Col>
+            <Col xs={12} md={6} lg={4}>
+              <Form.Group className="mb-3">
+                <Form.Label>رقم الهاتف</Form.Label>
+                <Form.Control
+                  value={userData?.phone || "غير موجود..."}
+                  disabled
+                />
+              </Form.Group>
+            </Col>
+            <Row className="d-flex justify-content-end px-2">
+              <Button disabled>تعديل البيانات</Button>
+            </Row>
+          </Row>
+        ) : (
+          <LoadingSpinner />
+        )}
       </Row>
 
       <Row className="bg-white p-4 mt-5">
@@ -67,9 +77,7 @@ const ProfilePage = () => {
           </Form.Group>
         </Col>
         <Row className="d-flex justify-content-end px-2">
-          <Button className="w-auto" disabled>
-            تغيير كلمة السر
-          </Button>
+          <Button className="w-auto">تغيير كلمة السر</Button>
         </Row>
       </Row>
     </Row>
