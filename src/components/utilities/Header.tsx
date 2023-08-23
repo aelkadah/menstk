@@ -6,6 +6,7 @@ import {
   Offcanvas,
   Form,
   InputGroup,
+  NavDropdown,
 } from "react-bootstrap";
 import {
   ArrowLeftOnRectangleIcon,
@@ -13,8 +14,13 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
+import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
+import LogoutHook from "../../hooks/auth/LogoutHook";
 
 const Header = () => {
+  const [loading, userData] = LoggedUserHook();
+  const [handleLogout] = LogoutHook();
+
   return (
     <Container
       className="header bg-white border-bottom border-light-subtle"
@@ -45,18 +51,61 @@ const Header = () => {
                     </InputGroup.Text>
                     <Form.Control placeholder="بتدور على ايه..." />
                   </InputGroup>
-
                   <Nav.Link className="d-none d-md-inline-block" disabled>
                     English
                   </Nav.Link>
-                  <Nav.Link
-                    className="d-flex align-items-center fw-medium"
-                    to="/login"
-                    as={Link}
-                  >
-                    <ArrowLeftOnRectangleIcon width="25px" />
-                    <span className="w-100">تسجيل الدخول</span>
-                  </Nav.Link>
+
+                  {!loading && userData ? (
+                    userData?.role == "admin" ? (
+                      <NavDropdown
+                        title={`أهلاً ${userData?.name?.split(" ")[0]}`}
+                        className="fw-medium"
+                      >
+                        <NavDropdown.Item
+                          className="text-end"
+                          to="/admin/dashboard"
+                          as={Link}
+                        >
+                          لوحة التحكم
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          className="text-end"
+                          onClick={handleLogout}
+                        >
+                          تسجيل الخروج
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    ) : (
+                      <NavDropdown
+                        title={`أهلاً ${userData?.name?.split(" ")[0]}`}
+                        className="fw-medium"
+                      >
+                        <NavDropdown.Item
+                          className="text-end"
+                          to="/user/profile"
+                          as={Link}
+                        >
+                          الحساب الشخصي
+                        </NavDropdown.Item>
+                        <NavDropdown.Item
+                          className="text-end"
+                          onClick={handleLogout}
+                        >
+                          تسجيل الخروج
+                        </NavDropdown.Item>
+                      </NavDropdown>
+                    )
+                  ) : (
+                    <Nav.Link
+                      className="d-flex align-items-center fw-medium"
+                      to="/login"
+                      as={Link}
+                    >
+                      <ArrowLeftOnRectangleIcon width="25px" />
+                      <span className="w-100">تسجيل الدخول</span>
+                    </Nav.Link>
+                  )}
+
                   <Nav.Link
                     className="d-flex align-items-center fw-medium"
                     to="/cart"

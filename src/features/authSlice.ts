@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import notify from "../helpers/notify";
 import { insertData } from "../helpers/insertData";
+import { getDataTokenWithoutParams } from "../helpers/getData";
+import notify from "../helpers/notify";
 
 const initialState = {
   loading: false,
@@ -38,6 +39,21 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+export const loggedUser = createAsyncThunk(
+  "auth/logged",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getDataTokenWithoutParams("/api/v1/users/getMe");
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -50,6 +66,7 @@ export const authSlice = createSlice({
       return notify("تم تسجيل الخروج", "success");
     },
   },
+
   extraReducers: (builder) => {
     builder.addCase(registerUser.pending, (state, action) => {
       state.loading = true;
@@ -89,6 +106,22 @@ export const authSlice = createSlice({
         console.log(action);
         return notify("حدث خطأ أثناء تسجيل الدخول", "error");
       }
+    });
+
+    builder.addCase(loggedUser.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(loggedUser.fulfilled, (state, action) => {
+      state.user = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(loggedUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحميل بيانات المستخدم", "error");
     });
   },
 });

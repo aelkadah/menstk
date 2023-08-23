@@ -12,3 +12,11 @@ export const getDataToken = async (url, params) => {
   const res = await baseUrl.get(url, params, config);
   return res;
 };
+
+export const getDataTokenWithoutParams = async (url) => {
+  const config = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  };
+  const res = await baseUrl.get(url, config);
+  return res;
+};

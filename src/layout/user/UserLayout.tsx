@@ -22,6 +22,7 @@ import {
   QueueListIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
+import LogoutHook from "../../hooks/auth/LogoutHook";
 
 const UserLayout = () => {
   const [show, setShow] = useState(false);
