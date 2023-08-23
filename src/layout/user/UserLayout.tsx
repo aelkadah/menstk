@@ -38,6 +38,8 @@ const UserLayout = () => {
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
+  const [handleLogout] = LogoutHook();
+
   return (
     <Container fluid className="p-0">
       <Row className="dashboardHeader">
@@ -142,7 +144,7 @@ const UserLayout = () => {
 
               <div className="footer border-top">
                 <ul className="nav">
-                  <li>
+                  <li onClick={handleLogout}>
                     <ArrowRightOnRectangleIcon width={"20px"} />
                     <span>تسجيل الخروج</span>
                   </li>
@@ -184,7 +186,7 @@ const UserLayout = () => {
 
           <div className="footer border-top">
             <ul className="nav">
-              <li>
+              <li onClick={handleLogout}>
                 <ArrowRightOnRectangleIcon width={"20px"} />
                 <span className={`d-${display} pe-0 ps-5`}>تسجيل الخروج</span>
               </li>

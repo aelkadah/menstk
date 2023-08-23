@@ -1,7 +1,20 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import RegisterHook from "../../hooks/auth/RegisterHook";
 
 const RegisterPage = () => {
+  const [
+    name,
+    onChangeName,
+    email,
+    onChangeEmail,
+    password,
+    onChangePassword,
+    passwordConfirm,
+    onChangePasswordConfirm,
+    handleSubmit,
+  ] = RegisterHook();
+
   return (
     <Container>
       <Row className="pt-3 pb-4">
@@ -22,6 +35,8 @@ const RegisterPage = () => {
                 type="text"
                 placeholder="أدخل اسمك هنا"
                 className="text-end"
+                value={name}
+                onChange={onChangeName}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -30,28 +45,42 @@ const RegisterPage = () => {
                 type="email"
                 placeholder="البريد الإلكتروني"
                 className="text-end"
+                value={email}
+                onChange={onChangeEmail}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPhone">
+            {/* <Form.Group className="mb-3" controlId="formBasicPhone">
               <Form.Label>رقم الهاتف</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="رقم الهاتف"
                 className="text-end"
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>كلمة المرور</Form.Label>
-              <Form.Control type="password" placeholder="كلمة المرور..." />
+              <Form.Control
+                type="password"
+                placeholder="كلمة المرور..."
+                value={password}
+                onChange={onChangePassword}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPasswordConf">
               <Form.Label>تأكيد كلمة المرور</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="تأكيد كلمة المرور..."
+                value={passwordConfirm}
+                onChange={onChangePasswordConfirm}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="w-100 fw-bold">
+            <Button
+              variant="primary"
+              type="submit"
+              className="w-100 fw-bold"
+              onClick={handleSubmit}
+            >
               تسجيل الحساب
             </Button>
           </Form>

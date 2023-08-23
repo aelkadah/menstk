@@ -26,6 +26,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
 import logo from "../../assets/images/logo.svg";
+import LogoutHook from "../../hooks/auth/LogoutHook";
 
 const AdminLayout = () => {
   const [show, setShow] = useState(false);
@@ -41,6 +42,8 @@ const AdminLayout = () => {
   }, [collapsed]);
 
   const handleCollapse = () => setCollapsed(!collapsed);
+
+  const [handleLogout] = LogoutHook();
 
   return (
     <Container fluid className="p-0">
@@ -164,7 +167,7 @@ const AdminLayout = () => {
 
               <div className="footer border-top">
                 <ul className="nav">
-                  <li>
+                  <li onClick={handleLogout}>
                     <ArrowRightOnRectangleIcon width={"20px"} />
                     <span>تسجيل الخروج</span>
                   </li>
@@ -224,7 +227,7 @@ const AdminLayout = () => {
 
           <div className="footer border-top">
             <ul className="nav">
-              <li>
+              <li onClick={handleLogout}>
                 <ArrowRightOnRectangleIcon width={"20px"} />
                 <span className={`d-${display} pe-0 ps-5`}>تسجيل الخروج</span>
               </li>
