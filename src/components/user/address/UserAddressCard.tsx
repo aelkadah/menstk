@@ -1,16 +1,28 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Row, Modal, Button, Form } from "react-bootstrap";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import DeleteAddressHook from "../../../hooks/address/DeleteAddressHook";
+import UpdateAddressHook from "../../../hooks/address/UpdateAddressHook";
 
 const UserAddressCard = ({ index, address }) => {
-  const [showDelete, setShowDelete] = useState(false);
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
-
-  const [showEdit, setShowEdit] = useState(false);
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
+  const [showDelete, handleShowDelete, handleCloseDelete, handleDelete] =
+    DeleteAddressHook(address);
+  const [
+    showEdit,
+    handleShowEdit,
+    handleCloseEdit,
+    alias,
+    onChangeAlias,
+    city,
+    onChangeCity,
+    details,
+    onChangeDetails,
+    postalCode,
+    onChangePostalCode,
+    phone,
+    onChangePhone,
+    handleUpdate,
+  ] = UpdateAddressHook(address);
 
   return (
     <Row className="bg-white p-4 mb-4" key={index}>
@@ -68,7 +80,8 @@ const UserAddressCard = ({ index, address }) => {
             <Form.Control
               type="text"
               placeholder="منزل , مكتب , شركة ,..."
-              value={address?.alias}
+              value={alias}
+              onChange={onChangeAlias}
             />
           </Form.Group>
           <Form.Group className="mb-2">
@@ -76,7 +89,8 @@ const UserAddressCard = ({ index, address }) => {
             <Form.Control
               type="text"
               placeholder="القاهرة , الجيزة , ..."
-              value={address?.city}
+              value={city}
+              onChange={onChangeCity}
             />
           </Form.Group>
           <Form.Group className="mb-2">
@@ -84,7 +98,8 @@ const UserAddressCard = ({ index, address }) => {
             <Form.Control
               type="text"
               placeholder="رقم المبنى , الشارع , الحي ,..."
-              value={address?.details}
+              value={details}
+              onChange={onChangeDetails}
             />
           </Form.Group>
           <Form.Group className="mb-2">
@@ -92,7 +107,8 @@ const UserAddressCard = ({ index, address }) => {
             <Form.Control
               type="text"
               placeholder="11221"
-              value={address?.postalCode}
+              value={postalCode}
+              onChange={onChangePostalCode}
             />
           </Form.Group>
           <Form.Group className="mb-2">
@@ -100,7 +116,8 @@ const UserAddressCard = ({ index, address }) => {
             <Form.Control
               type="text"
               placeholder="01012345678"
-              value={address?.phone}
+              value={phone}
+              onChange={onChangePhone}
             />
           </Form.Group>
         </Modal.Body>
@@ -108,7 +125,9 @@ const UserAddressCard = ({ index, address }) => {
           <Button variant="secondary" onClick={handleCloseEdit}>
             إلغاء
           </Button>
-          <Button>حفظ التعديلات</Button>
+          <Button onClick={handleUpdate} disabled>
+            حفظ التعديلات
+          </Button>
         </Modal.Footer>
       </Modal>
 
@@ -131,7 +150,9 @@ const UserAddressCard = ({ index, address }) => {
           <Button variant="secondary" onClick={handleCloseDelete}>
             إلغاء
           </Button>
-          <Button variant="danger">حذف العنوان</Button>
+          <Button variant="danger" onClick={handleDelete}>
+            حذف العنوان
+          </Button>
         </Modal.Footer>
       </Modal>
     </Row>

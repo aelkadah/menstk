@@ -13,7 +13,7 @@ const AdminProductCard = ({ product }) => {
         <img src={product?.imageCover} alt="iphone" />
       </div>
       <div>
-        <h6 className="fw-normal mb-1">{product?.title} </h6>
+        <h6 className="fw-normal mb-1 truncate-two">{product?.title} </h6>
         <p className="prodDesc fw-light mb-2">{product?.description}</p>
 
         <div className="d-flex justify-content-start align-items-center gap-2">

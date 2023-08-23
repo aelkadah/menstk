@@ -1,12 +1,25 @@
-import { useState } from "react";
 import { Row, Form, Modal, Button } from "react-bootstrap";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import UserAddressesContainer from "../../components/user/address/UserAddressesContainer";
+import AddAddressHook from "../../hooks/address/AddAddressHook";
 
 const AddressesPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    alias,
+    onChangeAlias,
+    city,
+    onChangeCity,
+    details,
+    onChangeDetails,
+    postalCode,
+    onChangePostalCode,
+    phone,
+    onChangePhone,
+    handleAdd,
+  ] = AddAddressHook();
 
   return (
     <Row className="p-3">
@@ -32,33 +45,55 @@ const AddressesPage = () => {
           <Modal.Body>
             <Form.Group className="mb-2">
               <Form.Label>نوع العنوان</Form.Label>
-              <Form.Control type="text" placeholder="منزل , مكتب , شركة ,..." />
+              <Form.Control
+                type="text"
+                placeholder="منزل , مكتب , شركة ,..."
+                value={alias}
+                onChange={onChangeAlias}
+              />
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>المدينة</Form.Label>
-              <Form.Control type="text" placeholder="القاهرة , الجيزة , ..." />
+              <Form.Control
+                type="text"
+                placeholder="القاهرة , الجيزة , ..."
+                value={city}
+                onChange={onChangeCity}
+              />
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>تفاصيل العنوان</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="رقم المبنى , الشارع , الحي ,..."
+                value={details}
+                onChange={onChangeDetails}
               />
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>الرمز البريدي</Form.Label>
-              <Form.Control type="text" placeholder="11221" />
+              <Form.Control
+                type="text"
+                placeholder="11221"
+                value={postalCode}
+                onChange={onChangePostalCode}
+              />
             </Form.Group>
             <Form.Group className="mb-2">
               <Form.Label>رقم الهاتف</Form.Label>
-              <Form.Control type="text" placeholder="01012345678" />
+              <Form.Control
+                type="text"
+                placeholder="01012345678"
+                value={phone}
+                onChange={onChangePhone}
+              />
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="danger" onClick={handleClose}>
               إلغاء
             </Button>
-            <Button>إضافة العنوان</Button>
+            <Button onClick={handleAdd}>إضافة العنوان</Button>
           </Modal.Footer>
         </Modal>
       </Row>

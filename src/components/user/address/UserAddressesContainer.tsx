@@ -1,31 +1,24 @@
 import { Row } from "react-bootstrap";
 import UserAddressCard from "./UserAddressCard";
+import LoggedUserHook from "../../../hooks/auth/LoggedUserHook";
+import { LoadingSpinner } from "../..";
 
 const UserAddressesContainer = () => {
-  const addresses = [
-    {
-      alias: "المكتب",
-      city: "المنصورة",
-      details: "المنصورة مدينة السلام شارع الجامع",
-      postalCode: "35511",
-      phone: "01021603376",
-    },
-    {
-      alias: "المكتب",
-      city: "المنصورة",
-      details: "المنصورة مدينة السلام شارع الجامع",
-      postalCode: "35511",
-      phone: "01021603376",
-    },
-  ];
+  const [loading, userData] = LoggedUserHook();
 
   return (
     <Row>
-      {addresses?.length >= 1
-        ? addresses?.map((address, index) => {
+      {!loading ? (
+        userData?.addresses?.length >= 1 ? (
+          userData?.addresses?.map((address, index) => {
             return <UserAddressCard key={index} address={address} />;
           })
-        : null}
+        ) : (
+          <h3 className="text-center">لا يوجد عناوين حتى الآن</h3>
+        )
+      ) : (
+        <LoadingSpinner />
+      )}
     </Row>
   );
 };
