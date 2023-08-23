@@ -12,7 +12,7 @@ const DeleteProductHook = (product) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteProduct(product?._id));
-    dispatch(getAllProducts([2]));
+    dispatch(getAllProducts([]));
   };
 
   return [show, handleShow, handleClose, handleDelete];

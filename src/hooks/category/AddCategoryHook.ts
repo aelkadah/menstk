@@ -50,7 +50,7 @@ const AddCategoryHook = () => {
   useEffect(() => {
     if (!pending) {
       handleClose();
-      if (!loading && !error) dispatch(getAllCategories([2]));
+      if (!loading && !error) dispatch(getAllCategories([]));
     }
   }, [pending]);
 

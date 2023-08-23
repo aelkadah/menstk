@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllCategories, updateCategory } from "../../features/categorySlice";
 import upload_image from "../../assets/images/img_upload.png";
+import notify from "../../helpers/notify";
 
 const UpdateCategoryHook = (category) => {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const UpdateCategoryHook = (category) => {
     await dispatch(updateCategory([category?._id, formData]));
     setPending(false);
 
-    dispatch(getAllCategories([2]));
+    dispatch(getAllCategories([]));
   };
 
   return [

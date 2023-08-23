@@ -12,7 +12,7 @@ const DeleteCategoryHook = (category) => {
   const handleDelete = async (e) => {
     e.preventDefault();
     await dispatch(deleteCategory(category?._id));
-    dispatch(getAllCategories([2]));
+    dispatch(getAllCategories([]));
   };
 
   return [deleteShow, handleDeleteShow, handleDeleteClose, handleDelete];
