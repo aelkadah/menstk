@@ -9,6 +9,7 @@ import {
   Form,
   InputGroup,
   Offcanvas,
+  NavDropdown,
 } from "react-bootstrap";
 import {
   ArrowLeftOnRectangleIcon,
@@ -27,6 +28,8 @@ import {
 import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
 import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";
+import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
+import { LoadingSpinner } from "../../components";
 
 const AdminLayout = () => {
   const [show, setShow] = useState(false);
@@ -43,8 +46,8 @@ const AdminLayout = () => {
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
+  const [loading, userData] = LoggedUserHook();
   const [handleLogout] = LogoutHook();
-
   return (
     <Container fluid className="p-0">
       <Row className="dashboardHeader">
@@ -84,22 +87,29 @@ const AdminLayout = () => {
                   </InputGroup>
 
                   <Nav.Link disabled>English</Nav.Link>
-                  <Nav.Link
-                    className="d-flex align-items-center fw-medium"
-                    to="/login"
-                    as={Link}
-                  >
-                    <ArrowLeftOnRectangleIcon width="25px" />
-                    <span className="w-100">تسجيل الدخول</span>
-                  </Nav.Link>
-                  <Nav.Link
-                    className="d-flex align-items-center fw-medium"
-                    to="/cart"
-                    as={Link}
-                  >
-                    <ShoppingBagIcon width="25px" />
-                    <span className="d-md-none w-100">عربة التسوق</span>
-                  </Nav.Link>
+                  {!loading && userData ? (
+                    <NavDropdown
+                      title={`${userData?.name?.split(" ")[0]} أهلاً`}
+                      className="fw-medium"
+                      dir="ltr"
+                    >
+                      <NavDropdown.Item
+                        className="d-flex justify-content-end gap-1 py-2"
+                        to="/admin"
+                        as={NavLink}
+                      >
+                        لوحة التحكم
+                        <AdjustmentsVerticalIcon width={"20px"} />
+                      </NavDropdown.Item>
+                      <NavDropdown.Item
+                        className="d-flex justify-content-end gap-1 py-2"
+                        onClick={handleLogout}
+                      >
+                        تسجيل الخروج
+                        <ArrowRightOnRectangleIcon width={"20px"} />
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  ) : null}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
