@@ -4,6 +4,7 @@ import subcategoryReducer from "./features/subcategorySlice";
 import brandReducer from "./features/brandSlice";
 import productReducer from "./features/productSlice";
 import authReducer from "./features/authSlice";
+import userReducer from "./features/userSlice";
 import addressReducer from "./features/addressSlice";
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     brand: brandReducer,
     product: productReducer,
     auth: authReducer,
+    user: userReducer,
     address: addressReducer,
   },
   devTools: true,

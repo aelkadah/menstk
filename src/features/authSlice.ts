@@ -59,6 +59,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      localStorage.removeItem("userInfo");
       localStorage.removeItem("token");
       state.user = null;
       state.error = null;
@@ -94,6 +95,7 @@ export const authSlice = createSlice({
       state.user = action.payload;
       state.loading = false;
       state.error = null;
+      localStorage.setItem("userInfo", JSON.stringify(state?.user?.data));
       localStorage.setItem("token", state?.user?.token);
       return notify("تم تسجيل الدخول بنجاح", "success");
     });
@@ -114,6 +116,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(loggedUser.fulfilled, (state, action) => {
       state.user = action.payload;
+      localStorage.setItem("userInfo", JSON.stringify(state?.user?.data));
       state.loading = false;
       state.error = null;
     });

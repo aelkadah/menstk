@@ -6,7 +6,12 @@ const LoggedUserHook = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) dispatch(loggedUser());
+    if (
+      localStorage.getItem("token") &&
+      localStorage.getItem("token") !== "undefined" &&
+      localStorage.getItem("token") !== "null"
+    )
+      dispatch(loggedUser());
     else return;
   }, []);
 
