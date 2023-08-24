@@ -3,12 +3,28 @@ import { insertDataToken } from "../helpers/insertData";
 import { deleteData } from "../helpers/deleteData";
 import { updateData } from "../helpers/updateData";
 import notify from "../helpers/notify";
+import { getDataTokenWithoutParams } from "../helpers/getData";
 
 const initialState = {
   loading: false,
   error: null,
   allAddresses: [],
 };
+
+export const getAllAddresses = createAsyncThunk(
+  "address/all",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getDataTokenWithoutParams("/api/v1/addresses");
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
 
 export const addAddress = createAsyncThunk(
   "address/add",
@@ -61,6 +77,22 @@ export const addressSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
+    builder.addCase(getAllAddresses.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getAllAddresses.fulfilled, (state, action) => {
+      state.allAddresses = action?.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getAllAddresses.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحميل العناوين", "error");
+    });
+
     builder.addCase(addAddress.pending, (state, action) => {
       state.loading = true;
       state.error = null;

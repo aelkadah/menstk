@@ -1,16 +1,16 @@
 import { Row } from "react-bootstrap";
-import UserAddressCard from "./UserAddressCard";
-import LoggedUserHook from "../../../hooks/auth/LoggedUserHook";
 import { LoadingSpinner } from "../..";
+import UserAddressCard from "./UserAddressCard";
+import AllAddressesHook from "../../../hooks/address/AllAddressesHook";
 
 const UserAddressesContainer = () => {
-  const [loading, userData] = LoggedUserHook();
+  const [loading, addresses] = AllAddressesHook();
 
   return (
     <Row>
       {!loading ? (
-        userData?.addresses?.length >= 1 ? (
-          userData?.addresses?.map((address, index) => {
+        addresses?.length >= 1 ? (
+          addresses?.map((address, index) => {
             return <UserAddressCard key={index} address={address} />;
           })
         ) : (
