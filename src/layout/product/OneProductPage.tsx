@@ -21,9 +21,7 @@ const OneProductPage = () => {
               الرئيسية
             </Link>
             {">"}
-            <Link className="w-auto px-2" to={`/category/${category?._id}`}>
-              {product?.category?.name}{" "}
-            </Link>
+            <Link className="w-auto px-2">{product?.category?.name} </Link>
             {">"}
             {/* <Link className="w-auto px-2" to="/subcategory">
               {subcategory?.name}{" "}

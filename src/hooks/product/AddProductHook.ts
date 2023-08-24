@@ -30,10 +30,10 @@ const AddProductHook = () => {
   const [pending, setPending] = useState(true);
 
   const [subCatID, setSubCatID] = useState([]);
-  const [seletedSubID, setSeletedSubID] = useState([]);
+  const [selectedSubID, setSelectedSubID] = useState([]);
   const [options, setOptions] = useState([]);
-  const onSelect = (selectedList) => setSeletedSubID(selectedList);
-  const onRemove = (selectedList) => setSeletedSubID(selectedList);
+  const onSelect = (selectedList) => setSelectedSubID(selectedList);
+  const onRemove = (selectedList) => setSelectedSubID(selectedList);
 
   const onChangeTitle = (e) => setTitle(e.target.value);
   const onChangeDesc = (e) => setDesc(e.target.value);
@@ -88,7 +88,7 @@ const AddProductHook = () => {
     formData.append("priceAfterDiscount", priceAfterDiscount);
     formData.append("brand", brand);
     formData.append("category", cat);
-    seletedSubID.map((item) => formData.append("subcategory", item._id));
+    selectedSubID.map((item) => formData.append("subcategory", item._id));
     colors.map((color) => formData.append("availableColors", color));
 
     setPending(true);
