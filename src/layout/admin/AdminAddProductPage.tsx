@@ -17,7 +17,7 @@ const AddProductPage = () => {
     onChangeDesc,
     price,
     onChangePrice,
-    priceAfter,
+    priceAfterDiscount,
     onChangePriceAfter,
     qty,
     onChangeQty,
@@ -90,7 +90,7 @@ const AddProductPage = () => {
               <Form.Control
                 type="number"
                 placeholder="أدخل السعر بعد الخصم المنتج هنا..."
-                value={priceAfter}
+                value={priceAfterDiscount}
                 onChange={onChangePriceAfter}
                 className="text-end"
               />

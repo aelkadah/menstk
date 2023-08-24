@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from "../helpers/getData";
-import { insertData } from "../helpers/insertData";
+import { insertData, insertDataToken } from "../helpers/insertData";
 
 import notify from "../helpers/notify";
 
@@ -42,7 +42,7 @@ export const createSubCategory = createAsyncThunk(
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await insertData("/api/v1/subcategories", data);
+      const res = await insertDataToken("/api/v1/subcategories", data);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)

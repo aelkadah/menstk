@@ -23,7 +23,7 @@ const AddProductHook = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [price, setPrice] = useState(0);
-  const [priceAfter, setPriceAfter] = useState(0);
+  const [priceAfterDiscount, setPriceAfterDiscount] = useState(0);
   const [qty, setQty] = useState(0);
   const [cat, setCat] = useState("");
   const [brand, setBrand] = useState("");
@@ -38,7 +38,7 @@ const AddProductHook = () => {
   const onChangeTitle = (e) => setTitle(e.target.value);
   const onChangeDesc = (e) => setDesc(e.target.value);
   const onChangePrice = (e) => setPrice(e.target.value);
-  const onChangePriceAfter = (e) => setPriceAfter(e.target.value);
+  const onChangePriceAfter = (e) => setPriceAfterDiscount(e.target.value);
   const onChangeQty = (e) => setQty(e.target.value);
   const onChangeCat = (e) => setCat(e.target.value);
 
@@ -85,6 +85,7 @@ const AddProductHook = () => {
     formData.append("description", desc);
     formData.append("quantity", qty);
     formData.append("price", price);
+    formData.append("priceAfterDiscount", priceAfterDiscount);
     formData.append("brand", brand);
     formData.append("category", cat);
     seletedSubID.map((item) => formData.append("subcategory", item._id));
@@ -109,7 +110,7 @@ const AddProductHook = () => {
     onChangeDesc,
     price,
     onChangePrice,
-    priceAfter,
+    priceAfterDiscount,
     onChangePriceAfter,
     qty,
     onChangeQty,
