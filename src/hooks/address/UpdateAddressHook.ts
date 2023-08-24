@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loggedUser } from "./../../features/authSlice";
-import { updateAddress } from "./../../features/addressSlice";
+import { getAllAddresses, updateAddress } from "./../../features/addressSlice";
 import notify from "../../helpers/notify";
 
 const UpdateAddressHook = (address) => {
@@ -53,11 +52,11 @@ const UpdateAddressHook = (address) => {
       updateAddress([address?._id, { alias, details, phone, city, postalCode }])
     );
     setPending(false);
+    dispatch(getAllAddresses());
   };
 
   useEffect(() => {
     if (!pending && !loading && !error) {
-      dispatch(loggedUser());
       setAlias("");
       setCity("");
       setDetails("");

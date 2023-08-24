@@ -125,9 +125,7 @@ const UserAddressCard = ({ index, address }) => {
           <Button variant="secondary" onClick={handleCloseEdit}>
             إلغاء
           </Button>
-          <Button onClick={handleUpdate} disabled>
-            حفظ التعديلات
-          </Button>
+          <Button onClick={handleUpdate}>حفظ التعديلات</Button>
         </Modal.Footer>
       </Modal>
 

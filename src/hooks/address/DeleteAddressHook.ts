@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loggedUser } from "./../../features/authSlice";
-import { deleteAddress } from "../../features/addressSlice";
+import { deleteAddress, getAllAddresses } from "../../features/addressSlice";
 
 const DeleteAddressHook = (address) => {
   const dispatch = useDispatch();
@@ -21,13 +20,12 @@ const DeleteAddressHook = (address) => {
     setPending(true);
     await dispatch(deleteAddress(address?._id));
     setPending(false);
+
+    dispatch(getAllAddresses());
   };
 
   useEffect(() => {
-    if (!pending && !loading && !error) {
-      dispatch(loggedUser());
-      handleCloseDelete();
-    }
+    if (!pending && !loading && !error) handleCloseDelete();
   }, [pending]);
 
   return [showDelete, handleShowDelete, handleCloseDelete, handleDelete];

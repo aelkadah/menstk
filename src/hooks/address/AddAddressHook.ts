@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addAddress } from "../../features/addressSlice";
-import { loggedUser } from "./../../features/authSlice";
+import { addAddress, getAllAddresses } from "../../features/addressSlice";
 import notify from "../../helpers/notify";
 
 const AddAddressHook = () => {
@@ -45,7 +44,7 @@ const AddAddressHook = () => {
 
   useEffect(() => {
     if (!pending && !loading && !error) {
-      dispatch(loggedUser());
+      dispatch(getAllAddresses());
       setAlias("");
       setCity("");
       setDetails("");
