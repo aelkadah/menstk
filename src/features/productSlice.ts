@@ -43,7 +43,6 @@ export const createProduct = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await insertDataWithImage("/api/v1/products", formData);
-      console.log(res);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
