@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createSubCategory } from "../../features/subcategorySlice";
-import { getAllCategories } from "../../features/categorySlice";
+import { useDispatch } from "react-redux";
 import notify from "../../helpers/notify";
+import {
+  createSubCategory,
+  getSubsOfCat,
+} from "../../features/subcategorySlice";
 
-const AddSubCategoryHook = () => {
+const AddSubCategoryHook = (id) => {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getAllCategories([100]));
-  }, []);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -17,43 +15,28 @@ const AddSubCategoryHook = () => {
 
   const [pending, setPending] = useState(true);
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
 
   const onChangeName = (e) => setName(e.target.value);
-  const onChangeCategory = (e) => setCategory(e.target.value);
-
-  const categories = useSelector((state) => state.category.allCategories.data);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name == "" || category == "" || category == "0")
-      return notify("من فضلك أكمل البيانات", "warn");
+    if (name == "") return notify("من فضلك أكمل البيانات", "warn");
 
     setPending(true);
-    await dispatch(createSubCategory({ name, category }));
+    await dispatch(createSubCategory({ name, category: id }));
     setPending(false);
   };
 
   useEffect(() => {
     if (!pending) {
-      //   dispatch(getAllSubCategories());
+      dispatch(getSubsOfCat(id));
+      setPending(true);
       handleClose();
       setName("");
-      setCategory("");
     }
   }, [pending]);
 
-  return [
-    show,
-    handleShow,
-    handleClose,
-    name,
-    onChangeName,
-    category,
-    onChangeCategory,
-    categories,
-    handleSubmit,
-  ];
+  return [show, handleShow, handleClose, name, onChangeName, handleSubmit];
 };
 
 export default AddSubCategoryHook;

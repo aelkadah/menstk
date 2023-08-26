@@ -1,55 +1,97 @@
-import { useEffect, useState } from "react";
-import { Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { getSubsOfCat } from "../../../features/subcategorySlice";
-import AdminSubsContainer from "./AdminSubsContainer";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Modal, Button, Form, Col } from "react-bootstrap";
+import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import DeleteSubCategoryHook from "../../../hooks/subcategory/DeleteSubCategoryHook";
 
-const AdminSubCategoryCard = ({ category }) => {
-  let id = "";
-  if (category?._id) id = category?._id;
+const AdminSubCategoryCard = ({ subcategory }) => {
+  const [showEdit, setShowEdit] = useState(false);
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = () => setShowEdit(true);
 
-  // const [pending, setPending] = useState(true);
-
-  // const dispatch = useDispatch();
-
-  // const run = async () => {
-  //   setPending(true);
-  //   await dispatch(getSubsOfCat(id));
-  //   setPending(false);
-  // };
-
-  // useEffect(() => {
-  //   if (id != "") {
-  //     // console.log(id);
-
-  //     run();
-  //   }
-  // }, [id]);
-
-  // useEffect(() => {
-  //   if (!pending) console.log(subs);
-  // }, [pending]);
-
-  // const loading = useSelector((state) => state.subcategory.loading);
-  // const error = useSelector((state) => state.subcategory.error);
-
-  // const subs = useSelector((state) => state.subcategory.subs);
+  const [showDelete, handleShowDelete, handleCloseDelete, handleDelete] =
+    DeleteSubCategoryHook(subcategory);
 
   return (
-    <Row className="bg-white mb-3 py-3 px-2 border border-1">
-      <h5 className="fw-bold mb-3 px-2">{category?.name}</h5>
-      <h5 className="fw-bold mb-3 px-2">{category?._id}</h5>
+    <Col xs={12} sm={6}>
+      <div className="d-flex justify-content-between align-items-center mb-2">
+        <h6 className="w-auto m-0">{subcategory?.name}</h6>
+        <div className="w-auto d-flex align-items-center gap-2">
+          <Link onClick={handleShowEdit} className="text-secondary">
+            <PencilSquareIcon width={"24px"} />
+          </Link>
+          <Link onClick={handleShowDelete} className="text-danger">
+            <TrashIcon width={"24px"} />
+          </Link>
+        </div>
 
-      <AdminSubsContainer id={id} />
+        <Modal
+          show={showEdit}
+          onHide={handleCloseEdit}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header
+            className="d-flex justify-content-between w-100 "
+            closeButton
+          >
+            <Modal.Title className="flex-grow-1">
+              تعديل التصنيف الفرعي
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-3">
+            <Form.Group className="mb-3">
+              <Form.Label>التصنيف الرئيسي</Form.Label>
+              <Form.Select disabled>
+                <option value="1">التصنيف الرئيسي</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>عنوان التصنيف الفرعي</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="أدخل عنوان التصنيف الفرعي هنا..."
+                value={"عنوان التصنيف الفرعي"}
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleCloseEdit}>
+              إلغاء
+            </Button>
+            <Button variant="primary">حفظ التعديلات</Button>
+          </Modal.Footer>
+        </Modal>
 
-      {/* {category?.subcategories?.map((sub, index) => {
-        return (
-          <Col xs={12} sm={6} key={index}>
-            <AdminSubCatCol sub={sub} />
-          </Col>
-        );
-      })} */}
-    </Row>
+        <Modal
+          show={showDelete}
+          onHide={handleCloseDelete}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header
+            className="d-flex justify-content-between w-100 "
+            closeButton
+          >
+            <Modal.Title className="flex-grow-1">
+              حذف التصنيف الفرعي
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="py-3">
+            <h6 className="m-0">هل انت متأكد من حذف التصنيف الفرعي؟</h6>
+            <span className="text-danger">{subcategory?.name}</span>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseDelete}>
+              إلغاء
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              تأكيد الحذف
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </Col>
   );
 };
 

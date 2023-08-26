@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Modal, Form, Button } from "react-bootstrap";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import DeleteCategoryHook from "../../../hooks/category/DeleteCategoryHook";
@@ -19,9 +20,11 @@ const AdminCategoryCard = ({ category }) => {
 
   return (
     <div className="categoryCard m-0 p-0 mb-4">
-      <div className="catImage">
-        <img src={category?.image} alt="..." />
-      </div>
+      <Link to={`/admin/categories/${category?._id}`}>
+        <div className="catImage">
+          <img src={category?.image} alt="..." />
+        </div>
+      </Link>
       <h5 className="text-center w-75 py-1">{category?.name}</h5>
       <div className="d-flex justify-content-between gap-2">
         <Button

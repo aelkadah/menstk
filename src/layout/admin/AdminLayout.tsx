@@ -21,7 +21,6 @@ import {
   AdjustmentsHorizontalIcon,
   ReceiptPercentIcon,
   TagIcon,
-  SwatchIcon,
   SparklesIcon,
   CubeIcon,
 } from "@heroicons/react/24/outline";
@@ -155,12 +154,6 @@ const AdminLayout = () => {
                     <span className={`d-${display}`}>التصنيفات</span>
                   </li>
                 </NavLink>
-                <NavLink to="/admin/subcategories">
-                  <li>
-                    <SwatchIcon width={"20px"} />
-                    <span className={`d-${display}`}>التصنيفات الفرعية</span>
-                  </li>
-                </NavLink>
                 <NavLink to="/admin/brands">
                   <li>
                     <SparklesIcon width={"20px"} />
@@ -213,12 +206,6 @@ const AdminLayout = () => {
               <li>
                 <TagIcon width={"20px"} />
                 <span className={`d-${display}`}>التصنيفات</span>
-              </li>
-            </NavLink>
-            <NavLink to="/admin/subcategories">
-              <li>
-                <SwatchIcon width={"20px"} />
-                <span className={`d-${display}`}>التصنيفات الفرعية</span>
               </li>
             </NavLink>
             <NavLink to="/admin/brands">

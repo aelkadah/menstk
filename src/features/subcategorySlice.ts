@@ -3,6 +3,7 @@ import { getData } from "../helpers/getData";
 import { insertData, insertDataToken } from "../helpers/insertData";
 
 import notify from "../helpers/notify";
+import { deleteData } from "../helpers/deleteData";
 
 const initialState = {
   loading: false,
@@ -52,20 +53,20 @@ export const createSubCategory = createAsyncThunk(
   }
 );
 
-// export const deleteCategory = createAsyncThunk(
-//   "category/delete",
-//   async (id, thunkAPI) => {
-//     const { rejectWithValue } = thunkAPI;
-//     try {
-//       const res = await deleteData(`/api/v1/categories/${id}`);
-//       return res.data;
-//     } catch (err) {
-//       if (err.response?.data?.message)
-//         return rejectWithValue(err.response.data.message);
-//       else return rejectWithValue(err.message);
-//     }
-//   }
-// );
+export const deleteSubCategory = createAsyncThunk(
+  "subcategory/delete",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await deleteData(`/api/v1/subcategories/${id}`);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
 
 // export const updateCategory = createAsyncThunk(
 //   "category/update",
@@ -134,20 +135,21 @@ export const subcategorySlice = createSlice({
       return notify("حدث خطأ أثناء إضافة التصنيف الفرعي", "error");
     });
 
-    // builder.addCase(deleteCategory.pending, (state, action) => {
-    //   state.loading = true;
-    //   state.error = null;
-    // });
-    // builder.addCase(deleteCategory.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.error = null;
-    //   return notify("تم حذف التصنيف بنجاح", "success");
-    // });
-    // builder.addCase(deleteCategory.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action?.error?.message;
-    //   return notify("حدث خطأ أثناء حذف التصنيف", "error");
-    // });
+    builder.addCase(deleteSubCategory.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(deleteSubCategory.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم حذف التصنيف الفرعي بنجاح", "success");
+    });
+    builder.addCase(deleteSubCategory.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      return notify("حدث خطأ أثناء حذف التصنيف الفرعي", "error");
+    });
+
     // builder.addCase(updateCategory.pending, (state, action) => {
     //   state.loading = true;
     //   state.error = null;

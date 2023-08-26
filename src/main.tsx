@@ -32,7 +32,7 @@ import {
   AdminProductsPage,
   AddProductPage,
   AdminCategoriesPage,
-  AdminSubCategoriesPage,
+  AdminOneCategoryPage,
   AdminBrandsPage,
   AdminCouponsPage,
 } from "./layout";
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
       { path: "products", element: <AdminProductsPage /> },
       { path: "products/add", element: <AddProductPage /> },
       { path: "categories", element: <AdminCategoriesPage /> },
-      { path: "subcategories", element: <AdminSubCategoriesPage /> },
+      { path: "categories/:id", element: <AdminOneCategoryPage /> },
       { path: "brands", element: <AdminBrandsPage /> },
       { path: "coupons", element: <AdminCouponsPage /> },
     ],

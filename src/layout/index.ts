@@ -19,7 +19,7 @@ export { default as AdminOrderDetailsPage } from "./admin/AdminOrderDetailsPage"
 export { default as AdminProductsPage } from "./admin/AdminProductsPage";
 export { default as AddProductPage } from "./admin/AdminAddProductPage";
 export { default as AdminCategoriesPage } from "./admin/AdminCategoriesPage";
-export { default as AdminSubCategoriesPage } from "./admin/AdminSubCategoriesPage";
+export { default as AdminOneCategoryPage } from "./admin/AdminOneCategoryPage";
 export { default as AdminBrandsPage } from "./admin/AdminBrandsPage";
 export { default as AdminCouponsPage } from "./admin/AdminCouponsPage";
 
