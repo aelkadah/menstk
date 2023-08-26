@@ -1,13 +1,18 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Modal, Button, Form, Col } from "react-bootstrap";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import DeleteSubCategoryHook from "../../../hooks/subcategory/DeleteSubCategoryHook";
+import UpdateSubCategoryHook from "../../../hooks/subcategory/UpdateSubCategoryHook";
 
 const AdminSubCategoryCard = ({ subcategory }) => {
-  const [showEdit, setShowEdit] = useState(false);
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
+  const [
+    showEdit,
+    handleShowEdit,
+    handleCloseEdit,
+    name,
+    onChangeName,
+    handleUpdate,
+  ] = UpdateSubCategoryHook(subcategory);
 
   const [showDelete, handleShowDelete, handleCloseDelete, handleDelete] =
     DeleteSubCategoryHook(subcategory);
@@ -40,18 +45,13 @@ const AdminSubCategoryCard = ({ subcategory }) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body className="py-3">
-            <Form.Group className="mb-3">
-              <Form.Label>التصنيف الرئيسي</Form.Label>
-              <Form.Select disabled>
-                <option value="1">التصنيف الرئيسي</option>
-              </Form.Select>
-            </Form.Group>
             <Form.Group>
               <Form.Label>عنوان التصنيف الفرعي</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="أدخل عنوان التصنيف الفرعي هنا..."
-                value={"عنوان التصنيف الفرعي"}
+                value={name}
+                onChange={onChangeName}
               />
             </Form.Group>
           </Modal.Body>
@@ -59,7 +59,9 @@ const AdminSubCategoryCard = ({ subcategory }) => {
             <Button variant="danger" onClick={handleCloseEdit}>
               إلغاء
             </Button>
-            <Button variant="primary">حفظ التعديلات</Button>
+            <Button variant="primary" onClick={handleUpdate}>
+              حفظ التعديلات
+            </Button>
           </Modal.Footer>
         </Modal>
 

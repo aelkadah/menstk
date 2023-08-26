@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from "../helpers/getData";
-import { insertData, insertDataToken } from "../helpers/insertData";
-
-import notify from "../helpers/notify";
+import { insertDataToken } from "../helpers/insertData";
+import { updateData } from "../helpers/updateData";
 import { deleteData } from "../helpers/deleteData";
+import notify from "../helpers/notify";
 
 const initialState = {
   loading: false,
@@ -68,20 +68,20 @@ export const deleteSubCategory = createAsyncThunk(
   }
 );
 
-// export const updateCategory = createAsyncThunk(
-//   "category/update",
-//   async ([id, formData], thunkAPI) => {
-//     const { rejectWithValue } = thunkAPI;
-//     try {
-//       const res = await updateData(`/api/v1/categories/${id}`, formData);
-//       return res.data;
-//     } catch (err) {
-//       if (err.response?.data?.message)
-//         return rejectWithValue(err.response.data.message);
-//       else return rejectWithValue(err.message);
-//     }
-//   }
-// );
+export const updateSubCategory = createAsyncThunk(
+  "subcategory/update",
+  async ([id, data], thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await updateData(`/api/v1/subcategories/${id}`, data);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
 
 export const subcategorySlice = createSlice({
   name: "subcategory",
@@ -150,20 +150,20 @@ export const subcategorySlice = createSlice({
       return notify("حدث خطأ أثناء حذف التصنيف الفرعي", "error");
     });
 
-    // builder.addCase(updateCategory.pending, (state, action) => {
-    //   state.loading = true;
-    //   state.error = null;
-    // });
-    // builder.addCase(updateCategory.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.error = null;
-    //   return notify("تم تعديل التصنيف بنجاح", "success");
-    // });
-    // builder.addCase(updateCategory.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.error = action?.error?.message;
-    //   return notify("حدث خطأ أثناء تعديل التصنيف", "error");
-    // });
+    builder.addCase(updateSubCategory.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(updateSubCategory.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم تعديل التصنيف الفرعي بنجاح", "success");
+    });
+    builder.addCase(updateSubCategory.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      return notify("حدث خطأ أثناء تعديل التصنيف الفرعي", "error");
+    });
   },
 });
 
