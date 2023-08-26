@@ -19,21 +19,21 @@ const AddProductHook = () => {
   const categories = useSelector((state) => state.category.allCategories.data);
   const brands = useSelector((state) => state.brand.allBrands.data);
 
-  const [images, setImages] = useState([]);
+  const [pending, setPending] = useState(true);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [images, setImages] = useState([]);
   const [price, setPrice] = useState(0);
   const [priceAfterDiscount, setPriceAfterDiscount] = useState(0);
   const [qty, setQty] = useState(0);
-  const [cat, setCat] = useState("");
   const [brand, setBrand] = useState("");
-  const [pending, setPending] = useState(true);
+  const [cat, setCat] = useState("");
 
-  const [subCatID, setSubCatID] = useState([]);
-  const [selectedSubID, setSelectedSubID] = useState([]);
   const [options, setOptions] = useState([]);
-  const onSelect = (selectedList) => setSelectedSubID(selectedList);
-  const onRemove = (selectedList) => setSelectedSubID(selectedList);
+  const [selectedSubID, setSelectedSubID] = useState([]);
+
+  const onSelect = async (selectedList) => setSelectedSubID(selectedList);
+  const onRemove = async (selectedList) => setSelectedSubID(selectedList);
 
   const onChangeTitle = (e) => setTitle(e.target.value);
   const onChangeDesc = (e) => setDesc(e.target.value);
@@ -79,20 +79,21 @@ const AddProductHook = () => {
     else if (cat == "") return notify("من فضلك إختر تصنيف رئيسي", "warn");
 
     const formData = new FormData();
-    formData.append("imageCover", images[0]);
-    images.slice(1).map((item) => formData.append("images", item));
     formData.append("title", title);
     formData.append("description", desc);
+    formData.append("imageCover", images[0]);
+    images.slice(1).map((item) => formData.append("images", item));
+
     formData.append("quantity", qty);
     formData.append("price", price);
     formData.append("priceAfterDiscount", priceAfterDiscount);
     formData.append("brand", brand);
     formData.append("category", cat);
-    selectedSubID.map((item) => formData.append("subcategory", item._id));
-    colors.map((color) => formData.append("availableColors", color));
+    selectedSubID.map((item) => formData.append("subcategories", item._id));
+    colors.map((color) => formData.append("colors", color));
 
     setPending(true);
-    dispatch(createProduct(formData));
+    await dispatch(createProduct(formData));
     setPending(false);
   };
 

@@ -14,12 +14,12 @@ const AllProductsHook = () => {
   );
 
   useEffect(() => {
-    dispatch(getAllProducts([2]));
+    dispatch(getAllProducts([10]));
   }, []);
 
   let pageCount = 0;
   if (paginationResult) pageCount = paginationResult.numberOfPages;
-  const getPage = (page) => dispatch(getAllProducts([2, page]));
+  const getPage = (page) => dispatch(getAllProducts([10, page]));
 
   return [loading, results, products, pageCount, getPage];
 };
