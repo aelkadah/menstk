@@ -13,7 +13,7 @@ const AdminProductsContainer = () => {
         products?.length >= 1 ? (
           products?.map((item, index) => {
             return (
-              <Col xs={12} sm={6} md={5} xl={3} key={index}>
+              <Col xs={12} sm={6} md={4} xl={3} key={index}>
                 <AdminProductCard product={item} />
               </Col>
             );
