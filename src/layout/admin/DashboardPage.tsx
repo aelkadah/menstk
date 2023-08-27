@@ -5,18 +5,23 @@ import {
   ReceiptPercentIcon,
   ShoppingCartIcon,
   SparklesIcon,
-  SwatchIcon,
   TagIcon,
 } from "@heroicons/react/24/outline";
+import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
+import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
+import AllProductsHook from "../../hooks/product/AllProductsHook";
 
 const DashboardPage = () => {
+  const [catResults] = AllCategoriesHook();
+  const [brandResults] = AllBrandsHook();
+  const [productResults] = AllProductsHook();
+
   const sections = [
-    { title: "الطلبيات", link: "/admin/orders", count: 51 },
-    { title: "المنتجات", link: "/admin/products", count: 154 },
-    { title: "التصنيفات", link: "/admin/categories", count: 36 },
-    { title: "التصنيفات الفرعية", link: "/admin/subcategories", count: 120 },
-    { title: "الماركات", link: "/admin/brands", count: 40 },
-    { title: "الخصومات", link: "/admin/coupons", count: 9 },
+    { title: "الطلبيات", link: "/admin/orders", count: 51 || 0 },
+    { title: "المنتجات", link: "/admin/products", count: productResults || 0 },
+    { title: "التصنيفات", link: "/admin/categories", count: catResults || 0 },
+    { title: "الماركات", link: "/admin/brands", count: brandResults || 0 },
+    { title: "الخصومات", link: "/admin/coupons", count: 9 || 0 },
   ];
 
   return (
@@ -40,9 +45,6 @@ const DashboardPage = () => {
                   ) : null}
                   {item?.title == "التصنيفات" ? (
                     <TagIcon width={"30px"} />
-                  ) : null}
-                  {item?.title == "التصنيفات الفرعية" ? (
-                    <SwatchIcon width={"30px"} />
                   ) : null}
                   {item?.title == "الماركات" ? (
                     <SparklesIcon width={"30px"} />

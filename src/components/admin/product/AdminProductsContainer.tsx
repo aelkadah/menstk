@@ -4,7 +4,8 @@ import AdminProductCard from "./AdminProductCard";
 import AllProductsHook from "../../../hooks/product/AllProductsHook";
 
 const AdminProductsContainer = () => {
-  const [loading, results, products, pageCount, getPage] = AllProductsHook();
+  const [productResults, products, pageCount, getPage, loading] =
+    AllProductsHook();
 
   return (
     <Row className="justify-content-center py-4">

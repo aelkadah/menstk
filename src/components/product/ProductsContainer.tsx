@@ -4,7 +4,8 @@ import ProductCard from "./ProductCard";
 import AllProductsHook from "../../hooks/product/AllProductsHook";
 
 const ProductsContainer = () => {
-  const [loading, results, products, pageCount, getPage] = AllProductsHook();
+  const [productResults, products, pageCount, getPage, loading] =
+    AllProductsHook();
 
   return (
     <Row className="justify-content-center py-4">

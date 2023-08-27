@@ -6,7 +6,9 @@ const AllCategoriesHook = (limit) => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.category.loading);
-  const results = useSelector((state) => state.category.allCategories.results);
+  const catResults = useSelector(
+    (state) => state.category.allCategories.results
+  );
   const categories = useSelector((state) => state.category.allCategories.data);
 
   const paginationResult = useSelector(
@@ -21,7 +23,7 @@ const AllCategoriesHook = (limit) => {
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllCategories([limit, page]));
 
-  return [loading, results, categories, pageCount, getPage];
+  return [catResults, loading, categories, pageCount, getPage];
 };
 
 export default AllCategoriesHook;

@@ -4,7 +4,7 @@ import AdminCategoryCard from "./AdminCategoryCard";
 import AllCategoriesHook from "../../../hooks/category/AllCategoriesHook";
 
 const AdminCategoriesContainer = () => {
-  const [loading, results, categories, pageCount, getPage] =
+  const [catResults, loading, categories, pageCount, getPage] =
     AllCategoriesHook();
 
   return (

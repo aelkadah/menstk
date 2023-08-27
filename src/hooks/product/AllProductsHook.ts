@@ -6,7 +6,9 @@ const AllProductsHook = () => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.product.loading);
-  const results = useSelector((state) => state.product.allProducts.results);
+  const productResults = useSelector(
+    (state) => state.product.allProducts.results
+  );
   const products = useSelector((state) => state.product.allProducts.data);
 
   const paginationResult = useSelector(
@@ -21,7 +23,7 @@ const AllProductsHook = () => {
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllProducts([10, page]));
 
-  return [loading, results, products, pageCount, getPage];
+  return [productResults, products, pageCount, getPage, loading];
 };
 
 export default AllProductsHook;

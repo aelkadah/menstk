@@ -6,7 +6,7 @@ const AllBrandsHook = (limit) => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.brand.loading);
-  const results = useSelector((state) => state.brand.allBrands.results);
+  const brandResults = useSelector((state) => state.brand.allBrands.results);
   const brands = useSelector((state) => state.brand.allBrands.data);
 
   const paginationResult = useSelector(
@@ -22,7 +22,7 @@ const AllBrandsHook = (limit) => {
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllBrands([limit, page]));
 
-  return [loading, results, brands, pageCount, getPage];
+  return [brandResults, loading, brands, pageCount, getPage];
 };
 
 export default AllBrandsHook;

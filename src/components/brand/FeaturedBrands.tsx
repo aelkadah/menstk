@@ -7,7 +7,8 @@ import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
 
 const FeaturedCategories = () => {
   let limit = 10;
-  const [loading, results, brands, pageCount, getPage] = AllBrandsHook(limit);
+  const [brandResults, loading, brands, pageCount, getPage] =
+    AllBrandsHook(limit);
 
   const responsive = {
     superLargeDesktop: {
