@@ -6,6 +6,7 @@ import productReducer from "./features/productSlice";
 import authReducer from "./features/authSlice";
 import userReducer from "./features/userSlice";
 import addressReducer from "./features/addressSlice";
+import wishlistReducer from "./features/wishlistSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     auth: authReducer,
     user: userReducer,
     address: addressReducer,
+    wishlist: wishlistReducer,
   },
   devTools: true,
 });
