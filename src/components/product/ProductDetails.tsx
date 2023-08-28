@@ -64,7 +64,7 @@ const ProductDetails = ({ product }) => {
             <h6 className="text-black-50 mb-0 pt-1">
               بعد:{" "}
               <span className="fw-bold fs-4 text-black">
-                {product?.price}.99 جنيه
+                {product?.priceAfterDiscount}.99 جنيه
               </span>{" "}
               <span style={{ fontSize: "14px" }}>
                 ( يشمل ضريبة القيمة المضافة )
@@ -74,12 +74,39 @@ const ProductDetails = ({ product }) => {
             <h6 className="text-black-50 mb-0 pt-2">
               وفّرت:{" "}
               <span className="fw-bold text-black" style={{ fontSize: "14px" }}>
-                {product?.price}.00 جنيه
+                {product?.price - product?.priceAfterDiscount}.00 جنيه
               </span>
               <Badge bg="success" className="ms-0 me-2 px-2">
-                خصم 22%
+                خصم{" "}
+                {Math.round(
+                  (100 * product?.price) / product?.priceAfterDiscount - 100
+                )}
+                %
               </Badge>
             </h6>
+          </Row>
+
+          <Row className="d-flex align-items-center my-3">
+            <h6 className="fw-bold w-auto m-0">الألوان المتاحة:</h6>
+            {product?.colors
+              ? product?.colors.map((color, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="cursor-pointer rounded-circle me-1"
+                      style={{
+                        backgroundColor: color,
+                        height: "30px",
+                        width: "30px",
+                        border: "2px solid black",
+                        // border:
+                        //   indexColor === index ? "2px solid black" : "none",
+                      }}
+                      // onClick={() => colorClick(index, color)}
+                    ></div>
+                  );
+                })
+              : null}
           </Row>
 
           <Row className="mt-3 mb-4">
@@ -94,6 +121,7 @@ const ProductDetails = ({ product }) => {
                   ))}
                 </Form.Select>
               </div>
+
               <div className="w-auto flex-grow-1">
                 <h6 className="text-danger mb-2 px-1">
                   الكمية المتبقية ( {product?.quantity} )
@@ -109,7 +137,6 @@ const ProductDetails = ({ product }) => {
           <Row className=" border-top py-4">
             <h6 className="fw-bold mb-1">الوصف:</h6>
             <p className="text-secondary m-0">{product?.description}</p>
-            <p className="text-secondary">{product?.description}</p>
           </Row>
         </Col>
 

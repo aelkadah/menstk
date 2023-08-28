@@ -5,10 +5,12 @@ import ProductDetails from "../../components/product/ProductDetails";
 import ProductReviews from "../../components/product/ProductReviews";
 import OneProductHook from "../../hooks/product/OneProductHook";
 import { LoadingSpinner } from "../../components";
+import OneSubCategoryHook from "../../hooks/subcategory/OneSubCategoryHook";
 
 const OneProductPage = () => {
   const { id } = useParams();
   const [loading, product] = OneProductHook(id);
+  const [subcategory] = OneSubCategoryHook(product?.subcategories[0]);
 
   if (product) console.log(product);
 
@@ -23,9 +25,12 @@ const OneProductPage = () => {
             {">"}
             <Link className="w-auto px-2">{product?.category?.name} </Link>
             {">"}
-            {/* <Link className="w-auto px-2" to="/subcategory">
+            <Link
+              className="w-auto px-2"
+              to={`/subcategory/${subcategory?._id}`}
+            >
               {subcategory?.name}{" "}
-            </Link> */}
+            </Link>
             {">"}
             <p className="w-auto m-0 px-2 fw-light">{product?.title}</p>
           </Row>
