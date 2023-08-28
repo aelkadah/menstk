@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../features/productSlice";
 
-const AllProductsHook = () => {
+const AllProductsHook = (limit) => {
   const dispatch = useDispatch();
 
   const loading = useSelector((state) => state.product.loading);
@@ -16,12 +16,12 @@ const AllProductsHook = () => {
   );
 
   useEffect(() => {
-    dispatch(getAllProducts([10]));
+    dispatch(getAllProducts([limit]));
   }, []);
 
   let pageCount = 0;
   if (paginationResult) pageCount = paginationResult.numberOfPages;
-  const getPage = (page) => dispatch(getAllProducts([10, page]));
+  const getPage = (page) => dispatch(getAllProducts([limit, page]));
 
   return [productResults, products, pageCount, getPage, loading];
 };
