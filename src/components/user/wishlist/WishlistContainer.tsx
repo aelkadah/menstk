@@ -4,7 +4,7 @@ import WishlistCard from "./WishlistCard";
 import WishlistHook from "../../../hooks/wishlist/WishlistHook";
 
 const WishlistContainer = () => {
-  const [loading, wishlist] = WishlistHook();
+  const [wishlist, loading] = WishlistHook();
 
   return (
     <Row className="justify-content-center">

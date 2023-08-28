@@ -1,13 +1,33 @@
 import { Link } from "react-router-dom";
 import { HeartIcon, PlusIcon } from "@heroicons/react/24/outline";
+import AddWishlistHook from "../../hooks/wishlist/AddWishlistHook";
+import RemoveWishlistHook from "../../hooks/wishlist/RemoveWishlistHook";
 
 const ProductCard = ({ product }) => {
+  const [handleAddWishlist] = AddWishlistHook(product?._id);
+  const [handleRemoveWishlist] = RemoveWishlistHook(product?._id);
+
   return (
-    <Link to={`/products/${product?._id}`}>
-      <div className="productCard rounded-2 mb-5">
-        <div className="favBtn rounded-bottom-2 pt-3 pb-2 px-1">
+    <div className="productCard rounded-2 mb-5">
+      {JSON.parse(localStorage.getItem("userInfo"))?.wishlist?.includes(
+        product?._id
+      ) ? (
+        <div
+          className="favBtn rounded-bottom-2 pt-3 pb-2 px-1"
+          onClick={handleRemoveWishlist}
+        >
+          <HeartIcon width="25px" color="red" fill={`red`} />
+        </div>
+      ) : (
+        <div
+          className="favBtn rounded-bottom-2 pt-3 pb-2 px-1"
+          onClick={handleAddWishlist}
+        >
           <HeartIcon width="25px" />
         </div>
+      )}
+
+      <Link to={`/products/${product?._id}`}>
         <div className="prodImg">
           <img src={product?.imageCover} alt="iphone" />
         </div>
@@ -33,8 +53,8 @@ const ProductCard = ({ product }) => {
         <div className="addBtn ">
           <PlusIcon width="20px" height="20px" />
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

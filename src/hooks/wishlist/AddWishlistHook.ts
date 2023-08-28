@@ -1,20 +1,20 @@
 import { useDispatch } from "react-redux";
-import { getUserWishlist, removeWishlist } from "../../features/wishlistSlice";
+import { addWishlist, getUserWishlist } from "../../features/wishlistSlice";
 import { loggedUser } from "../../features/authSlice";
 import { getAllProducts } from "../../features/productSlice";
 
-const RemoveWishlistHook = (id) => {
+const AddWishlistHook = (productId) => {
   const dispatch = useDispatch();
 
-  const handleRemoveWishlist = async (e) => {
+  const handleAddWishlist = async (e) => {
     e.persist();
-    await dispatch(removeWishlist(id));
+    await dispatch(addWishlist({ productId }));
     await dispatch(loggedUser());
     dispatch(getUserWishlist());
     dispatch(getAllProducts([10]));
   };
 
-  return [handleRemoveWishlist];
+  return [handleAddWishlist];
 };
 
-export default RemoveWishlistHook;
+export default AddWishlistHook;

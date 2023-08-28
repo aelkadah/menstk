@@ -3,13 +3,13 @@ import { PlusIcon, HeartIcon } from "@heroicons/react/24/outline";
 import RemoveWishlistHook from "../../../hooks/wishlist/RemoveWishlistHook";
 
 const WishlistCard = ({ product }) => {
-  const [handleRemove] = RemoveWishlistHook(product?._id);
+  const [handleRemoveWishlist] = RemoveWishlistHook(product?._id);
 
   return (
     <div className="productCard rounded-2 mb-5">
       <div
         className="favBtn rounded-bottom-2 pt-3 pb-2 px-1"
-        onClick={handleRemove}
+        onClick={handleRemoveWishlist}
       >
         <HeartIcon width="25px" color="red" fill={`red`} />
       </div>

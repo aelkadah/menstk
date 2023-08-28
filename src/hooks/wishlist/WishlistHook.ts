@@ -12,7 +12,7 @@ const WishlistHook = () => {
   const loading = useSelector((state) => state.wishlist.loading);
   const wishlist = useSelector((state) => state.wishlist.wishlist?.data);
 
-  return [loading, wishlist];
+  return [wishlist, loading];
 };
 
 export default WishlistHook;

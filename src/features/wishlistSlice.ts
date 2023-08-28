@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getDataTokenWithoutParams } from "../helpers/getData";
 import notify from "../helpers/notify";
 import { deleteData } from "../helpers/deleteData";
+import { insertDataToken } from "../helpers/insertData";
 
 const initialState = {
   loading: false,
@@ -15,6 +16,21 @@ export const getUserWishlist = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getDataTokenWithoutParams("/api/v1/wishlist");
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const addWishlist = createAsyncThunk(
+  "wishlist/add",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await insertDataToken(`/api/v1/wishlist/`, data);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
@@ -59,6 +75,22 @@ export const wishlistSlice = createSlice({
       state.error = action?.payload;
       console.log(action);
       return notify("حدث خطأ أثناء تحميل المنتجات المفضلة", "error");
+    });
+
+    builder.addCase(addWishlist.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(addWishlist.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تمت إضافة المنتج إلى المفضلة", "success");
+    });
+    builder.addCase(addWishlist.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء إضافة المنتج إلى المفضلة", "error");
     });
 
     builder.addCase(removeWishlist.pending, (state, action) => {
