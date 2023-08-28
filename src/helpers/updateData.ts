@@ -8,6 +8,11 @@ export const updateData = async (url, params) => {
   return res.data;
 };
 
+export const updateDataWithoutToken = async (url, params) => {
+  const res = await baseUrl.put(url, params);
+  return res.data;
+};
+
 export const updateDataWithImage = async (url, parmas) => {
   const config = {
     headers: {
