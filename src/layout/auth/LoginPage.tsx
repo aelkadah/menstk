@@ -33,10 +33,10 @@ const LoginPage = () => {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>كلمة المرور</Form.Label>
+              <Form.Label>كلمة السر</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="كلمة المرور"
+                placeholder="كلمة السر"
                 className="mb-1"
                 required
                 value={password}
@@ -53,8 +53,8 @@ const LoginPage = () => {
               تسجيل الدخول
             </Button>
             <Form.Label className="w-100 text-center my-3">
-              نسيت كلمة المرور؟
-              <Link to="/forget-password" className="text-danger mx-1">
+              نسيت كلمة السر؟
+              <Link to="/forgotpassword" className="text-danger mx-1">
                 إعادة تعيين
               </Link>
             </Form.Label>

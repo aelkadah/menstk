@@ -11,6 +11,7 @@ export { default as CheckoutPage } from "./CheckoutPage";
 
 export { default as LoginPage } from "./auth/LoginPage";
 export { default as RegisterPage } from "./auth/RegisterPage";
+export { default as ForgotPasswordPage } from "./auth/ForgotPasswordPage";
 
 export { default as AdminLayout } from "./admin/AdminLayout";
 export { default as DashboardPage } from "./admin/DashboardPage";

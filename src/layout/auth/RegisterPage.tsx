@@ -58,19 +58,19 @@ const RegisterPage = () => {
               />
             </Form.Group> */}
             <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>كلمة المرور</Form.Label>
+              <Form.Label>كلمة السر</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="كلمة المرور..."
+                placeholder="كلمة السر..."
                 value={password}
                 onChange={onChangePassword}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicPasswordConf">
-              <Form.Label>تأكيد كلمة المرور</Form.Label>
+              <Form.Label>تأكيد كلمة السر</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="تأكيد كلمة المرور..."
+                placeholder="تأكيد كلمة السر..."
                 value={passwordConfirm}
                 onChange={onChangePasswordConfirm}
               />
