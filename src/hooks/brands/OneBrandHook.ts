@@ -12,7 +12,7 @@ const OneBrandHook = (id) => {
   const brandLoading = useSelector((state) => state.brand.loading);
   const brand = useSelector((state) => state.brand.oneBrand.data);
 
-  return [brandLoading, brand];
+  return [brand, brandLoading];
 };
 
 export default OneBrandHook;

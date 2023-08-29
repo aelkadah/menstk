@@ -11,9 +11,19 @@ import {
   StarIcon,
 } from "@heroicons/react/24/solid";
 import OneBrandHook from "../../hooks/brands/OneBrandHook";
+import AddToCartHook from "../../hooks/cart/AddToCartHook";
 
 const ProductDetails = ({ product }) => {
-  const [brandLoading, brand] = OneBrandHook(product?.brand);
+  const [brand, brandLoading] = OneBrandHook(product?.brand);
+
+  const [
+    qty,
+    onChangeQty,
+    handleChooseColor,
+    indexColor,
+    handleAddToCart,
+    loading,
+  ] = AddToCartHook(product?._id);
 
   return (
     <Col xs={12} md={6} lg={8}>
@@ -98,11 +108,10 @@ const ProductDetails = ({ product }) => {
                         backgroundColor: color,
                         height: "30px",
                         width: "30px",
-                        border: "2px solid black",
-                        // border:
-                        //   indexColor === index ? "2px solid black" : "none",
+                        border:
+                          indexColor === index ? "2px solid black" : "none",
                       }}
-                      // onClick={() => colorClick(index, color)}
+                      onClick={() => handleChooseColor(index, color)}
                     ></div>
                   );
                 })
@@ -126,7 +135,10 @@ const ProductDetails = ({ product }) => {
                 <h6 className="text-danger mb-2 px-1">
                   الكمية المتبقية ( {product?.quantity} )
                 </h6>
-                <Button className="d-flex justify-content-center align-items-center w-100 fw-bold">
+                <Button
+                  className="d-flex justify-content-center align-items-center w-100 fw-bold"
+                  onClick={handleAddToCart}
+                >
                   <ShoppingCartIcon width="20px" className="ms-1 me-0" />
                   أضِف إلى عربة التسوق
                 </Button>

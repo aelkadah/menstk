@@ -12,7 +12,7 @@ const OneProductHook = (id) => {
   const loading = useSelector((state) => state.product.loading);
   const product = useSelector((state) => state.product.oneProduct.data);
 
-  return [loading, product];
+  return [product, loading];
 };
 
 export default OneProductHook;

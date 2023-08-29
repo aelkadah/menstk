@@ -9,7 +9,7 @@ import OneSubCategoryHook from "../../hooks/subcategory/OneSubCategoryHook";
 
 const OneProductPage = () => {
   const { id } = useParams();
-  const [loading, product] = OneProductHook(id);
+  const [product, loading] = OneProductHook(id);
   const [subcategory] = OneSubCategoryHook(product?.subcategories[0]);
 
   if (product) console.log(product);

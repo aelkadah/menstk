@@ -7,6 +7,7 @@ import {
   Form,
   InputGroup,
   NavDropdown,
+  Badge,
 } from "react-bootstrap";
 import {
   ArrowLeftOnRectangleIcon,
@@ -16,9 +17,11 @@ import {
 import logo from "../../assets/images/logo.svg";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 import LogoutHook from "../../hooks/auth/LogoutHook";
+import UserCartHook from "../../hooks/cart/UserCartHook";
 
 const Header = () => {
   const [loading, userData] = LoggedUserHook();
+  const [numOfCartItems] = UserCartHook();
   const [handleLogout] = LogoutHook();
 
   return (
@@ -107,11 +110,20 @@ const Header = () => {
                   )}
 
                   <Nav.Link
-                    className="d-flex align-items-center fw-medium"
+                    className="d-flex align-items-center fw-medium position-relative"
                     to="/cart"
                     as={Link}
                   >
                     <ShoppingBagIcon width="25px" />
+                    {numOfCartItems && numOfCartItems >= 1 ? (
+                      <Badge
+                        bg="primary"
+                        className="position-absolute d-flex justify-content-center align-items-center top-0 p-1 rounded-circle"
+                        style={{ left: "0px", width: "20px", height: "20px" }}
+                      >
+                        {numOfCartItems}
+                      </Badge>
+                    ) : null}
                     <span className="d-md-none w-100">عربة التسوق</span>
                   </Nav.Link>
                 </Nav>
