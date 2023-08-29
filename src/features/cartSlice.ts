@@ -2,11 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getDataTokenWithoutParams } from "../helpers/getData";
 import notify from "../helpers/notify";
 import { insertDataToken } from "../helpers/insertData";
+import { deleteData } from "../helpers/deleteData";
 
 const initialState = {
   loading: false,
   error: null,
-  cart: [],
+  cart: null,
 };
 
 export const loggedUserCart = createAsyncThunk(
@@ -39,6 +40,21 @@ export const addToCart = createAsyncThunk(
   }
 );
 
+export const clearUserCart = createAsyncThunk(
+  "cart/clear",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await deleteData("/api/v1/cart");
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -56,8 +72,8 @@ export const cartSlice = createSlice({
     builder.addCase(loggedUserCart.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.payload;
-      console.log(action);
-      return notify("حدث خطأ أثناء تحميل عربة التسوق", "error");
+      //   console.log(action);
+      //   return notify("حدث خطأ أثناء تحميل عربة التسوق", "error");
     });
 
     builder.addCase(addToCart.pending, (state, action) => {
@@ -74,6 +90,22 @@ export const cartSlice = createSlice({
       state.error = action?.payload;
       console.log(action);
       return notify("حدث خطأ أثناء الإضافة إلى عربة التسوق", "error");
+    });
+
+    builder.addCase(clearUserCart.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(clearUserCart.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم تفريغ العربة", "success");
+    });
+    builder.addCase(clearUserCart.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء حذف العربة", "error");
     });
   },
 });

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import notify from "../../helpers/notify";
-import { addToCart } from "../../features/cartSlice";
-import { getOneProduct } from "../../features/productSlice";
+import { addToCart, loggedUserCart } from "../../features/cartSlice";
 
 const AddToCartHook = (productId) => {
   const dispatch = useDispatch();
@@ -34,7 +33,7 @@ const AddToCartHook = (productId) => {
   useEffect(() => {
     if (!pending && !loading && !error) {
       setPending(true);
-      dispatch(getOneProduct(productId));
+      dispatch(loggedUserCart());
     }
   }, [pending]);
 

@@ -38,7 +38,9 @@ const ProductCard = ({ product }) => {
             className="d-flex justify-content-end align-items-center"
             style={{ direction: "ltr" }}
           >
-            <h3 className="fw-bold text-primary mb-1">{product?.price}</h3>
+            <h3 className="fw-bold text-primary mb-1">
+              {product?.priceAfterDiscount}
+            </h3>
             <div style={{ lineHeight: "0.9" }}>
               <p className="fw-bold text-primary m-0">.99</p>
               <p className="m-0" style={{ fontSize: "10px" }}>
@@ -47,7 +49,7 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
           <h6 className="text-decoration-line-through text-black-50 ms-1 me-0">
-            5200.00 ج.م
+            {product?.price}.00 ج.م
           </h6>
         </div>
         <div className="addBtn ">

@@ -6,7 +6,7 @@ const OneProductHook = (id) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getOneProduct(id));
+    if (id) dispatch(getOneProduct(id));
   }, [id]);
 
   const loading = useSelector((state) => state.product.loading);

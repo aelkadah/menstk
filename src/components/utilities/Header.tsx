@@ -21,7 +21,7 @@ import UserCartHook from "../../hooks/cart/UserCartHook";
 
 const Header = () => {
   const [loading, userData] = LoggedUserHook();
-  const [numOfCartItems] = UserCartHook();
+  const [userCart] = UserCartHook();
   const [handleLogout] = LogoutHook();
 
   return (
@@ -115,13 +115,13 @@ const Header = () => {
                     as={Link}
                   >
                     <ShoppingBagIcon width="25px" />
-                    {numOfCartItems && numOfCartItems >= 1 ? (
+                    {userCart?.numOfCartItems >= 1 ? (
                       <Badge
                         bg="primary"
                         className="position-absolute d-flex justify-content-center align-items-center top-0 p-1 rounded-circle"
                         style={{ left: "0px", width: "20px", height: "20px" }}
                       >
-                        {numOfCartItems}
+                        {userCart?.numOfCartItems}
                       </Badge>
                     ) : null}
                     <span className="d-md-none w-100">عربة التسوق</span>

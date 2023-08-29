@@ -10,12 +10,9 @@ const UserCartHook = () => {
   }, []);
 
   const loading = useSelector((state) => state.cart.loading);
-  const numOfCartItems = useSelector(
-    (state) => state.cart.cart?.numOfCartItems
-  );
-  const userCart = useSelector((state) => state.cart.cart?.data);
+  const userCart = useSelector((state) => state.cart.cart);
 
-  return [numOfCartItems, userCart, loading];
+  return [userCart, loading];
 };
 
 export default UserCartHook;
