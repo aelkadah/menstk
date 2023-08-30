@@ -3,6 +3,7 @@ import { getDataTokenWithoutParams } from "../helpers/getData";
 import notify from "../helpers/notify";
 import { insertDataToken } from "../helpers/insertData";
 import { deleteData } from "../helpers/deleteData";
+import { updateData } from "../helpers/updateData";
 
 const initialState = {
   loading: false,
@@ -40,12 +41,42 @@ export const addToCart = createAsyncThunk(
   }
 );
 
+export const removeCartItem = createAsyncThunk(
+  "cart/removeItem",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await deleteData(`/api/v1/cart/${id}`);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const clearUserCart = createAsyncThunk(
   "cart/clear",
   async (data, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await deleteData("/api/v1/cart");
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const applyCouponToCart = createAsyncThunk(
+  "cart/applyCoupon",
+  async (data, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await updateData("/api/v1/cart/applyCoupon", data);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
@@ -90,6 +121,39 @@ export const cartSlice = createSlice({
       state.error = action?.payload;
       console.log(action);
       return notify("حدث خطأ أثناء الإضافة إلى عربة التسوق", "error");
+    });
+
+    builder.addCase(applyCouponToCart.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(applyCouponToCart.fulfilled, (state, action) => {
+      // state.cart = action?.payload;
+      state.loading = false;
+      state.error = null;
+      return notify("تم تطبيق كوبون الخصم", "success");
+    });
+    builder.addCase(applyCouponToCart.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تطبيق كوبون الخصم", "error");
+    });
+
+    builder.addCase(removeCartItem.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(removeCartItem.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم حذف المنتج من العربة", "success");
+    });
+    builder.addCase(removeCartItem.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء حذف المنتج من العربة", "error");
     });
 
     builder.addCase(clearUserCart.pending, (state, action) => {

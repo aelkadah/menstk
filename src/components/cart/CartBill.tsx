@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { Row, Form, InputGroup, Button, Col } from "react-bootstrap";
+import ApplyCouponHook from "../../hooks/cart/ApplyCouponHook";
 
 const CartBill = ({ data }) => {
-  if (data) console.log(data);
+  const [coupon, onChangeCoupon, handleApplyCoupon, loading] =
+    ApplyCouponHook();
 
   return (
     <Col xs={12} lg={4}>
@@ -14,8 +16,10 @@ const CartBill = ({ data }) => {
               type="text"
               placeholder="أدخل كود الخصم هنا..."
               className="border"
+              value={coupon}
+              onChange={onChangeCoupon}
             />
-            <Button>تطبيق</Button>
+            <Button onClick={handleApplyCoupon}>تطبيق</Button>
           </InputGroup>
 
           <h6 className="d-flex justify-content-between text-secondary">
@@ -28,7 +32,11 @@ const CartBill = ({ data }) => {
           <h6 className="d-flex justify-content-between text-secondary">
             الخصم
             <span className="text-danger">
-              - 0.00 <span>ج.م</span>
+              -{" "}
+              {data?.totalPriceAfterDiscount
+                ? data?.totalCartPrice - data?.totalPriceAfterDiscount
+                : "0"}
+              <span>ج.م</span>
             </span>
           </h6>
           <h6 className="d-flex justify-content-between text-secondary">
@@ -43,7 +51,7 @@ const CartBill = ({ data }) => {
             <span className="fw-normal fs-6 text-black-50">(شامل الضريبة)</span>
           </h5>
           <h5 className="w-auto fw-bold">
-            {data?.totalAfterDiscount || data?.totalCartPrice}.00
+            {data?.totalPriceAfterDiscount || data?.totalCartPrice}
             <span className="fs-6 fw-normal"> ج.م</span>
           </h5>
         </Row>

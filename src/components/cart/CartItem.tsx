@@ -1,8 +1,11 @@
 import { Row, Card, Form, Button, Badge } from "react-bootstrap";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { LoadingSpinner } from "..";
+import RemoveCartItemHook from "../../hooks/cart/RemoveCartItemHook";
 
 const CartItem = ({ item }) => {
+  const [handleRemove] = RemoveCartItemHook(item?._id);
+
   return (
     <Row className="bg-white mb-3">
       {item ? (
@@ -46,10 +49,14 @@ const CartItem = ({ item }) => {
                   +
                 </Button>
               </Form.Group>
-              <div className="cursor-pointer text-danger">
+              <Button
+                variant="outline-danger"
+                className="px-3 py-2"
+                onClick={handleRemove}
+              >
                 <TrashIcon width={"20px"} />
-                إزالة
-              </div>
+                إزالة المنتج
+              </Button>
             </Card.Footer>
           </Card.Body>
         </Card>
