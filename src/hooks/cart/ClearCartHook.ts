@@ -13,7 +13,7 @@ const ClearCartHook = () => {
     setPending(true);
     await dispatch(clearUserCart());
     setPending(false);
-    window.location.reload(true);
+    window.location.replace("/");
   };
 
   useEffect(() => {
