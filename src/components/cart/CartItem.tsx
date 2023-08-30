@@ -55,15 +55,13 @@ const CartItem = ({ item }) => {
                 onClick={handleRemove}
               >
                 <TrashIcon width={"20px"} />
-                إزالة المنتج
+                إزالة
               </Button>
             </Card.Footer>
           </Card.Body>
         </Card>
       ) : (
-        <Row className="py-5">
-          <LoadingSpinner />
-        </Row>
+        <LoadingSpinner padd={5} />
       )}
     </Row>
   );

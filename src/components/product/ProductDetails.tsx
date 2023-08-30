@@ -108,8 +108,7 @@ const ProductDetails = ({ product }) => {
                         backgroundColor: color,
                         height: "30px",
                         width: "30px",
-                        border:
-                          indexColor === index ? "2px solid black" : "none",
+                        border: indexColor === index ? "3px solid red" : "none",
                       }}
                       onClick={() => handleChooseColor(index, color)}
                     ></div>

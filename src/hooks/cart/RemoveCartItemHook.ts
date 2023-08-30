@@ -17,9 +17,7 @@ const RemoveCartItemHook = (id) => {
   };
 
   useEffect(() => {
-    if (!pending && !loading && !error) {
-      setPending(true);
-    }
+    if (!pending && !loading && !error) setPending(true);
   }, [pending]);
 
   return [handleRemove];

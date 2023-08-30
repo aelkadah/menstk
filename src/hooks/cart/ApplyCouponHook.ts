@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { applyCouponToCart, loggedUserCart } from "../../features/cartSlice";
 
-const ApplyCouponHook = () => {
+const ApplyCouponHook = (data) => {
   const dispatch = useDispatch();
 
   const [pending, setPending] = useState(true);
@@ -11,6 +11,10 @@ const ApplyCouponHook = () => {
 
   const loading = useSelector((state) => state.cart.loading);
   const error = useSelector((state) => state.cart.error);
+
+  useEffect(() => {
+    if (data?.coupon) setCoupon(data?.coupon);
+  }, [data]);
 
   const handleApplyCoupon = async (e) => {
     e.persist();

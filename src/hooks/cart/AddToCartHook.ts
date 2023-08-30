@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import notify from "../../helpers/notify";
 import { addToCart, loggedUserCart } from "../../features/cartSlice";
+import notify from "../../helpers/notify";
 
 const AddToCartHook = (productId) => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const AddToCartHook = (productId) => {
 
   const handleAddToCart = async (e) => {
     e.persist();
-    if (chosenColor == "") return notify("من فضلك اختر لون المنتج", "warn");
+    // if (chosenColor == "") return notify("من فضلك اختر لون المنتج", "warn");
 
     setPending(true);
     await dispatch(addToCart({ productId, color: chosenColor }));

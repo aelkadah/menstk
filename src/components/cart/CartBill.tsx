@@ -4,7 +4,7 @@ import ApplyCouponHook from "../../hooks/cart/ApplyCouponHook";
 
 const CartBill = ({ data }) => {
   const [coupon, onChangeCoupon, handleApplyCoupon, loading] =
-    ApplyCouponHook();
+    ApplyCouponHook(data);
 
   return (
     <Col xs={12} lg={4}>
@@ -36,7 +36,7 @@ const CartBill = ({ data }) => {
               {data?.totalPriceAfterDiscount
                 ? data?.totalCartPrice - data?.totalPriceAfterDiscount
                 : "0"}
-              <span>ج.م</span>
+              <span> ج.م</span>
             </span>
           </h6>
           <h6 className="d-flex justify-content-between text-secondary">

@@ -137,7 +137,7 @@ export const cartSlice = createSlice({
       state.loading = false;
       state.error = action?.payload;
       console.log(action);
-      return notify("حدث خطأ أثناء تطبيق كوبون الخصم", "error");
+      return notify("خطأ في كوبون الخصم", "error");
     });
 
     builder.addCase(removeCartItem.pending, (state, action) => {
