@@ -18,6 +18,7 @@ import logo from "../../assets/images/logo.svg";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 import LogoutHook from "../../hooks/auth/LogoutHook";
 import UserCartHook from "../../hooks/cart/UserCartHook";
+import { LoadingSpinner } from "..";
 
 const Header = () => {
   const [loading, userData] = LoggedUserHook();
@@ -58,74 +59,80 @@ const Header = () => {
                     English
                   </Nav.Link>
 
-                  {!loading && userData ? (
-                    userData?.role == "admin" ? (
-                      <NavDropdown
-                        title={`أهلاً ${userData?.name?.split(" ")[0]}`}
-                        className="fw-medium"
-                      >
-                        <NavDropdown.Item
-                          className="text-end"
-                          to="/admin/dashboard"
-                          as={Link}
+                  {!loading ? (
+                    userData ? (
+                      userData?.role == "user" ? (
+                        <NavDropdown
+                          title={`أهلاً ${userData?.name?.split(" ")[0]}`}
+                          className="fw-medium"
                         >
-                          لوحة التحكم
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className="text-end"
-                          onClick={handleLogout}
+                          <NavDropdown.Item
+                            className="text-end"
+                            to="/user/profile"
+                            as={Link}
+                          >
+                            الحساب الشخصي
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            className="text-end"
+                            onClick={handleLogout}
+                          >
+                            تسجيل الخروج
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                      ) : (
+                        <NavDropdown
+                          title={`أهلاً ${userData?.name?.split(" ")[0]}`}
+                          className="fw-medium"
                         >
-                          تسجيل الخروج
-                        </NavDropdown.Item>
-                      </NavDropdown>
+                          <NavDropdown.Item
+                            className="text-end"
+                            to="/admin/dashboard"
+                            as={Link}
+                          >
+                            لوحة التحكم
+                          </NavDropdown.Item>
+                          <NavDropdown.Item
+                            className="text-end"
+                            onClick={handleLogout}
+                          >
+                            تسجيل الخروج
+                          </NavDropdown.Item>
+                        </NavDropdown>
+                      )
                     ) : (
-                      <NavDropdown
-                        title={`أهلاً ${userData?.name?.split(" ")[0]}`}
-                        className="fw-medium"
+                      <Nav.Link
+                        className="d-flex align-items-center fw-medium"
+                        to="/login"
+                        as={Link}
                       >
-                        <NavDropdown.Item
-                          className="text-end"
-                          to="/user/profile"
-                          as={Link}
-                        >
-                          الحساب الشخصي
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                          className="text-end"
-                          onClick={handleLogout}
-                        >
-                          تسجيل الخروج
-                        </NavDropdown.Item>
-                      </NavDropdown>
+                        <ArrowLeftOnRectangleIcon width="25px" />
+                        <span className="w-100">تسجيل الدخول</span>
+                      </Nav.Link>
                     )
                   ) : (
-                    <Nav.Link
-                      className="d-flex align-items-center fw-medium"
-                      to="/login"
-                      as={Link}
-                    >
-                      <ArrowLeftOnRectangleIcon width="25px" />
-                      <span className="w-100">تسجيل الدخول</span>
-                    </Nav.Link>
+                    <LoadingSpinner />
                   )}
 
-                  <Nav.Link
-                    className="d-flex align-items-center fw-medium position-relative"
-                    to="/cart"
-                    as={Link}
-                  >
-                    <ShoppingBagIcon width="25px" />
-                    {userCart?.numOfCartItems >= 1 ? (
-                      <Badge
-                        bg="primary"
-                        className="position-absolute d-flex justify-content-center align-items-center top-0 p-1 rounded-circle"
-                        style={{ left: "0px", width: "20px", height: "20px" }}
-                      >
-                        {userCart?.numOfCartItems}
-                      </Badge>
-                    ) : null}
-                    <span className="d-md-none w-100">عربة التسوق</span>
-                  </Nav.Link>
+                  {!loading && userData?.role == "user" ? (
+                    <Nav.Link
+                      className="d-flex align-items-center fw-medium position-relative"
+                      to="/cart"
+                      as={Link}
+                    >
+                      <ShoppingBagIcon width="25px" />
+                      {userCart?.numOfCartItems >= 1 ? (
+                        <Badge
+                          bg="primary"
+                          className="position-absolute d-flex justify-content-center align-items-center top-0 p-1 rounded-circle"
+                          style={{ left: "0px", width: "20px", height: "20px" }}
+                        >
+                          {userCart?.numOfCartItems}
+                        </Badge>
+                      ) : null}
+                      <span className="d-md-none w-100">عربة التسوق</span>
+                    </Nav.Link>
+                  ) : null}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

@@ -11,7 +11,7 @@ const AddToCartHook = (productId) => {
   const loading = useSelector((state) => state.cart.loading);
   const error = useSelector((state) => state.cart.error);
 
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
   const onChangeQty = (e) => setQty(e.target.value);
 
   const [indexColor, setIndexColor] = useState("");
@@ -26,7 +26,7 @@ const AddToCartHook = (productId) => {
     // if (chosenColor == "") return notify("من فضلك اختر لون المنتج", "warn");
 
     setPending(true);
-    await dispatch(addToCart({ productId, color: chosenColor }));
+    await dispatch(addToCart({ productId, quantity: qty, color: chosenColor }));
     setPending(false);
   };
 

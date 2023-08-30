@@ -41,6 +41,21 @@ export const addToCart = createAsyncThunk(
   }
 );
 
+export const updateCartItem = createAsyncThunk(
+  "cart/updateQty",
+  async ([id, data], thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await updateData(`/api/v1/cart/${id}`, data);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const removeCartItem = createAsyncThunk(
   "cart/removeItem",
   async (id, thunkAPI) => {
@@ -121,6 +136,22 @@ export const cartSlice = createSlice({
       state.error = action?.payload;
       console.log(action);
       return notify("حدث خطأ أثناء الإضافة إلى عربة التسوق", "error");
+    });
+
+    builder.addCase(updateCartItem.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(updateCartItem.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم تحديث كمية المنتج", "success");
+    });
+    builder.addCase(updateCartItem.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحديث كمية المنتج", "error");
     });
 
     builder.addCase(applyCouponToCart.pending, (state, action) => {

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import notify from "../../helpers/notify";
 import { loginUser } from "../../features/authSlice";
+import { loggedUserCart } from "../../features/cartSlice";
 
 const LoginHook = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const LoginHook = () => {
       setPending(true);
       setEmail("");
       setPassword("");
+      dispatch(loggedUserCart());
 
       if (userData?.role && userData?.role == "admin")
         setTimeout(() => navigate("/admin/dashboard"), 1000);

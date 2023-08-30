@@ -6,7 +6,8 @@ const UserCartHook = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loggedUserCart());
+    if (JSON.parse(localStorage.getItem("userInfo"))?.role == "user")
+      dispatch(loggedUserCart());
   }, []);
 
   const loading = useSelector((state) => state.cart.loading);

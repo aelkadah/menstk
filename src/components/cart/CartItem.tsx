@@ -1,10 +1,12 @@
-import { Row, Card, Form, Button, Badge } from "react-bootstrap";
+import { Row, Card, Form, Button } from "react-bootstrap";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { LoadingSpinner } from "..";
 import RemoveCartItemHook from "../../hooks/cart/RemoveCartItemHook";
+import UpdateQuantityHook from "../../hooks/cart/UpdateQuantityHook";
 
 const CartItem = ({ item }) => {
   const [handleRemove] = RemoveCartItemHook(item?._id);
+  const [qty, onChangeQty, handleUpdateQty] = UpdateQuantityHook(item);
 
   return (
     <Row className="bg-white mb-3">
@@ -34,28 +36,27 @@ const CartItem = ({ item }) => {
             </Card.Text>
 
             <Card.Footer className="bg-transparent border-0 d-flex align-items-center justify-content-between p-0">
-              <Form.Group size="sm" className="d-flex align-items-center mb-2">
+              <Form.Group
+                size="sm"
+                className="d-flex align-items-center gap-2 mb-2"
+              >
                 <Form.Label className="ms-1">الكمية:</Form.Label>
-                <Button variant="light" className="fw-bold">
-                  -
-                </Button>
-                <Badge
-                  variant="white"
-                  className="bg-white text-black px-3 fs-5"
-                >
-                  {item?.quantity}
-                </Badge>
-                <Button variant="light" className="fw-bold">
-                  +
+                <Form.Control
+                  type="number"
+                  className="w-25 fw-bold py-2"
+                  value={qty}
+                  onChange={onChangeQty}
+                />
+                <Button className="py-2 px-3" onClick={handleUpdateQty}>
+                  تغيير
                 </Button>
               </Form.Group>
               <Button
                 variant="outline-danger"
-                className="px-3 py-2"
+                className="p-2"
                 onClick={handleRemove}
               >
                 <TrashIcon width={"20px"} />
-                إزالة
               </Button>
             </Card.Footer>
           </Card.Body>

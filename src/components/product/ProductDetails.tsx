@@ -121,7 +121,12 @@ const ProductDetails = ({ product }) => {
             <Row className="d-flex justify-content-between mx-0 p-0">
               <div className="w-auto">
                 <h6 className="fw-bold mb-2 px-1">الكمية:</h6>
-                <Form.Select aria-label="Product Quantity" className="w-auto">
+                <Form.Select
+                  aria-label="Product Quantity"
+                  className="w-auto"
+                  value={qty}
+                  onChange={onChangeQty}
+                >
                   {[...Array(product?.quantity)].map((x, i) => (
                     <option value={i + 1} key={i}>
                       {i + 1}

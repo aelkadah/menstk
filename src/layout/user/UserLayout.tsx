@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Outlet, NavLink, Link } from "react-router-dom";
 import { Container, Row, Col, Navbar, Nav, Offcanvas } from "react-bootstrap";
 import {
-  ArrowLeftOnRectangleIcon,
-  MagnifyingGlassIcon,
   ShoppingBagIcon,
   ArrowRightOnRectangleIcon,
   AdjustmentsHorizontalIcon,
@@ -11,7 +9,6 @@ import {
   MapPinIcon,
   BookmarkIcon,
   QueueListIcon,
-  AdjustmentsVerticalIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";

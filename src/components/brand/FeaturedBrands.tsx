@@ -37,7 +37,6 @@ const FeaturedCategories = () => {
         rtl
         itemClass="mx-2"
         removeArrowOnDeviceType={["tablet", "mobile"]}
-        showDots={true}
         containerClass="pb-3"
       >
         {!loading ? (
