@@ -6,7 +6,7 @@ const CartContainer = ({ cartItems }) => {
   const [handleClearCart] = ClearCartHook();
 
   return (
-    <Col xs={12} lg={6} className="mb-4">
+    <Col xs={12} lg={7} className="mb-4">
       <h5 className="fw-bold mb-3">عربة التسوق</h5>
 
       {cartItems?.length >= 1 ? (
