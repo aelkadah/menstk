@@ -1,27 +1,37 @@
-import { useState } from "react";
 import { Button, Row, Modal, Form } from "react-bootstrap";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import DeleteCouponHook from "../../../hooks/coupon/DeleteCouponHook";
+import UpdateCouponHook from "../../../hooks/coupon/UpdateCouponHook";
 
-const AdminCouponCard = () => {
-  const [showDelete, setShowDelete] = useState(false);
-  const handleCloseDelete = () => setShowDelete(false);
-  const handleShowDelete = () => setShowDelete(true);
+const AdminCouponCard = ({ coupon }) => {
+  const [showDelete, handleShowDelete, handleCloseDelete, handleDeleteCoupon] =
+    DeleteCouponHook(coupon?._id);
 
-  const [showEdit, setShowEdit] = useState(false);
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
+  const [
+    showEdit,
+    handleShowEdit,
+    handleCloseEdit,
+    name,
+    onChangeName,
+    expire,
+    onChangeExpire,
+    discount,
+    onChangeDiscount,
+    handleUpdateCoupon,
+  ] = UpdateCouponHook(coupon);
 
   return (
     <Row className="bg-white p-3 mb-3">
       <Row>
         <h5 className="">
-          كود الكوبون: <span className="fw-bold">HAPPY_EID</span>
+          كود الكوبون: <span className="fw-bold">{coupon?.name}</span>
         </h5>
         <h5 className="">
-          نسبة الخصم: <span className="fw-bold">%30</span>
+          نسبة الخصم: <span className="fw-bold">%{coupon?.discount}</span>
         </h5>
         <h5 className="">
-          تاريخ الإنتهاء: <span className="fw-bold">24 / 8 / 2023</span>
+          تاريخ الإنتهاء:{" "}
+          <span className="fw-bold">{coupon?.expire.split("T", 1)}</span>
         </h5>
       </Row>
       <Row className="d-flex justify-content-end">
@@ -63,7 +73,8 @@ const AdminCouponCard = () => {
             <Form.Control
               type="text"
               placeholder="أدخل كود الخصم هنا..."
-              // value={"HAPPY_EID"}
+              value={name}
+              onChange={onChangeName}
             />
           </Form.Group>
           <Form.Group className="mb-3">
@@ -71,19 +82,26 @@ const AdminCouponCard = () => {
             <Form.Control
               type="text"
               placeholder="أدخل نسبة الخصم هنا..."
-              // value={"30"}
+              value={discount}
+              onChange={onChangeDiscount}
             />
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>تاريخ الإنتهاء</Form.Label>
-            <Form.Control type="date" />
+            <Form.Control
+              type="date"
+              value={expire}
+              onChange={onChangeExpire}
+            />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={handleCloseEdit}>
             إلغاء
           </Button>
-          <Button variant="primary">حفظ التعديلات</Button>
+          <Button variant="primary" onClick={handleUpdateCoupon}>
+            حفظ التعديلات
+          </Button>
         </Modal.Footer>
       </Modal>
 
@@ -101,13 +119,15 @@ const AdminCouponCard = () => {
         </Modal.Header>
         <Modal.Body className="py-3">
           <h6 className="m-0">هل انت متأكد من حذف الكوبون؟</h6>
-          <span className="text-danger">HAPPY_EID</span>
+          <span className="text-danger">{coupon?.name}</span>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseDelete}>
             إلغاء
           </Button>
-          <Button variant="danger">تأكيد الحذف</Button>
+          <Button variant="danger" onClick={handleDeleteCoupon}>
+            تأكيد الحذف
+          </Button>
         </Modal.Footer>
       </Modal>
     </Row>

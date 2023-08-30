@@ -8,6 +8,7 @@ import userReducer from "./features/userSlice";
 import addressReducer from "./features/addressSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import cartReducer from "./features/cartSlice";
+import couponReducer from "./features/couponSlice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ export const store = configureStore({
     address: addressReducer,
     wishlist: wishlistReducer,
     cart: cartReducer,
+    coupon: couponReducer,
   },
   devTools: true,
 });

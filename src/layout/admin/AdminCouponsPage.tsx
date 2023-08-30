@@ -1,12 +1,21 @@
-import { useState } from "react";
 import { Row, Form, Button, Modal } from "react-bootstrap";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 import AdminCouponsContainer from "../../components/admin/coupon/AdminCouponsContainer";
+import AddCouponHook from "../../hooks/coupon/AddCouponHook";
 
 const AdminCouponsPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    name,
+    onChangeName,
+    expire,
+    onChangeExpire,
+    discount,
+    onChangeDiscount,
+    handleAddCoupon,
+  ] = AddCouponHook();
 
   return (
     <Row className="py-3">
@@ -39,18 +48,26 @@ const AdminCouponsPage = () => {
                 <Form.Control
                   type="text"
                   placeholder="أدخل كود الكوبون هنا..."
+                  value={name}
+                  onChange={onChangeName}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>نسبة الخصم</Form.Label>
                 <Form.Control
-                  type="text"
+                  type="number"
                   placeholder="أدخل نسبة الخصم هنا..."
+                  value={discount}
+                  onChange={onChangeDiscount}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>تاريخ الإنتهاء</Form.Label>
-                <Form.Control type="date" />
+                <Form.Control
+                  type="date"
+                  value={expire}
+                  onChange={onChangeExpire}
+                />
               </Form.Group>
             </Form>
           </Modal.Body>
@@ -58,7 +75,9 @@ const AdminCouponsPage = () => {
             <Button variant="danger" onClick={handleClose}>
               إلغاء
             </Button>
-            <Button variant="primary">إضافة الكوبون</Button>
+            <Button variant="primary" onClick={handleAddCoupon}>
+              إضافة الكوبون
+            </Button>
           </Modal.Footer>
         </Modal>
       </Row>
