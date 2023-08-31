@@ -17,8 +17,8 @@ const AdminOrdersContainer = () => {
   };
 
   return (
-    <Row className="px-3">
-      <TableContainer component={Paper} className="shadow-none border-0">
+    <Row>
+      <TableContainer component={Paper} className="shadow-none border-0 w-100">
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
