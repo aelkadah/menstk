@@ -5,44 +5,55 @@ import {
   CheckCircleIcon,
   ChevronLeftIcon,
   CreditCardIcon,
+  XCircleIcon,
 } from "@heroicons/react/24/outline";
 
-const UserOrderCard = () => {
+const UserOrderCard = ({ order }) => {
   return (
     <TableRow>
-      <TableCell className="mainFont text-end">1000919#</TableCell>
-
-      <TableCell className="mainFont text-end ">
+      <TableCell className="mainFont text-end text-wrap">11111</TableCell>
+      <TableCell className="mainFont text-end">
         <span className="truncate-two">
-          مصر - الدقهلية - المنصورة - مدينة السلام - عمارة 8 - بلوك 9
+          {order?.shippingAddress?.city} - {order?.shippingAddress?.details}
         </span>
       </TableCell>
-      <TableCell className="mainFont text-end">25/7/2023</TableCell>
       <TableCell className="mainFont text-end text-nowrap">
-        25999.00 ج.م
+        {order?.createdAt?.split("T")[0]}
       </TableCell>
       <TableCell className="mainFont text-end text-nowrap">
-        <span className="d-flex align-items-center text-danger ">
-          <CheckCircleIcon width={"18px"} className="pe-0 ps-1" />
-          لم يصل
-        </span>
-        {/* <span className="d-flex align-items-center text-success">
-      <CheckCircleIcon width={"18px"} className="pe-0 ps-1" />
-      تم التوصيل
-    </span> */}
+        {order?.totalOrderPrice} ج.م
       </TableCell>
       <TableCell className="mainFont text-end text-nowrap">
-        <span className="d-flex align-items-center">
-          <BanknotesIcon width={"18px"} className="pe-0 ps-1" />
-          كاش
-        </span>
-        {/* <span className="d-flex align-items-center">
-      <CreditCardIcon width={"18px"} className="pe-0 ps-1" />
-      بطاقة إلكترونية
-    </span> */}
+        {order?.isDelivered ? (
+          <span className="d-flex align-items-center text-success">
+            <CheckCircleIcon width={"20px"} className="pe-0 ps-1" />
+            تم التوصيل
+          </span>
+        ) : (
+          <span className="d-flex align-items-center text-danger ">
+            <XCircleIcon width={"20px"} className="pe-0 ps-1" />
+            لم يصل
+          </span>
+        )}
+      </TableCell>
+      <TableCell className="mainFont text-end text-nowrap">
+        {order?.isPaid ? (
+          <span className="d-flex align-items-center text-primary">
+            <CreditCardIcon width={"20px"} className="pe-0 ps-1" />
+            بطاقة إلكترونية
+          </span>
+        ) : (
+          <span className="d-flex align-items-center">
+            <BanknotesIcon width={"20px"} className="pe-0 ps-1" />
+            كاش
+          </span>
+        )}
       </TableCell>
       <TableCell className="mainFont text-end">
-        <Link to={`/user/orders/:id`} className="d-flex align-items-center">
+        <Link
+          to={`/user/orders/${order?._id}`}
+          className="d-flex align-items-center"
+        >
           <ChevronLeftIcon width={"15px"} />
           التفاصيل
         </Link>

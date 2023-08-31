@@ -103,7 +103,7 @@ const ProductDetails = ({ product }) => {
                   return (
                     <div
                       key={index}
-                      className="cursor-pointer rounded-circle me-1"
+                      className="cursor-pointer rounded-circle me-1 shadow-sm"
                       style={{
                         backgroundColor: color,
                         height: "30px",

@@ -10,14 +10,16 @@ import {
 import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
 import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
 import AllProductsHook from "../../hooks/product/AllProductsHook";
+import AllOrdersHook from "../../hooks/order/AllOrdersHook";
 
 const DashboardPage = () => {
   const [catResults] = AllCategoriesHook();
   const [brandResults] = AllBrandsHook();
   const [productResults] = AllProductsHook();
+  const [ordersResults] = AllOrdersHook();
 
   const sections = [
-    { title: "الطلبيات", link: "/admin/orders", count: 51 || 0 },
+    { title: "الطلبيات", link: "/admin/orders", count: ordersResults || 0 },
     { title: "المنتجات", link: "/admin/products", count: productResults || 0 },
     { title: "التصنيفات", link: "/admin/categories", count: catResults || 0 },
     { title: "الماركات", link: "/admin/brands", count: brandResults || 0 },

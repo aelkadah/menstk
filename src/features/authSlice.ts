@@ -64,7 +64,7 @@ export const authSlice = createSlice({
       state.user = null;
       state.error = null;
       state.loading = false;
-      window.location.reload(true);
+      window.location.replace("/");
       return notify("تم تسجيل الخروج", "success");
     },
   },

@@ -8,56 +8,64 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { LoadingSpinner, Pagination } from "../..";
 import AdminOrderCard from "./AdminOrderCard";
-import { Pagination } from "../..";
+import AllOrdersHook from "../../../hooks/order/AllOrdersHook";
 
 const AdminOrdersContainer = () => {
-  const getPage = () => {
-    return;
-  };
+  const [ordersResults, orders, pageCount, getPage, loading] = AllOrdersHook();
 
   return (
     <Row>
-      <TableContainer component={Paper} className="shadow-none border-0 w-100">
-        <Table aria-label="collapsible table">
-          <TableHead>
-            <TableRow>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                رقم الطلب
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                الاسم
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                العنوان
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                التاريخ
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                الإجمالي
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                الحالة
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                طريقة الدفع
-              </TableCell>
-              <TableCell className="mainFont fw-bold text-end text-nowrap">
-                الإجراءات
-              </TableCell>
-            </TableRow>
-          </TableHead>
+      {!loading ? (
+        <TableContainer
+          component={Paper}
+          className="shadow-none border-0 w-100 p-0 m-0"
+        >
+          <Table aria-label="collapsible table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  رقم الطلب
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  الاسم
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  العنوان
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  التاريخ
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  الإجمالي
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  الحالة
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  طريقة الدفع
+                </TableCell>
+                <TableCell className="mainFont fw-bold text-end text-nowrap">
+                  الإجراءات
+                </TableCell>
+              </TableRow>
+            </TableHead>
 
-          <TableBody>
-            <AdminOrderCard />
-            <AdminOrderCard />
-            <AdminOrderCard />
-          </TableBody>
-        </Table>
-      </TableContainer>
+            <TableBody>
+              {orders?.map((item, index) => {
+                return <AdminOrderCard order={item} key={index} />;
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <LoadingSpinner padd={5} />
+      )}
 
-      <Pagination pageCount={12} onPress={getPage} />
+      {pageCount && getPage ? (
+        <Pagination pageCount={pageCount} onPress={getPage} />
+      ) : null}
     </Row>
   );
 };
