@@ -30,6 +30,10 @@ const CartBill = ({ data }) => {
             </span>
           </h6>
           <h6 className="d-flex justify-content-between text-secondary">
+            <span>رسوم الشحن</span>
+            <span className="text-success">مجاني</span>
+          </h6>
+          <h6 className="d-flex justify-content-between text-secondary">
             الخصم
             <span className="text-danger">
               -{" "}
@@ -38,10 +42,6 @@ const CartBill = ({ data }) => {
                 : "0"}
               <span> ج.م</span>
             </span>
-          </h6>
-          <h6 className="d-flex justify-content-between text-secondary">
-            <span>رسوم الشحن</span>
-            <span className="text-primary">مجاني</span>
           </h6>
         </Row>
 

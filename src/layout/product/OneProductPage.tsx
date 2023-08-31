@@ -12,7 +12,7 @@ const OneProductPage = () => {
   const [product, loading] = OneProductHook(id);
   const [subcategory] = OneSubCategoryHook(product?.subcategories[0]);
 
-  if (product) console.log(product);
+  // if (product) console.log(product);
 
   return (
     <Container>

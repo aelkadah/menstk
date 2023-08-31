@@ -4,11 +4,11 @@ import UserAddressCard from "./UserAddressCard";
 import AllAddressesHook from "../../../hooks/address/AllAddressesHook";
 
 const UserAddressesContainer = () => {
-  const [loading, addresses] = AllAddressesHook();
+  const [addresses, addressesLoading] = AllAddressesHook();
 
   return (
     <Row>
-      {!loading ? (
+      {!addressesLoading ? (
         addresses?.length >= 1 ? (
           addresses?.map((address, index) => {
             return <UserAddressCard key={index} address={address} />;

@@ -9,10 +9,10 @@ const AllAddressesHook = () => {
     dispatch(getAllAddresses());
   }, []);
 
-  const loading = useSelector((state) => state.address.loading);
+  const addressesLoading = useSelector((state) => state.address.loading);
   const addresses = useSelector((state) => state.address.allAddresses?.data);
 
-  return [loading, addresses];
+  return [addresses, addressesLoading];
 };
 
 export default AllAddressesHook;

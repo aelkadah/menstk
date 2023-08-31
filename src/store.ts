@@ -9,6 +9,7 @@ import addressReducer from "./features/addressSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import cartReducer from "./features/cartSlice";
 import couponReducer from "./features/couponSlice";
+import orderReducer from "./features/orderSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ export const store = configureStore({
     wishlist: wishlistReducer,
     cart: cartReducer,
     coupon: couponReducer,
+    order: orderReducer,
   },
   devTools: true,
 });
