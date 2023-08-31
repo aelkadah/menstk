@@ -13,14 +13,22 @@ import {
   UserIcon,
 } from "@heroicons/react/24/outline";
 import OneOrderHook from "../../hooks/order/OneOrderHook";
+import UpdateOrderHook from "../../hooks/order/UpdateOrderHook";
 
 const AdminOrderDetailsPage = () => {
   const { id } = useParams();
   const [order, loading] = OneOrderHook(id);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [
+    show,
+    handleShow,
+    handleClose,
+    paid,
+    onChangePaid,
+    delivered,
+    onChangeDelivered,
+    handleUpdate,
+  ] = UpdateOrderHook(order);
 
   return (
     <Row className="py-3 px-3">
@@ -139,7 +147,9 @@ const AdminOrderDetailsPage = () => {
                 <Button variant="danger" onClick={handleClose}>
                   إلغاء
                 </Button>
-                <Button variant="primary">تحديث الحالة</Button>
+                <Button variant="primary" onClick={handleUpdate}>
+                  تحديث الحالة
+                </Button>
               </Modal.Footer>
             </Modal>
           </Row>
