@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Row, Col, Badge, Button, Modal, Form } from "react-bootstrap";
+import { LoadingSpinner } from "../../components";
 import {
   ArrowLeftIcon,
   ArrowPathIcon,
@@ -10,19 +12,15 @@ import {
   PhoneIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { Link, useParams } from "react-router-dom";
 import OneOrderHook from "../../hooks/order/OneOrderHook";
-import { LoadingSpinner } from "../../components";
 
 const AdminOrderDetailsPage = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const { id } = useParams();
   const [order, loading] = OneOrderHook(id);
 
-  if (order) console.log(order);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Row className="py-3 px-3">

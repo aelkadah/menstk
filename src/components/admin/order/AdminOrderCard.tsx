@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Collapse, TableCell, TableRow } from "@mui/material";
 import { Button, Col, Row } from "react-bootstrap";
 import {
@@ -10,9 +11,6 @@ import {
   CreditCardIcon,
   XCircleIcon,
 } from "@heroicons/react/24/outline";
-
-import watch1 from "../../../assets/images/products/watch/1.jpg";
-import { Link } from "react-router-dom";
 
 const AdminOrderCard = ({ order }) => {
   const [open, setOpen] = useState(false);
@@ -95,11 +93,15 @@ const AdminOrderCard = ({ order }) => {
                       <Col
                         xs={12}
                         md={6}
-                        className="d-flex justify-content-start align-items-center p-0"
+                        className="d-flex justify-content-start align-items-center py-3"
                         key={index}
                       >
                         <div>
-                          <img src={watch1} alt="" height={"150px"} />
+                          <img
+                            src={item?.product?.imageCover}
+                            alt={item?.product?.title}
+                            style={{ width: "auto", maxHeight: "100px" }}
+                          />
                         </div>
                         <div>
                           <h5 className="fw-bold truncate-two">
