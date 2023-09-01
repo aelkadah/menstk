@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpecificOrder } from "../../features/orderSlice";
+import { getSpecificOrder, updateOrderToPaid } from "../../features/orderSlice";
+import notify from "../../helpers/notify";
 
 const UpdateOrderHook = (order) => {
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const [paid, setPaid] = useState(false);
   const [delivered, setDelivered] = useState(false);
 
   useEffect(() => {
     if (order) {
-      console.log(order);
-
       setPaid(order?.isPaid);
       setDelivered(order?.isDelivered);
     }
@@ -29,20 +28,31 @@ const UpdateOrderHook = (order) => {
   const handleUpdate = async (e) => {
     e.persist();
 
-    console.log("paid: " + order?.isPaid);
-    console.log("delivered: " + order?.isDelivered);
-
-    // setPending(true);
-    // await dispatch();
-    // setPending(false);
+    if (order?.isPaid == false) {
+      if (paid == false || paid == "false") {
+        if (delivered == true || delivered == "true") {
+          return notify("يجب دفع المبلغ المستحق أولاً", "warn");
+        } else return notify("لا يوجد تحديثات تمت على الطلبية", "warn");
+      } else {
+        if (delivered == true || delivered == "true") {
+          return console.log("delivered and paid");
+        } else {
+          setPending(true);
+          await dispatch(updateOrderToPaid(order?._id));
+          setPending(false);
+          dispatch(getSpecificOrder(order?._id));
+          return;
+        }
+      }
+    }
   };
 
   const loading = useSelector((state) => state.order.loading);
   const error = useSelector((state) => state.order.error);
 
-  //   useEffect(() => {
-  //     if (!pending && !loading && !error) dispatch(getSpecificOrder(id));
-  //   }, [pending]);
+  useEffect(() => {
+    if (!pending && !loading && !error) setShow(false);
+  }, [pending]);
 
   return [
     show,

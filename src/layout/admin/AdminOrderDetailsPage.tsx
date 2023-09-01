@@ -109,36 +109,71 @@ const AdminOrderDetailsPage = () => {
               </Modal.Header>
               <Modal.Body className="py-3">
                 <Form>
-                  <Form.Group className="mb-3">
-                    <Form.Label>طريقة الدفع:</Form.Label>
-                    <Form.Check
-                      type="checkbox"
-                      label="كاش"
-                      inline
-                      reverse
-                      checked
-                      disabled
-                    />
-                    <Form.Check
-                      type="checkbox"
-                      label="بطاقة إلكترونية"
-                      inline
-                      reverse
-                      disabled
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3">
-                    <Form.Label>حالة الدفع:</Form.Label>
-                    <Form.Select>
-                      <option value="0">لم يتم</option>
-                      <option value="1">تم الدفع</option>
+                  {order?.paymentMethodType == "cash" ? (
+                    <Form.Group className="mb-3">
+                      <Form.Label>طريقة الدفع:</Form.Label>
+                      <Form.Check
+                        type="checkbox"
+                        label="كاش"
+                        inline
+                        reverse
+                        checked
+                        disabled
+                      />
+                      <Form.Check
+                        type="checkbox"
+                        label="بطاقة إلكترونية"
+                        inline
+                        reverse
+                        disabled
+                      />
+                    </Form.Group>
+                  ) : (
+                    <Form.Group className="mb-3">
+                      <Form.Label>طريقة الدفع:</Form.Label>
+                      <Form.Check
+                        type="checkbox"
+                        label="كاش"
+                        inline
+                        reverse
+                        disabled
+                      />
+                      <Form.Check
+                        type="checkbox"
+                        label="بطاقة إلكترونية"
+                        inline
+                        reverse
+                        checked
+                        disabled
+                      />
+                    </Form.Group>
+                  )}
+
+                  <Form.Group className="d-flex align-items-center gap-2 mb-3">
+                    <Form.Label className="m-0">حالة الدفع:</Form.Label>
+                    <Form.Select
+                      size="sm"
+                      className="w-auto"
+                      value={paid}
+                      onChange={onChangePaid}
+                      disabled={order?.isPaid ? true : false}
+                    >
+                      <option value={false}>لم يتم</option>
+                      <option value={true}>تم الدفع</option>
                     </Form.Select>
                   </Form.Group>
-                  <Form.Group className="mb-3">
+
+                  <Form.Group className="d-flex align-items-center gap-2 mb-3">
                     <Form.Label>حالة الإستلام:</Form.Label>
-                    <Form.Select>
-                      <option value="0">لم يصل</option>
-                      <option value="1">تم الإستلام</option>
+                    <Form.Select
+                      size="sm"
+                      className="w-auto"
+                      value={delivered}
+                      onChange={onChangeDelivered}
+                      disabled={order?.isDelivered ? true : false}
+                    >
+                      <option value={false}>لم يصل</option>
+                      <option value={true}>تم الإستلام</option>
                     </Form.Select>
                   </Form.Group>
                 </Form>
@@ -147,9 +182,15 @@ const AdminOrderDetailsPage = () => {
                 <Button variant="danger" onClick={handleClose}>
                   إلغاء
                 </Button>
-                <Button variant="primary" onClick={handleUpdate}>
-                  تحديث الحالة
-                </Button>
+                {order?.isPaid && order?.isDelivered ? (
+                  <Button variant="primary" disabled>
+                    تحديث الحالة
+                  </Button>
+                ) : (
+                  <Button variant="primary" onClick={handleUpdate}>
+                    تحديث الحالة
+                  </Button>
+                )}
               </Modal.Footer>
             </Modal>
           </Row>
