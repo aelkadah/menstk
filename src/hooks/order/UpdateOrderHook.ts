@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSpecificOrder, updateOrderToPaid } from "../../features/orderSlice";
+import {
+  getSpecificOrder,
+  updateOrderToPaid,
+  updateOrderToDelivered,
+} from "../../features/orderSlice";
 import notify from "../../helpers/notify";
 
 const UpdateOrderHook = (order) => {
@@ -29,21 +33,34 @@ const UpdateOrderHook = (order) => {
     e.persist();
 
     if (order?.isPaid == false) {
-      if (paid == false || paid == "false") {
+      if (paid == true || paid == "true") {
         if (delivered == true || delivered == "true") {
-          return notify("يجب دفع المبلغ المستحق أولاً", "warn");
-        } else return notify("لا يوجد تحديثات تمت على الطلبية", "warn");
-      } else {
-        if (delivered == true || delivered == "true") {
-          return console.log("delivered and paid");
+          setPending(true);
+          await dispatch(updateOrderToPaid(order?._id));
+          await dispatch(updateOrderToDelivered(order?._id));
+          await dispatch(getSpecificOrder(order?._id));
+          setPending(false);
+          return;
         } else {
           setPending(true);
           await dispatch(updateOrderToPaid(order?._id));
+          await dispatch(getSpecificOrder(order?._id));
           setPending(false);
-          dispatch(getSpecificOrder(order?._id));
           return;
         }
+      } else {
+        if (delivered == true || delivered == "true")
+          return notify("يجب دفع المبلغ المستحق أولاً", "warn");
+        else return notify("لا يوجد تحديثات تمت على الطلبية", "warn");
       }
+    } else {
+      if (delivered == true || delivered == "true") {
+        setPending(true);
+        await dispatch(updateOrderToDelivered(order?._id));
+        await dispatch(getSpecificOrder(order?._id));
+        setPending(false);
+        return;
+      } else return notify("لا يوجد تحديثات تمت على الطلبية", "warn");
     }
   };
 

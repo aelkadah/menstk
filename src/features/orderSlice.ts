@@ -73,6 +73,21 @@ export const updateOrderToPaid = createAsyncThunk(
   }
 );
 
+export const updateOrderToDelivered = createAsyncThunk(
+  "order/updateToDelivered",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await updateData(`/api/v1/orders/${id}/deliver`);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const orderSlice = createSlice({
   name: "order",
   initialState,
@@ -142,6 +157,22 @@ export const orderSlice = createSlice({
       state.error = action?.payload;
       console.log(action);
       return notify("حدث خطأ أثناء دفع المبلغ المستحق", "error");
+    });
+
+    builder.addCase(updateOrderToDelivered.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(updateOrderToDelivered.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم توصيل الطلبية", "success");
+    });
+    builder.addCase(updateOrderToDelivered.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحديث حالة التوصيل", "error");
     });
   },
 });
