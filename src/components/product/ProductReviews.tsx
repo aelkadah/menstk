@@ -1,9 +1,13 @@
 import { Row, Col, ProgressBar } from "react-bootstrap";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { Pagination } from "..";
+import AllReviewsHook from "../../hooks/reviews/AllReviewsHook";
 
 const ProductReviews = ({ product }) => {
-  const getPage = () => {};
+  const [reviewsResults, reviews, pageCount, getPage, loading] = AllReviewsHook(
+    product,
+    10
+  );
 
   return (
     <Row className="bg-white mx-0 my-4 p-4">
@@ -89,7 +93,6 @@ const ProductReviews = ({ product }) => {
           <h5 className="w-auto fw-bold">تقييمات المشترين</h5>
           <h6 className="w-auto fw-bold">( 214 ) تقييم</h6>
         </Row>
-
         <Row className="border-bottom pt-4 pb-1 mx-0">
           <div className="d-flex justify-content-between">
             <div className="d-flex gap-2">
@@ -245,8 +248,9 @@ const ProductReviews = ({ product }) => {
             </p>
           </div>
         </Row>
-
-        <Pagination onPress={getPage} pageCount={6} />
+        {pageCount && getPage ? (
+          <Pagination pageCount={pageCount} onPress={getPage} />
+        ) : null}
       </Col>
     </Row>
   );
