@@ -4,7 +4,7 @@ import AdminCouponCard from "./AdminCouponCard";
 import AllCouponsHook from "../../../hooks/coupon/AllCouponsHook";
 
 const AdminCouponsContainer = () => {
-  const [coupons, loading] = AllCouponsHook();
+  const [couponsResults, coupons, loading] = AllCouponsHook();
 
   return (
     <Row className="px-3">

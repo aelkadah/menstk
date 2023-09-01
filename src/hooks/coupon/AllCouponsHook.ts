@@ -10,9 +10,12 @@ const AllCouponsHook = () => {
   }, []);
 
   const loading = useSelector((state) => state.coupon.loading);
+  const couponsResults = useSelector(
+    (state) => state.coupon.allCoupons?.results
+  );
   const coupons = useSelector((state) => state.coupon.allCoupons?.data);
 
-  return [coupons, loading];
+  return [couponsResults, coupons, loading];
 };
 
 export default AllCouponsHook;

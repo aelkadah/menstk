@@ -11,19 +11,21 @@ import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
 import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
 import AllProductsHook from "../../hooks/product/AllProductsHook";
 import AllOrdersHook from "../../hooks/order/AllOrdersHook";
+import AllCouponsHook from "../../hooks/coupon/AllCouponsHook";
 
 const DashboardPage = () => {
+  const [ordersResults] = AllOrdersHook();
+  const [productResults] = AllProductsHook();
   const [catResults] = AllCategoriesHook();
   const [brandResults] = AllBrandsHook();
-  const [productResults] = AllProductsHook();
-  const [ordersResults] = AllOrdersHook();
+  const [couponsResults] = AllCouponsHook();
 
   const sections = [
     { title: "الطلبيات", link: "/admin/orders", count: ordersResults || 0 },
     { title: "المنتجات", link: "/admin/products", count: productResults || 0 },
     { title: "التصنيفات", link: "/admin/categories", count: catResults || 0 },
     { title: "الماركات", link: "/admin/brands", count: brandResults || 0 },
-    { title: "الخصومات", link: "/admin/coupons", count: 9 || 0 },
+    { title: "الخصومات", link: "/admin/coupons", count: couponsResults || 0 },
   ];
 
   return (
