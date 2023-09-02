@@ -52,10 +52,10 @@ const ProductDetails = ({ product }) => {
             <span className="w-auto d-flex align-items-center gap-1">
               <Badge
                 bg="secondary"
-                className="w-auto px-1 d-flex align-items-center gap-1"
+                className="w-auto px-2 d-flex align-items-center gap-1"
               >
                 <StarIcon height="15px" />
-                4.6
+                {product?.ratingsAverage ? product?.ratingsAverage : "0"}
               </Badge>
               <span style={{ fontSize: "14px" }}>
                 ( {product?.ratingsQuantity} تقييم )

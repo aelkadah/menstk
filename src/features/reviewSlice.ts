@@ -75,8 +75,12 @@ export const reviewSlice = createSlice({
     builder.addCase(createReview.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.payload;
-      console.log(action);
-      return notify("حدث خطأ أثناء إضافة التقييم", "error");
+      if (action?.payload == "Request failed with status code 400")
+        return notify("تمت إضافة تقييم من قبل على هذا المنتج", "error");
+      else {
+        console.log(action);
+        return notify("حدث خطأ أثناء إضافة التقييم", "error");
+      }
     });
   },
 });

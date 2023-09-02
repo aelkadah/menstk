@@ -14,7 +14,7 @@ const AllReviewsHook = (product, limit) => {
   const reviewsResults = useSelector(
     (state) => state.review.allReviews.results
   );
-  const reviews = useSelector((state) => state.review.allReviews);
+  const reviews = useSelector((state) => state.review.allReviews?.data);
   const paginationResult = useSelector(
     (state) => state.review.allReviews.paginationResult
   );

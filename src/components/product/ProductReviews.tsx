@@ -1,13 +1,18 @@
-import { Row, Col, ProgressBar } from "react-bootstrap";
+import { Row, Col, ProgressBar, Form, Button } from "react-bootstrap";
+import ReactStars from "react-rating-stars-component";
 import { StarIcon } from "@heroicons/react/24/solid";
-import { Pagination } from "..";
+import { LoadingSpinner, Pagination } from "..";
 import AllReviewsHook from "../../hooks/reviews/AllReviewsHook";
+import AddReviewHook from "../../hooks/reviews/AddReviewHook";
 
 const ProductReviews = ({ product }) => {
   const [reviewsResults, reviews, pageCount, getPage, loading] = AllReviewsHook(
     product,
     10
   );
+
+  const [rate, onChangeRate, review, onChangeReview, handleAddReview] =
+    AddReviewHook(product?._id);
 
   return (
     <Row className="bg-white mx-0 my-4 p-4">
@@ -16,13 +21,16 @@ const ProductReviews = ({ product }) => {
       </Row>
       <Col xs={12} md={4} className="p-0 mb-5">
         <h5 className="fw-bold pb-3 px-0">التقييم العام</h5>
-        <h2 className="fw-bold">4.6</h2>
-        <div className="text-success">
-          <StarIcon width={"30px"} />
-          <StarIcon width={"30px"} />
-          <StarIcon width={"30px"} />
-          <StarIcon width={"30px"} />
-          <StarIcon width={"30px"} className="text-dark" />
+        <div className="d-flex align-items-center gap-2">
+          <h2 className="fw-bold w-auto mb-0">({product?.ratingsAverage})</h2>
+          <div className="text-success w-auto">
+            <ReactStars
+              size={28}
+              activeColor="#28a745"
+              count={5}
+              value={product?.ratingsAverage}
+            />
+          </div>
         </div>
 
         <Row className="mt-3">
@@ -91,163 +99,78 @@ const ProductReviews = ({ product }) => {
       <Col xs={12} md={8} className="py-0 px-3">
         <Row className="d-flex justify-content-between align-items-center border-bottom pb-2 px-0 mx-0">
           <h5 className="w-auto fw-bold">تقييمات المشترين</h5>
-          <h6 className="w-auto fw-bold">( 214 ) تقييم</h6>
+          <h6 className="w-auto fw-bold">
+            ( {product?.ratingsQuantity} ) تقييم
+          </h6>
         </Row>
-        <Row className="border-bottom pt-4 pb-1 mx-0">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex gap-2">
-              <h5
-                className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                style={{ width: "50px", height: "50px" }}
-              >
-                A
-              </h5>
-              <div>
-                <h5 className="fw-bold m-0">Ahmed</h5>
-                <h6 className="text-black-50 m-0">21/7/2023</h6>
-              </div>
-            </div>
-            <div className="text-success">
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} className="text-dark" />
-            </div>
-          </div>
-          <div className="px-4">
-            <p>
-              هذا المنتج ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج
-              ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد
-              قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد قمت بشراؤه
-              وأثب فاعلية عالية جداً
-            </p>
+
+        <Row className="py-4 border-bottom">
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label className="d-flex justify-content-between">
+              تفاصيل التقييم
+              <ReactStars
+                size={28}
+                activeColor="#28a745"
+                count={5}
+                value={rate}
+                onChange={onChangeRate}
+              />
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={review}
+              onChange={onChangeReview}
+            />
+          </Form.Group>
+          <div className="d-flex justify-content-end">
+            <Button onClick={handleAddReview}>إضافة التقييم</Button>
           </div>
         </Row>
-        <Row className="border-bottom pt-4 pb-1 mx-0">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex gap-2">
-              <h5
-                className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                style={{ width: "50px", height: "50px" }}
-              >
-                A
-              </h5>
-              <div>
-                <h5 className="fw-bold m-0">Ahmed ElKadah</h5>
-                <h6 className="text-black-50 m-0">21/7/2023</h6>
-              </div>
-            </div>
-            <div className="text-success">
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} className="text-dark" />
-            </div>
-          </div>
-          <div className="px-4">
-            <p>
-              هذا المنتج ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج
-              ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد
-              قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد قمت بشراؤه
-              وأثب فاعلية عالية جداً
-            </p>
-          </div>
-        </Row>
-        <Row className="border-bottom pt-4 pb-1 mx-0">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex gap-2">
-              <h5
-                className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                style={{ width: "50px", height: "50px" }}
-              >
-                A
-              </h5>
-              <div>
-                <h5 className="fw-bold m-0">Ahmed ElKadah</h5>
-                <h6 className="text-black-50 m-0">21/7/2023</h6>
-              </div>
-            </div>
-            <div className="text-success">
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} className="text-dark" />
-            </div>
-          </div>
-          <div className="px-4">
-            <p>
-              هذا المنتج ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج
-              ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد
-              قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد قمت بشراؤه
-              وأثب فاعلية عالية جداً
-            </p>
-          </div>
-        </Row>
-        <Row className="border-bottom pt-4 pb-1 mx-0">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex gap-2">
-              <h5
-                className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                style={{ width: "50px", height: "50px" }}
-              >
-                A
-              </h5>
-              <div>
-                <h5 className="fw-bold m-0">Ahmed ElKadah</h5>
-                <h6 className="text-black-50 m-0">21/7/2023</h6>
-              </div>
-            </div>
-            <div className="text-success">
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} className="text-dark" />
-            </div>
-          </div>
-          <div className="px-4">
-            <p>
-              هذا المنتج ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج
-              ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد
-              قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد قمت بشراؤه
-              وأثب فاعلية عالية جداً
-            </p>
-          </div>
-        </Row>
-        <Row className="border-bottom pt-4 pb-1 mx-0">
-          <div className="d-flex justify-content-between">
-            <div className="d-flex gap-2">
-              <h5
-                className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                style={{ width: "50px", height: "50px" }}
-              >
-                A
-              </h5>
-              <div>
-                <h5 className="fw-bold m-0">Ahmed ElKadah</h5>
-                <h6 className="text-black-50 m-0">21/7/2023</h6>
-              </div>
-            </div>
-            <div className="text-success">
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} />
-              <StarIcon width={"20px"} className="text-dark" />
-            </div>
-          </div>
-          <div className="px-4">
-            <p>
-              هذا المنتج ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج
-              ممتاز لقد قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد
-              قمت بشراؤه وأثب فاعلية عالية جداً هذا المنتج ممتاز لقد قمت بشراؤه
-              وأثب فاعلية عالية جداً
-            </p>
-          </div>
-        </Row>
+
+        {!loading ? (
+          reviews?.length >= 1 ? (
+            reviews?.map((review, index) => {
+              return (
+                <Row className="border-bottom pt-4 pb-1 mx-0" key={index}>
+                  <div className="d-flex justify-content-between">
+                    <div className="d-flex gap-2">
+                      <h5
+                        className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
+                        style={{ width: "50px", height: "50px" }}
+                      >
+                        {review?.user?.name?.slice()[0]}
+                      </h5>
+                      <div>
+                        <h5 className="fw-bold m-0">{review?.user?.name}</h5>
+                        <h6 className="text-black-50 m-0">
+                          {review?.createdAt?.split("T")[0]}
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="text-success">
+                      <ReactStars
+                        size={24}
+                        activeColor="#28a745"
+                        count={5}
+                        value={review?.ratings}
+                        // onChange={ratingChanged}
+                      />
+                    </div>
+                  </div>
+                  <div className="px-5">
+                    <p className="px-4">{review?.title}</p>
+                  </div>
+                </Row>
+              );
+            })
+          ) : (
+            <h3 className="text-center">لا يوجد تقييمات متاحة الآن</h3>
+          )
+        ) : (
+          <LoadingSpinner padd={5} />
+        )}
+
         {pageCount && getPage ? (
           <Pagination pageCount={pageCount} onPress={getPage} />
         ) : null}
