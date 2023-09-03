@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getData } from "../helpers/getData";
 import notify from "../helpers/notify";
 import { insertDataToken } from "../helpers/insertData";
+import { deleteData } from "../helpers/deleteData";
+import { updateData } from "../helpers/updateData";
 
 const initialState = {
   loading: false,
@@ -33,6 +35,36 @@ export const createReview = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await insertDataToken(`/api/v1/products/${id}/reviews`, data);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const updateReview = createAsyncThunk(
+  "review/update",
+  async ([id, data], thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await updateData(`/api/v1/reviews/${id}`, data);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const deleteReview = createAsyncThunk(
+  "review/delete",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await deleteData(`/api/v1/reviews/${id}`);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
@@ -81,6 +113,38 @@ export const reviewSlice = createSlice({
         console.log(action);
         return notify("حدث خطأ أثناء إضافة التقييم", "error");
       }
+    });
+
+    builder.addCase(updateReview.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(updateReview.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم تعديل التقييم بنجاح", "success");
+    });
+    builder.addCase(updateReview.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تعديل التقييم", "error");
+    });
+
+    builder.addCase(deleteReview.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(deleteReview.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم حذف التقييم بنجاح", "success");
+    });
+    builder.addCase(deleteReview.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء حذف التقييم", "error");
     });
   },
 });

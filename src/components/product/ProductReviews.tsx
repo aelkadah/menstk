@@ -2,6 +2,7 @@ import { Row, Col, ProgressBar, Form, Button } from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { LoadingSpinner, Pagination } from "..";
+import ProductReviewCard from "./ProductReviewCard";
 import AllReviewsHook from "../../hooks/reviews/AllReviewsHook";
 import AddReviewHook from "../../hooks/reviews/AddReviewHook";
 
@@ -132,36 +133,11 @@ const ProductReviews = ({ product }) => {
           reviews?.length >= 1 ? (
             reviews?.map((review, index) => {
               return (
-                <Row className="border-bottom pt-4 pb-1 mx-0" key={index}>
-                  <div className="d-flex justify-content-between">
-                    <div className="d-flex gap-2">
-                      <h5
-                        className="bg-light fw-bold rounded-circle p-0 d-flex justify-content-center align-items-center"
-                        style={{ width: "50px", height: "50px" }}
-                      >
-                        {review?.user?.name?.slice()[0]}
-                      </h5>
-                      <div>
-                        <h5 className="fw-bold m-0">{review?.user?.name}</h5>
-                        <h6 className="text-black-50 m-0">
-                          {review?.createdAt?.split("T")[0]}
-                        </h6>
-                      </div>
-                    </div>
-                    <div className="text-success">
-                      <ReactStars
-                        size={24}
-                        activeColor="#28a745"
-                        count={5}
-                        value={review?.ratings}
-                        // onChange={ratingChanged}
-                      />
-                    </div>
-                  </div>
-                  <div className="px-5">
-                    <p className="px-4">{review?.title}</p>
-                  </div>
-                </Row>
+                <ProductReviewCard
+                  product={product}
+                  review={review}
+                  key={index}
+                />
               );
             })
           ) : (
