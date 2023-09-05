@@ -6,17 +6,11 @@ import {
   Col,
   Navbar,
   Nav,
-  Form,
-  InputGroup,
   Offcanvas,
   NavDropdown,
 } from "react-bootstrap";
 import {
-  ArrowLeftOnRectangleIcon,
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
   ArrowRightOnRectangleIcon,
-  RectangleGroupIcon,
   ShoppingCartIcon,
   AdjustmentsHorizontalIcon,
   ReceiptPercentIcon,
@@ -28,7 +22,6 @@ import { AdjustmentsVerticalIcon } from "@heroicons/react/24/solid";
 import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
-import { LoadingSpinner } from "../../components";
 import { ErrorPage } from "..";
 
 const AdminLayout = ({ auth }) => {
@@ -64,58 +57,17 @@ const AdminLayout = ({ auth }) => {
           <AdjustmentsHorizontalIcon height={"25px"} />
         </span>
 
-        <Navbar key="md" expand="md" className="w-auto flex-grow-1">
+        <Navbar className="w-auto flex-grow-1">
           <Container fluid>
             <Navbar.Brand className="m-0" to="/" as={Link}>
-              <img src={logo} alt="logo" height="35px" />
+              <img src={logo} alt="logo" height="45px" />
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
-            <Navbar.Offcanvas
-              id="offcanvasNavbar-expand-md"
-              aria-labelledby="offcanvasNavbarLabel-expand-md"
-              placement="end"
-            >
-              <Offcanvas.Header closeButton>
-                <Navbar.Brand to="/" as={Link}>
-                  <img src={logo} alt="logo" height="50px" />
-                </Navbar.Brand>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                <Nav className="justify-content-end align-items-md-center  flex-grow-1">
-                  {/* <InputGroup className="rounded rounded-4 mx-4">
-                    <InputGroup.Text>
-                      <MagnifyingGlassIcon width={"20px"} />
-                    </InputGroup.Text>
-                    <Form.Control placeholder="بتدور على ايه..." />
-                  </InputGroup> */}
-
-                  <Nav.Link disabled>English</Nav.Link>
-                  {!loading && userData ? (
-                    <NavDropdown
-                      title={`${userData?.name?.split(" ")[0]} أهلاً`}
-                      className="fw-medium"
-                      dir="ltr"
-                    >
-                      <NavDropdown.Item
-                        className="d-flex justify-content-end gap-1 py-2"
-                        to="/admin"
-                        as={NavLink}
-                      >
-                        لوحة التحكم
-                        <AdjustmentsVerticalIcon width={"20px"} />
-                      </NavDropdown.Item>
-                      <NavDropdown.Item
-                        className="d-flex justify-content-end gap-1 py-2"
-                        onClick={handleLogout}
-                      >
-                        تسجيل الخروج
-                        <ArrowRightOnRectangleIcon width={"20px"} />
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  ) : null}
-                </Nav>
-              </Offcanvas.Body>
-            </Navbar.Offcanvas>
+            <Navbar.Toggle />
+            <Navbar.Collapse className="justify-content-end">
+              <Navbar.Text className="fw-medium px-2 d-none d-md-inline">
+                {`أهلاً ${userData?.name?.split(" ")[0]}`}
+              </Navbar.Text>
+            </Navbar.Collapse>
           </Container>
         </Navbar>
 

@@ -1,6 +1,17 @@
 import { useEffect, useState } from "react";
 import { Outlet, NavLink, Link } from "react-router-dom";
-import { Container, Row, Col, Navbar, Nav, Offcanvas } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Navbar,
+  Nav,
+  Offcanvas,
+  Badge,
+  NavDropdown,
+  InputGroup,
+  Form,
+} from "react-bootstrap";
 import {
   ShoppingBagIcon,
   ArrowRightOnRectangleIcon,
@@ -9,11 +20,14 @@ import {
   MapPinIcon,
   BookmarkIcon,
   QueueListIcon,
+  HeartIcon,
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 import { ErrorPage } from "..";
+import UserCartHook from "../../hooks/cart/UserCartHook";
 
 const UserLayout = ({ auth }) => {
   const [show, setShow] = useState(false);
@@ -31,6 +45,7 @@ const UserLayout = ({ auth }) => {
   const handleCollapse = () => setCollapsed(!collapsed);
 
   const [userData, loading] = LoggedUserHook();
+  const [userCart] = UserCartHook();
   const [handleLogout] = LogoutHook();
 
   if (!auth) return <ErrorPage />;
@@ -65,17 +80,74 @@ const UserLayout = ({ auth }) => {
                 </Navbar.Brand>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end align-items-md-center  flex-grow-1">
-                  <Nav.Link disabled>English</Nav.Link>
-                  <Nav.Link className="fw-medium" disabled>
-                    أهلاً {userData?.name?.split(" ")[0]}
-                  </Nav.Link>
+                <InputGroup className="headerSearch rounded rounded-4 d-flex my-2 my-md-0 mx-0 ms-md-0 me-md-4 w-100">
+                  <InputGroup.Text>
+                    <MagnifyingGlassIcon width={"20px"} />
+                  </InputGroup.Text>
+                  <Form.Control id="search" placeholder="بتدور على ايه..." />
+                </InputGroup>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <NavDropdown
+                    title={`أهلاً ${userData?.name?.split(" ")[0]}`}
+                    className="text-end gap-2"
+                  >
+                    <NavDropdown.Item
+                      className="d-flex gap-1 py-2"
+                      to="/user/profile"
+                      as={NavLink}
+                    >
+                      <UserCircleIcon width={"20px"} />
+                      <span>حسابك</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      className="d-flex gap-1 py-2"
+                      to="/user/orders"
+                      as={NavLink}
+                    >
+                      <QueueListIcon width={"20px"} />
+                      <span>الطلبيات</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      className="d-flex gap-1 py-2"
+                      to="/user/wishlist"
+                      as={NavLink}
+                    >
+                      <HeartIcon width={"20px"} />
+                      <span>المفضلة</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item
+                      className="d-flex gap-1 py-2"
+                      to="/user/addresses"
+                      as={NavLink}
+                    >
+                      <MapPinIcon width={"20px"} />
+                      <span>العناوين</span>
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item
+                      className="d-flex gap-1"
+                      onClick={handleLogout}
+                    >
+                      <ArrowRightOnRectangleIcon width={"20px"} />
+                      تسجيل الخروج
+                    </NavDropdown.Item>
+                  </NavDropdown>
+
                   <Nav.Link
-                    className="d-flex align-items-center fw-medium"
+                    className="d-flex align-items-center fw-medium position-relative"
                     to="/cart"
                     as={Link}
                   >
                     <ShoppingBagIcon width="25px" />
+                    <Badge
+                      bg="primary"
+                      className="position-absolute d-flex justify-content-center align-items-center top-0 p-1 rounded-circle"
+                      style={{ left: "0px", width: "20px", height: "20px" }}
+                    >
+                      {userCart?.numOfCartItems >= 1
+                        ? userCart?.numOfCartItems
+                        : "0"}
+                    </Badge>
                     <span className="d-md-none w-100">عربة التسوق</span>
                   </Nav.Link>
                 </Nav>

@@ -10,6 +10,7 @@ import {
   Badge,
 } from "react-bootstrap";
 import {
+  AdjustmentsHorizontalIcon,
   AdjustmentsVerticalIcon,
   ArrowLeftOnRectangleIcon,
   ArrowRightOnRectangleIcon,
@@ -34,7 +35,7 @@ const Header = () => {
   return (
     <Container className="bg-white border-bottom border-light-subtle" fluid>
       <Container>
-        <Navbar key="md" expand="md">
+        <Navbar key="md" expand="md" className="flex-grow-1">
           <Container fluid>
             <Navbar.Brand className="m-0" to="/" as={Link}>
               <img src={logo} alt="logo" height="45px" />
