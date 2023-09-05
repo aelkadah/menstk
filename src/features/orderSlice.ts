@@ -17,7 +17,7 @@ export const getAllOrders = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getDataTokenWithoutParams(
-        `/api/v1/orders?limit=${limit}&page=${page}`
+        `/api/v1/orders?limit=${limit}&page=${page || 1}`
       );
       return res.data;
     } catch (err) {

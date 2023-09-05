@@ -18,7 +18,7 @@ export const getAllReviews = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(
-        `/api/v1/products/${id}/reviews?limit=${limit}&page=${page}`
+        `/api/v1/products/${id}/reviews?limit=${limit}&page=${page || 1}`
       );
       return res.data;
     } catch (err) {

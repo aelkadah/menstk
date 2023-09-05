@@ -16,7 +16,9 @@ export const getAllProducts = createAsyncThunk(
   async ([limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await getData(`/api/v1/products?limit=${limit}&page=${page}`);
+      const res = await getData(
+        `/api/v1/products?limit=${limit}&page=${page || 1}`
+      );
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);

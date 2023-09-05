@@ -18,7 +18,7 @@ export const getAllCategories = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(
-        `/api/v1/categories?limit=${limit}&page=${page}`
+        `/api/v1/categories?limit=${limit}&page=${page || 1}`
       );
       return res.data;
     } catch (err) {
