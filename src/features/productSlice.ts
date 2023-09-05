@@ -26,6 +26,19 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getProductsSearch = createAsyncThunk(
+  "product/search",
+  async (queryString, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/products?${queryString}`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const getOneProduct = createAsyncThunk(
   "product/one",
   async (id, thunkAPI) => {
@@ -88,6 +101,22 @@ export const productSlice = createSlice({
       state.error = action?.error?.message;
       console.log(action);
       return notify("حدث خطأ أثناء تحميل المنتجات", "error");
+    });
+
+    builder.addCase(getProductsSearch.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getProductsSearch.fulfilled, (state, action) => {
+      state.allProducts = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getProductsSearch.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      console.log(action);
+      return notify("حدث خطأ أثناء البحث في المنتجات", "error");
     });
 
     builder.addCase(getOneProduct.pending, (state, action) => {
