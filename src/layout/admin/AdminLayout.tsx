@@ -29,8 +29,9 @@ import logo from "../../assets/images/logo.svg";
 import LogoutHook from "../../hooks/auth/LogoutHook";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 import { LoadingSpinner } from "../../components";
+import { ErrorPage } from "..";
 
-const AdminLayout = () => {
+const AdminLayout = ({ auth }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,6 +48,9 @@ const AdminLayout = () => {
 
   const [loading, userData] = LoggedUserHook();
   const [handleLogout] = LogoutHook();
+
+  if (!auth) return <ErrorPage />;
+
   return (
     <Container fluid className="p-0">
       <Row className="dashboardHeader">
