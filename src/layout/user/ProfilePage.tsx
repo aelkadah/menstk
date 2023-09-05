@@ -5,7 +5,7 @@ import UpdatePasswordHook from "../../hooks/user/UpdatePasswordHook";
 import UpdateUserDataHook from "../../hooks/user/UpdateUserDataHook";
 
 const ProfilePage = () => {
-  const [loading, userData] = LoggedUserHook();
+  const [userData, loading] = LoggedUserHook();
   const [
     currentPassword,
     onChangeCurrent,

@@ -46,7 +46,7 @@ const AdminLayout = ({ auth }) => {
 
   const handleCollapse = () => setCollapsed(!collapsed);
 
-  const [loading, userData] = LoggedUserHook();
+  const [userData, loading] = LoggedUserHook();
   const [handleLogout] = LogoutHook();
 
   if (!auth) return <ErrorPage />;

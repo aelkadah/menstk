@@ -18,7 +18,7 @@ const LoggedUserHook = () => {
   const loading = useSelector((state) => state.auth.loading);
   const userData = useSelector((state) => state.auth.user?.data);
 
-  return [loading, userData];
+  return [userData, loading];
 };
 
 export default LoggedUserHook;
