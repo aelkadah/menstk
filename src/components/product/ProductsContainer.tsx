@@ -5,7 +5,7 @@ import AllProductsHook from "../../hooks/product/AllProductsHook";
 
 const ProductsContainer = () => {
   const [productResults, products, pageCount, getPage, loading] =
-    AllProductsHook();
+    AllProductsHook(10);
 
   return (
     <Row className="justify-content-center py-4">

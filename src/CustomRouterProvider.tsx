@@ -32,6 +32,8 @@ import {
   AdminOneCategoryPage,
   AdminBrandsPage,
   AdminCouponsPage,
+  ProductsByBrandPage,
+  ProductsByCategoryPage,
 } from "./layout";
 import ProtectedRouteHook from "./hooks/auth/ProtectedRouteHook";
 
@@ -46,7 +48,9 @@ const CustomRouterProvider = () => {
       children: [
         { path: "/", element: <HomePage /> },
         { path: "/categories", element: <CategoriesPage /> },
+        { path: "/categories/:id", element: <ProductsByCategoryPage /> },
         { path: "/brands", element: <BrandsPage /> },
+        { path: "/brands/:id", element: <ProductsByBrandPage /> },
         { path: "/products", element: <ProductsPage /> },
         { path: "/products/:id", element: <OneProductPage /> },
         { path: "/cart", element: <CartPage /> },

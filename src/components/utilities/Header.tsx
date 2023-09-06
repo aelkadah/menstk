@@ -33,7 +33,10 @@ const Header = () => {
   const [handleLogout] = LogoutHook();
 
   return (
-    <Container className="bg-white border-bottom border-light-subtle" fluid>
+    <Container
+      className="header bg-white border-bottom border-light-subtle"
+      fluid
+    >
       <Container>
         <Navbar key="md" expand="md" className="flex-grow-1">
           <Container fluid>

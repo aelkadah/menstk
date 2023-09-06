@@ -9,10 +9,10 @@ const OneCategoryHook = (id) => {
     if (id) dispatch(getOneCategory(id));
   }, [id]);
 
-  const loading = useSelector((state) => state.category.loading);
+  const catLoading = useSelector((state) => state.category.loading);
   const category = useSelector((state) => state.category.oneCategory.data);
 
-  return [loading, category];
+  return [category, catLoading];
 };
 
 export default OneCategoryHook;

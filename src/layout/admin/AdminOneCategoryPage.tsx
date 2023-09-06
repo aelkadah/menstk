@@ -7,7 +7,7 @@ import AdminSubCategoriesContainer from "../../components/admin/subcategory/Admi
 
 const AdminOneCategoryPage = () => {
   const { id } = useParams();
-  const [loading, category] = OneCategoryHook(id);
+  const [category, catLoading] = OneCategoryHook(id);
 
   const [show, handleShow, handleClose, name, onChangeName, handleSubmit] =
     AddSubCategoryHook(category?._id);

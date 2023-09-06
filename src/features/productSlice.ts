@@ -26,6 +26,36 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getProductsByBrand = createAsyncThunk(
+  "product/brand",
+  async ([brand, limit, page], thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(
+        `/api/v1/products?limit=${limit}&brand=${brand}&page=${page || 1}`
+      );
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const getProductsByCategory = createAsyncThunk(
+  "product/category",
+  async ([category, limit, page], thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(
+        `/api/v1/products?limit=${limit}&category=${category}&page=${page || 1}`
+      );
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const getProductsSearch = createAsyncThunk(
   "product/search",
   async (queryString, thunkAPI) => {
@@ -97,6 +127,38 @@ export const productSlice = createSlice({
       state.error = null;
     });
     builder.addCase(getAllProducts.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحميل المنتجات", "error");
+    });
+
+    builder.addCase(getProductsByBrand.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getProductsByBrand.fulfilled, (state, action) => {
+      state.allProducts = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getProductsByBrand.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.error?.message;
+      console.log(action);
+      return notify("حدث خطأ أثناء تحميل المنتجات", "error");
+    });
+
+    builder.addCase(getProductsByCategory.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(getProductsByCategory.fulfilled, (state, action) => {
+      state.allProducts = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getProductsByCategory.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.error?.message;
       console.log(action);
