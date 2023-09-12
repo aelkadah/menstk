@@ -5,7 +5,7 @@ import AllProductsHook from "../../../hooks/product/AllProductsHook";
 
 const AdminProductsContainer = () => {
   const [productResults, products, pageCount, getPage, loading] =
-    AllProductsHook();
+    AllProductsHook(10, "-createdAt");
 
   return (
     <Row className="justify-content-center py-4">
