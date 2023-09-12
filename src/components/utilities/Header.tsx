@@ -27,11 +27,14 @@ import logo from "../../assets/images/logo.svg";
 import LoggedUserHook from "../../hooks/auth/LoggedUserHook";
 import LogoutHook from "../../hooks/auth/LogoutHook";
 import UserCartHook from "../../hooks/cart/UserCartHook";
+import SearchProductsHook from "../../hooks/product/SearchProductsHook";
 
 const Header = () => {
   const [userData, loading] = LoggedUserHook();
   const [userCart] = UserCartHook();
   const [handleLogout] = LogoutHook();
+
+  const [keyword, onChangeKeyword, handleSearch] = SearchProductsHook();
 
   return (
     <Container
@@ -62,9 +65,11 @@ const Header = () => {
                   <Form.Control
                     placeholder="بتدور على ايه..."
                     aria-label="Search"
+                    value={keyword}
+                    onChange={onChangeKeyword}
                   />
                   <InputGroup.Text className="p-0 m-0 border-0">
-                    <Button>بحث</Button>
+                    <Button onClick={handleSearch}>بحث</Button>
                   </InputGroup.Text>
                 </InputGroup>
 

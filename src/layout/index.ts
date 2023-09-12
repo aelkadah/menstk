@@ -7,6 +7,7 @@ export { default as BrandsPage } from "./BrandsPage";
 export { default as ProductsPage } from "./product/ProductsPage";
 export { default as ProductsByBrandPage } from "./product/ProductsByBrandPage";
 export { default as ProductsByCategoryPage } from "./product/ProductsByCategoryPage";
+export { default as SearchProductsPage } from "./product/SearchProductsPage";
 export { default as OneProductPage } from "./product/OneProductPage";
 export { default as CartPage } from "./CartPage";
 export { default as CheckoutPage } from "./CheckoutPage";
