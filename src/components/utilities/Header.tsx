@@ -8,6 +8,7 @@ import {
   Form,
   InputGroup,
   Badge,
+  Button,
 } from "react-bootstrap";
 import {
   AdjustmentsHorizontalIcon,
@@ -57,12 +58,16 @@ const Header = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body className="align-items-center">
-                <InputGroup className="headerSearch rounded rounded-4 d-flex my-2 my-md-0 mx-0 ms-md-0 me-md-4 w-100">
-                  <InputGroup.Text>
-                    <MagnifyingGlassIcon width={"20px"} />
+                <InputGroup className="rounded rounded-4 d-flex my-2 my-md-0 mx-0 ms-md-0 me-md-4 w-100">
+                  <Form.Control
+                    placeholder="بتدور على ايه..."
+                    aria-label="Search"
+                  />
+                  <InputGroup.Text className="p-0 m-0 border-0">
+                    <Button>بحث</Button>
                   </InputGroup.Text>
-                  <Form.Control placeholder="بتدور على ايه..." />
                 </InputGroup>
+
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   {!loading && userData ? (
                     userData?.role == "user" ? (

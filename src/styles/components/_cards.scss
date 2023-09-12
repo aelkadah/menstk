@@ -3,6 +3,7 @@
   background-color: #fff;
   padding: 15px;
   box-shadow: 2px 4px 15px 0px rgb(207 207 207 / 40%);
+  height: 100%;
   cursor: pointer;
   // &:hover > .prodImg > img {
   //   -webkit-transform: scale(1.2);
@@ -20,6 +21,8 @@
     padding: 20px;
     margin-bottom: 10px;
     > img {
+      // height: 100%;
+      // width: auto;
       height: auto;
       width: 100%;
       -webkit-transform: scale(1);
