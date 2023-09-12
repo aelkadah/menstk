@@ -13,11 +13,11 @@ const initialState = {
 
 export const getAllProducts = createAsyncThunk(
   "product/all",
-  async ([limit, page], thunkAPI) => {
+  async ([sort, limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(
-        `/api/v1/products?limit=${limit}&page=${page || 1}`
+        `/api/v1/products?limit=${limit}&page=${page || 1}&sort=${sort}`
       );
       return res.data;
     } catch (err) {
@@ -28,11 +28,13 @@ export const getAllProducts = createAsyncThunk(
 
 export const getProductsByBrand = createAsyncThunk(
   "product/brand",
-  async ([brand, limit, page], thunkAPI) => {
+  async ([brand, sort, limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(
-        `/api/v1/products?limit=${limit}&brand=${brand}&page=${page || 1}`
+        `/api/v1/products?limit=${limit}&brand=${brand}&sort=+price&page=${
+          page || 1
+        }&sort=${sort}`
       );
       return res.data;
     } catch (err) {

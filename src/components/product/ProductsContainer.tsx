@@ -3,9 +3,9 @@ import { LoadingSpinner, Pagination } from "..";
 import ProductCard from "./ProductCard";
 import AllProductsHook from "../../hooks/product/AllProductsHook";
 
-const ProductsContainer = () => {
+const ProductsContainer = ({ sort }) => {
   const [productResults, products, pageCount, getPage, loading] =
-    AllProductsHook(10);
+    AllProductsHook(10, sort);
 
   return (
     <Row className="justify-content-center py-4">
@@ -13,7 +13,7 @@ const ProductsContainer = () => {
         products?.length >= 1 ? (
           products?.map((item, index) => {
             return (
-              <Col xs={10} sm={6} md={4} lg={4} key={index}>
+              <Col xs={10} sm={6} md={4} lg={3} key={index}>
                 <ProductCard product={item} />
               </Col>
             );
