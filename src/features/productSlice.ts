@@ -26,6 +26,19 @@ export const getAllProducts = createAsyncThunk(
   }
 );
 
+export const getProductsSearch = createAsyncThunk(
+  "product/search",
+  async (queryString, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getData(`/api/v1/products?${queryString}`);
+      return res.data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
 export const getProductsByBrand = createAsyncThunk(
   "product/brand",
   async ([brand, sort, limit, page], thunkAPI) => {
@@ -45,25 +58,14 @@ export const getProductsByBrand = createAsyncThunk(
 
 export const getProductsByCategory = createAsyncThunk(
   "product/category",
-  async ([category, limit, page], thunkAPI) => {
+  async ([category, sort, limit, page], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await getData(
-        `/api/v1/products?limit=${limit}&category=${category}&page=${page || 1}`
+        `/api/v1/products?limit=${limit}&category=${category}&page=${
+          page || 1
+        }&sort=${sort}`
       );
-      return res.data;
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
-  }
-);
-
-export const getProductsSearch = createAsyncThunk(
-  "product/search",
-  async (queryString, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
-    try {
-      const res = await getData(`/api/v1/products?${queryString}`);
       return res.data;
     } catch (err) {
       return rejectWithValue(err.message);

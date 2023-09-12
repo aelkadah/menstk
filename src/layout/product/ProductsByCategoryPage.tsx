@@ -1,24 +1,42 @@
 import { useParams } from "react-router-dom";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Form, Row } from "react-bootstrap";
 import { LoadingSpinner, Pagination } from "../../components";
+import { FunnelIcon } from "@heroicons/react/24/outline";
 import ProductCard from "../../components/product/ProductCard";
 import OneCategoryHook from "../../hooks/category/OneCategoryHook";
 import CategoryProductsHook from "../../hooks/product/CategoryProductsHook";
+import SortProductsHook from "../../hooks/product/SortProductsHook";
 
 const ProductsByCategoryPage = () => {
   const { id } = useParams();
   const [category, catLoading] = OneCategoryHook(id);
+
+  const [sort, onChangeSort] = SortProductsHook();
   const [productResults, products, pageCount, getPage, loading] =
-    CategoryProductsHook(id, 10);
+    CategoryProductsHook(id, 10, sort);
 
   return (
     <Container>
       <Row className="pt-4">
         <Row className="d-flex justify-content-between align-items-center">
           <h5 className="w-auto">
-            نتائج البحث عن تصنيف
+            <span className="fw-bold">{productResults} </span>
+            نتيجة بحث عن تصنيف
             <span className="fw-bold"> "{category?.name}"</span>
           </h5>
+          <div className="d-flex justify-content-between align-items-center gap-1 w-auto">
+            <FunnelIcon width="20px" />
+            <Form.Select
+              className="w-auto py-2 cursor-pointer"
+              value={sort}
+              onChange={onChangeSort}
+            >
+              <option value="">ترتيب عشوائي</option>
+              <option value="-sold">الأكثر مبيعاً</option>
+              <option value="+price">الأقل سعراً</option>
+              <option value="-price">الأعلى سعراً</option>
+            </Form.Select>
+          </div>
         </Row>
 
         <Row className="justify-content-center py-4">

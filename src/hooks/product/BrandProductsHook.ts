@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsByBrand } from "../../features/productSlice";
 
-const BrandProductsHook = (brand, limit) => {
+const BrandProductsHook = (brand, limit, sort) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (brand) dispatch(getProductsByBrand([brand, limit]));
-  }, [brand]);
+    if (brand) dispatch(getProductsByBrand([brand, sort, limit]));
+  }, [brand, sort]);
 
   const loading = useSelector((state) => state.product.loading);
   const productResults = useSelector(
@@ -20,7 +20,8 @@ const BrandProductsHook = (brand, limit) => {
 
   let pageCount = 0;
   if (paginationResult) pageCount = paginationResult.numberOfPages;
-  const getPage = (page) => dispatch(getProductsByBrand([brand, limit, page]));
+  const getPage = (page) =>
+    dispatch(getProductsByBrand([brand, sort, limit, page]));
 
   return [productResults, products, pageCount, getPage, loading];
 };
