@@ -54,7 +54,7 @@ const CustomRouterProvider = () => {
         { path: "/brands/:id", element: <ProductsByBrandPage /> },
         { path: "/products", element: <ProductsPage /> },
         { path: "/products/:id", element: <OneProductPage /> },
-        { path: "/search", element: <SearchProductsPage /> },
+        { path: "/search/:word", element: <SearchProductsPage /> },
         { path: "/cart", element: <CartPage /> },
         { path: "/checkout", element: <CheckoutPage /> },
         { path: "/register", element: <RegisterPage /> },
