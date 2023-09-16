@@ -23,7 +23,7 @@ const AllCategoriesHook = (limit) => {
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllCategories([limit, page]));
 
-  return [catResults, loading, categories, pageCount, getPage];
+  return [catResults, categories, pageCount, getPage, loading];
 };
 
 export default AllCategoriesHook;

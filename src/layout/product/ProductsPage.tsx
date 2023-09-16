@@ -13,37 +13,33 @@ import {
 import ProductsContainer from "../../components/product/ProductsContainer";
 import SortProductsHook from "../../hooks/product/SortProductsHook";
 import { FunnelIcon } from "@heroicons/react/24/outline";
+import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
+import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
+
+// { value: "لابتوبات", label: "لابتوبات" ,children: [{ value: "phobos", label: "Phobos" }],},
 
 const ProductsPage = () => {
+  const [sort, onChangeSort] = SortProductsHook();
+
+  const [catResults, categories] = AllCategoriesHook(50);
+  const [brandResults, brands] = AllBrandsHook(50);
+
   const [checked, setChecked] = useState([]);
   const [expanded, setExpanded] = useState([]);
 
-  const nodes = [
-    {
-      value: "موبايلات",
-      label: "موبايلات",
-      // children: [{ value: "phobos", label: "Phobos" }],
-    },
-    { value: "لابتوبات", label: "لابتوبات" },
-    { value: "تلفزيونات", label: "تلفزيونات" },
-    { value: "ألعاب إلكترونية", label: "ألعاب إلكترونية" },
-    { value: "أدوات مطبخ", label: "أدوات مطبخ" },
-    { value: "ملابس", label: "ملابس" },
-    { value: "أدوات رياضية", label: "أدوات رياضية" },
-    { value: "أحذية رياضية", label: "أحذية رياضية" },
-  ];
-  const brands = [
-    { id: 1, title: "سامسونج" },
-    { id: 2, title: "أبل" },
-    { id: 3, title: "أوبو" },
-    { id: 4, title: "ديل" },
-    { id: 5, title: "أديداس" },
-    { id: 6, title: "نايكي" },
-    { id: 7, title: "تومي" },
-    { id: 8, title: "LC Waikiki" },
-  ];
+  const catList = [];
+  if (categories && categories?.length >= 1) {
+    categories?.map((item, index) =>
+      catList.push({ value: item?._id, label: item?.name })
+    );
+  }
 
-  const [sort, onChangeSort] = SortProductsHook();
+  const brandsList = [];
+  if (brands && brands?.length >= 1) {
+    brands?.map((item, index) =>
+      brandsList.push({ id: item?._id, title: item?.name })
+    );
+  }
 
   return (
     <Container>
@@ -59,7 +55,7 @@ const ProductsPage = () => {
               </Accordion.Header>
               <Accordion.Body className="pt-0 px-2">
                 <CheckboxTree
-                  nodes={nodes}
+                  nodes={catList}
                   checked={checked}
                   expanded={expanded}
                   onCheck={(checked) => setChecked(checked)}
@@ -77,6 +73,7 @@ const ProductsPage = () => {
                 />
               </Accordion.Body>
             </Accordion.Item>
+
             <Accordion.Item
               eventKey="1"
               className="bg-transparent rounded-0 border-0"
@@ -87,8 +84,8 @@ const ProductsPage = () => {
                 </h6>
               </Accordion.Header>
               <Accordion.Body className="d-flex flex-column gap-1 pt-0">
-                {brands?.length >= 1
-                  ? brands.map((item, index) => {
+                {brandsList?.length >= 1
+                  ? brandsList.map((item, index) => {
                       return (
                         <div
                           className="d-flex justify-content-between align-items-center"
@@ -99,7 +96,7 @@ const ProductsPage = () => {
                             label={item.title}
                             reverse
                           />
-                          <span style={{ fontSize: "14px" }}>(5)</span>
+                          {/* <span style={{ fontSize: "14px" }}>(5)</span> */}
                         </div>
                       );
                     })

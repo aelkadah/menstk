@@ -13,7 +13,7 @@ const ProductsContainer = ({ sort }) => {
         products?.length >= 1 ? (
           products?.map((item, index) => {
             return (
-              <Col xs={10} sm={6} md={4} lg={3} key={index}>
+              <Col xs={10} sm={6} md={4} lg={3} className="mb-4" key={index}>
                 <ProductCard product={item} />
               </Col>
             );

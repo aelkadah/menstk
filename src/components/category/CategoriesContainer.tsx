@@ -4,7 +4,7 @@ import CategoryCard from "./CategoryCard";
 import AllCategoriesHook from "../../hooks/category/AllCategoriesHook";
 
 const CategoriesContainer = () => {
-  const [catResults, loading, categories, pageCount, getPage] =
+  const [catResults, categories, pageCount, getPage, loading] =
     AllCategoriesHook();
 
   return (

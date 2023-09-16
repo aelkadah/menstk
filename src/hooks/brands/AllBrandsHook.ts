@@ -22,7 +22,7 @@ const AllBrandsHook = (limit) => {
   if (paginationResult) pageCount = paginationResult.numberOfPages;
   const getPage = (page) => dispatch(getAllBrands([limit, page]));
 
-  return [brandResults, loading, brands, pageCount, getPage];
+  return [brandResults, brands, pageCount, getPage, loading];
 };
 
 export default AllBrandsHook;

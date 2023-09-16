@@ -5,7 +5,7 @@ import AdminBrandCard from "./AdminBrandCard";
 import AllBrandsHook from "../../../hooks/brands/AllBrandsHook";
 
 const AdminBrandsContainer = () => {
-  const [brandResults, loading, brands, pageCount, getPage] = AllBrandsHook();
+  const [brandResults, brands, pageCount, getPage, loading] = AllBrandsHook();
 
   return (
     <Row className="py-4">

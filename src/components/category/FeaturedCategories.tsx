@@ -7,7 +7,7 @@ import { LoadingSpinner } from "..";
 
 const FeaturedCategories = () => {
   let limit = 10;
-  const [catResults, loading, categories, pageCount, getPage] =
+  const [catResults, categories, pageCount, getPage, loading] =
     AllCategoriesHook(limit);
 
   const responsive = {

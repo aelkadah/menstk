@@ -4,7 +4,7 @@ import BrandCard from "./BrandCard";
 import AllBrandsHook from "../../hooks/brands/AllBrandsHook";
 
 const BrandsContainer = () => {
-  const [brandResults, loading, brands, pageCount, getPage] = AllBrandsHook();
+  const [brandResults, brands, pageCount, getPage, loading] = AllBrandsHook();
 
   return (
     <Row className="py-4">
