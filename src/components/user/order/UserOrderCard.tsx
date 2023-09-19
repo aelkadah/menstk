@@ -37,15 +37,15 @@ const UserOrderCard = ({ order }) => {
         )}
       </TableCell>
       <TableCell className="mainFont text-end text-nowrap">
-        {order?.isPaid ? (
-          <span className="d-flex align-items-center text-primary">
-            <CreditCardIcon width={"20px"} className="pe-0 ps-1" />
-            بطاقة إلكترونية
-          </span>
-        ) : (
+        {order?.paymentMethodType == "cash" ? (
           <span className="d-flex align-items-center">
             <BanknotesIcon width={"20px"} className="pe-0 ps-1" />
             كاش
+          </span>
+        ) : (
+          <span className="d-flex align-items-center text-primary">
+            <CreditCardIcon width={"20px"} className="pe-0 ps-1" />
+            بطاقة إلكترونية
           </span>
         )}
       </TableCell>
