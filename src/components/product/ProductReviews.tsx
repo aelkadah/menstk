@@ -23,13 +23,16 @@ const ProductReviews = ({ product }) => {
       <Col xs={12} md={4} className="p-0 mb-5">
         <h5 className="fw-bold pb-3 px-0">التقييم العام</h5>
         <div className="d-flex align-items-center gap-2">
-          <h2 className="fw-bold w-auto mb-0">({product?.ratingsAverage})</h2>
+          <h2 className="fw-bold w-auto mb-0">
+            ({product?.ratingsAverage || 0})
+          </h2>
           <div className="text-success w-auto">
             <ReactStars
               size={28}
               activeColor="#28a745"
               count={5}
-              value={product?.ratingsAverage}
+              value={product?.ratingsAverage || 0}
+              edit={false}
             />
           </div>
         </div>
@@ -141,7 +144,7 @@ const ProductReviews = ({ product }) => {
               );
             })
           ) : (
-            <h3 className="text-center">لا يوجد تقييمات متاحة الآن</h3>
+            <h3 className="text-center py-4">لا يوجد تقييمات متاحة الآن</h3>
           )
         ) : (
           <LoadingSpinner padd={5} />
