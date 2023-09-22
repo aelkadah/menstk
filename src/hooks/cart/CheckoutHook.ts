@@ -71,7 +71,7 @@ const CheckoutHook = () => {
       setPending(false);
       return;
     } else if (credit) {
-      setPending(true);
+      // setPending(true);
       await dispatch(
         creditOrder([
           userCart?._id,
@@ -85,7 +85,7 @@ const CheckoutHook = () => {
           },
         ])
       );
-      setPending(false);
+      // setPending(false);
       return;
     }
   };
@@ -95,10 +95,10 @@ const CheckoutHook = () => {
       if (creditRes?.session) window.open(creditRes?.session?.url, "_self");
   }, [creditRes]);
 
-  // useEffect(() => {
-  //   if (!pending && !loading && !error)
-  //     setTimeout(() => window.location.replace("/"), 1000);
-  // }, [pending]);
+  useEffect(() => {
+    if (!pending && !loading && !error)
+      setTimeout(() => window.location.replace("/"), 1000);
+  }, [pending]);
 
   return [
     userCart,
