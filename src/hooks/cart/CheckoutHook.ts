@@ -91,12 +91,8 @@ const CheckoutHook = () => {
   };
 
   useEffect(() => {
-    if (!loading && creditRes && creditRes?.status == "success") {
-      if (creditRes?.session) {
-        window.open(creditRes?.session?.url);
-        console.log(creditRes?.session);
-      }
-    }
+    if (!loading && creditRes && creditRes?.status == "success")
+      if (creditRes?.session) window.open(creditRes?.session?.url, "_self");
   }, [creditRes]);
 
   // useEffect(() => {
