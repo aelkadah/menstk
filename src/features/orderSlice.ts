@@ -10,6 +10,7 @@ const initialState = {
   error: null,
   allOrders: [],
   oneOrder: [],
+  creditRes: [],
 };
 
 export const getAllOrders = createAsyncThunk(
@@ -61,13 +62,13 @@ export const cashOrder = createAsyncThunk(
 
 export const creditOrder = createAsyncThunk(
   "order/credit",
-  async (id, thunkAPI) => {
+  async ([id, data], thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await getDataTokenWithoutParams(
-        `/api/v1/orders/checkout-session/${id}`
+      const res = await getDataToken(
+        `/api/v1/orders/checkout-session/${id}`,
+        data
       );
-      console.log(res.data);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
@@ -167,9 +168,10 @@ export const orderSlice = createSlice({
       state.error = null;
     });
     builder.addCase(creditOrder.fulfilled, (state, action) => {
+      state.creditRes = action?.payload;
       state.loading = false;
       state.error = null;
-      return notify("تم تأكيد الطلبية بنجاح", "success");
+      return;
     });
     builder.addCase(creditOrder.rejected, (state, action) => {
       state.loading = false;

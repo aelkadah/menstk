@@ -41,6 +41,7 @@ const CheckoutHook = () => {
 
   const loading = useSelector((state) => state.order.loading);
   const error = useSelector((state) => state.order.error);
+  const creditRes = useSelector((state) => state.order.creditRes);
 
   const handleCheckout = async (e) => {
     e.persist();
@@ -70,13 +71,33 @@ const CheckoutHook = () => {
       setPending(false);
       return;
     } else if (credit) {
-      // credittttttttttt
       setPending(true);
-      await dispatch(creditOrder(userCart?._id));
+      await dispatch(
+        creditOrder([
+          userCart?._id,
+          {
+            shippingAddress: {
+              details: addresses[chosenAddress]?.details,
+              phone: addresses[chosenAddress]?.phone,
+              city: addresses[chosenAddress]?.city,
+              postalCode: addresses[chosenAddress]?.postalCode,
+            },
+          },
+        ])
+      );
       setPending(false);
       return;
     }
   };
+
+  useEffect(() => {
+    if (!loading && creditRes && creditRes?.status == "success") {
+      if (creditRes?.session) {
+        window.open(creditRes?.session?.url);
+        console.log(creditRes?.session);
+      }
+    }
+  }, [creditRes]);
 
   // useEffect(() => {
   //   if (!pending && !loading && !error)
