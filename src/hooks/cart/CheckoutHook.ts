@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import notify from "../../helpers/notify";
 import { getAllAddresses } from "../../features/addressSlice";
 import { loggedUserCart } from "../../features/cartSlice";
-import { cashOrder } from "../../features/orderSlice";
+import { cashOrder, creditOrder } from "../../features/orderSlice";
 
 const CheckoutHook = () => {
   const dispatch = useDispatch();
@@ -69,13 +69,19 @@ const CheckoutHook = () => {
       );
       setPending(false);
       return;
-    } else if (credit) return console.log("credit");
+    } else if (credit) {
+      // credittttttttttt
+      setPending(true);
+      await dispatch(creditOrder(userCart?._id));
+      setPending(false);
+      return;
+    }
   };
 
-  useEffect(() => {
-    if (!pending && !loading && !error)
-      setTimeout(() => window.location.replace("/"), 1000);
-  }, [pending]);
+  // useEffect(() => {
+  //   if (!pending && !loading && !error)
+  //     setTimeout(() => window.location.replace("/"), 1000);
+  // }, [pending]);
 
   return [
     userCart,

@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDataTokenWithoutParams } from "../helpers/getData";
+import { getDataToken, getDataTokenWithoutParams } from "../helpers/getData";
 import { insertDataToken } from "../helpers/insertData";
 import { updateData } from "../helpers/updateData";
 import notify from "../helpers/notify";
+import { getDataTokenWithoutParams } from "./../helpers/getData";
 
 const initialState = {
   loading: false,
@@ -49,6 +50,24 @@ export const cashOrder = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const res = await insertDataToken(`/api/v1/orders/${id}`, data);
+      return res.data;
+    } catch (err) {
+      if (err.response?.data?.message)
+        return rejectWithValue(err.response.data.message);
+      else return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const creditOrder = createAsyncThunk(
+  "order/credit",
+  async (id, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await getDataTokenWithoutParams(
+        `/api/v1/orders/checkout-session/${id}`
+      );
+      console.log(res.data);
       return res.data;
     } catch (err) {
       if (err.response?.data?.message)
@@ -137,6 +156,22 @@ export const orderSlice = createSlice({
       return notify("تم تأكيد الطلبية بنجاح", "success");
     });
     builder.addCase(cashOrder.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action?.payload;
+      console.log(action);
+      return notify("حدث خطأ أثناء تأكيد الطلبية", "error");
+    });
+
+    builder.addCase(creditOrder.pending, (state, action) => {
+      state.loading = true;
+      state.error = null;
+    });
+    builder.addCase(creditOrder.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = null;
+      return notify("تم تأكيد الطلبية بنجاح", "success");
+    });
+    builder.addCase(creditOrder.rejected, (state, action) => {
       state.loading = false;
       state.error = action?.payload;
       console.log(action);
